@@ -35,4 +35,4 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: |
-            ghcr.io/Pixel-gaming/games:${{ matrix.game }}
+            ghcr.io/pixel-gaming/games:${{ matrix.game }}

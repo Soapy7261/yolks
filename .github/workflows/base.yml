@@ -36,4 +36,4 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/Pixel-gaming/yolks:${{ matrix.oses }}
+            ghcr.io/pixel-gaming/yolks:${{ matrix.oses }}
