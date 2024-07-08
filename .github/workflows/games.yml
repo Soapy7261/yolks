@@ -26,7 +26,7 @@ jobs:
       - uses: docker/login-action@v2
         with:
           registry: ghcr.io
-          username: "pixel-gaming"
+          username: "c0d3-m4513r"
           password: ${{ secrets.GITHUB_TOKEN }}
       - uses: docker/build-push-action@v4
         with:
@@ -35,4 +35,4 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: |
-            ghcr.io/pixel-gaming/games:${{ matrix.game }}
+            ghcr.io/c0d3-m4513r/games:${{ matrix.game }}
