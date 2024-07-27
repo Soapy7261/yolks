@@ -28,7 +28,7 @@ LABEL       org.opencontainers.image.source="https://github.com/pterodactyl/yolk
 LABEL       org.opencontainers.image.licenses=MIT
 
 COPY        ./../entrypoint.sh /entrypoint.sh
-RUN         apk add --update --no-cache ca-certificates curl openssl tar tzdata \
+RUN         apk add --update --no-cache ca-certificates curl openssl tar \
 	&& adduser -D -h /home/container container && chmod +x /entrypoint.sh && chown container /entrypoint.sh \
 	&& touch /home/container/requirements.txt && touch /home/container/main.py
 
