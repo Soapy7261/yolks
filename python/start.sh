@@ -1,3 +1,3 @@
-#!/bin/bash
+#!/bin/ash
 $STARTUP_CMD 
 $SECOND_CMD
