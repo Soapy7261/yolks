@@ -29,13 +29,11 @@ LABEL       org.opencontainers.image.licenses=MIT
 
 COPY        ./../entrypoint.sh /entrypoint.sh
 RUN         apk add --update --no-cache cmake make ca-certificates curl ffmpeg g++ gcc git openssl sqlite tar tzdata \
-	&& adduser -D -h /home/container container \
-	&& chmod +x /entrypoint.sh \
- 	&& chown container /entrypoint.sh \
-	&& touch /home/container/requirements.txt \
-	&& touch /home/container/main.py \
-	&& export PATH=$PATH:/home/container/.local/bin
+	&& adduser -D -h /home/container container && chmod +x /entrypoint.sh && chown container /entrypoint.sh \
+	&& touch /home/container/requirements.txt && touch /home/container/main.py
 
+ENV 		PIP_DISABLE_PIP_VERSION_CHECK=1
+ENV			PATH="/home/container/.local/bin:${PATH}"
 USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
