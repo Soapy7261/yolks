@@ -30,7 +30,8 @@ LABEL       org.opencontainers.image.licenses=MIT
 COPY        ./../entrypoint.sh /entrypoint.sh
 RUN         apk add --update --no-cache cmake make ca-certificates curl ffmpeg g++ gcc git openssl sqlite tar tzdata \
 	&& adduser -D -h /home/container container \
-	&& chmod +x /entrypoint.sh
+	&& chmod +x /entrypoint.sh \
+ 	&& chown container /entrypoint.sh
 
 USER        container
 ENV         USER=container HOME=/home/container
