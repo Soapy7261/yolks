@@ -1,4 +1,8 @@
 #!/bin/ash
-pip install --user --upgrade pip
-$STARTUP_CMD 
-$SECOND_CMD
+echo "Upgrading pip..."
+pip install -q --user --upgrade pip
+echo "Installing requirements..."
+pip install -q --user -r requirements.txt
+echo "Running python!"
+python main.py
+echo "Exiting..."
