@@ -9,4 +9,4 @@ export INTERNAL_IP=`ip route get 1 | awk '{print $NF;exit}'`
 
 # Run the Server
 echo -e ":/home/container$ ${MODIFIED_STARTUP}"
-bash /start.sh "${MODIFIED_STARTUP}"
+/start.sh "${MODIFIED_STARTUP}"
