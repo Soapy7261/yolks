@@ -28,13 +28,10 @@ LABEL       org.opencontainers.image.source="https://github.com/pterodactyl/yolk
 LABEL       org.opencontainers.image.licenses=MIT
 
 COPY        ./../entrypoint.sh /entrypoint.sh
-COPY        ./../start.sh /start.sh
 RUN         apk add --update --no-cache cmake make ca-certificates curl ffmpeg g++ gcc git openssl sqlite tar tzdata \
 	&& adduser -D -h /home/container container \
 	&& chmod +x /entrypoint.sh \
- 	&& chown container /entrypoint.sh \
-	&& chmod +x /start.sh \
- 	&& chown container /start.sh
+ 	&& chown container /entrypoint.sh
 
 USER        container
 ENV         USER=container HOME=/home/container
