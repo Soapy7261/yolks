@@ -32,8 +32,9 @@ RUN         apk add --update --no-cache cmake make ca-certificates curl openssl 
 	&& adduser -D -h /home/container container \
 	&& chmod +x /entrypoint.sh \
  	&& chown container /entrypoint.sh \
-	&& touch requirements.txt \
-	&& touch main.py
+	&& touch /home/container/requirements.txt \
+	&& touch /home/container/main.py \
+	&& export PATH=$PATH:/home/container/.local/bin
 
 USER        container
 ENV         USER=container HOME=/home/container
