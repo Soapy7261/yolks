@@ -1,5 +1,5 @@
 #!/bin/ash
-sleep 2
+#sleep 2 lets see why this is needed!
 
 cd /home/container
 MODIFIED_STARTUP=`eval echo $(echo ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g')`
