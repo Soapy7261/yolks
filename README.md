@@ -1,6 +1,6 @@
 # What is this Repo for?
 
-I (soapy) have been on a while goosechase finding a yolk that actually works with python 3.12 as my app needs it, after trying like 4 different python 3.12 yolks i just gave up and decided to make my own and made an extra package NEP (**N**o **E**xtra **P**ackages) for 3.12 as the normal yolks for a reason unknown to me install `cmake make ca-certificates curl ffmpeg g++ gcc git openssl sqlite tar tzdata` yet removing those doesn't seem to break anything, removing them reduces memory usage a little, along with build times and image size so it can be pulled faster, I can't guarantee it won't cause issues, though.
+I (soapy) have been on a while goosechase finding a yolk that actually works with python 3.12 as my app needs it, after trying like 4 different python 3.12 yolks i just gave up and decided to make my own and made an extra package NEP (**N**o **E**xtra **P**ackages) for 3.12 as the normal yolks for a reason unknown to me install `cmake make ca-certificates curl ffmpeg g++ gcc git openssl sqlite tar tzdata` yet removing those doesn't seem to break anything, removing them (seems) to reduce memory usage a little, and definitely speeds up with build times and image size so it can be pulled faster, I can't guarantee it won't cause issues, though.
 
 I have also added the egg i use for python in [here](/eggs/python/egg.json) if you're interested, its kinda hacky but hey, it works!
 
