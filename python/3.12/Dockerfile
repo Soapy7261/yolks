@@ -33,9 +33,9 @@ RUN         apk add --update --no-cache cmake make ca-certificates curl ffmpeg g
 	&& chmod +x /entrypoint.sh \
  	&& chown container /entrypoint.sh \
 	&& touch /home/container/requirements.txt \
-	&& touch /home/container/main.py \
-	&& export PATH=$PATH:/home/container/.local/bin
+	&& touch /home/container/main.py
 
+ENV			PATH="/home/container/.local/bin:${PATH}"
 USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
