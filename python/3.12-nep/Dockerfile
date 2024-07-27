@@ -31,7 +31,9 @@ COPY        ./../entrypoint.sh /entrypoint.sh
 RUN         apk add --update --no-cache cmake make ca-certificates curl openssl tar tzdata \
 	&& adduser -D -h /home/container container \
 	&& chmod +x /entrypoint.sh \
- 	&& chown container /entrypoint.sh
+ 	&& chown container /entrypoint.sh \
+	&& touch requirements.txt \
+	&& touch main.py
 
 USER        container
 ENV         USER=container HOME=/home/container
