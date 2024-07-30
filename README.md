@@ -1,12 +1,20 @@
 # What is this Repo for?
 
-I (soapy) have been on a while goosechase finding a yolk that actually works with python 3.12 as my app needs it, after trying like 4 different python 3.12 yolks i just gave up and decided to make my own and made an extra yolk NEP (**N**o **E**xtra **P**ackages) for 3.12 as most (and example) yolks for a reason unknown to me install `cmake make ca-certificates curl ffmpeg g++ gcc git openssl sqlite tar tzdata` yet removing those doesn't seem to break anything, removing them (seems) to reduce memory usage a little, and definitely speeds up build times and reduces image size (a lot) so it can be pulled faster, I can't guarantee it won't cause issues, though.
+I (soapy) have been on a while goosechase finding a yolk/egg that actually works with python 3.12 as my app needs it, after trying like 4 different python 3.12 yolks i just gave up and decided to make my own and made 2 additional yolks!
 
-I have also created another package based off the NEP yolk called '3.12 tini' which adds [TINI](https://github.com/krallin/tini) to the entrypoint so python will actually quit instead of just hanging forever until killed when you press stop
+## What yolks does this repo add?
 
-I have also added the egg i use for python in [here](/eggs/python/egg.json) if you're interested, its kinda hacky but hey, it works!
+- `3.12` Just python 3.12, based off all the other yolks, nothing extra
 
-<h6> Don't come crying to me if things don't work! </h6>
+- `3.12-nep` (**N**o **E**xtra **P**ackages) for python 3.12 only, what this does is explained here [^1]
+
+- `3.12-tini` (based off the 3.12-nep yolk) which adds [TINI](https://github.com/krallin/tini) to the entrypoint so python will actually quit instead of just hanging forever until killed when you press stop
+
+- `3.13-0b4` Just beta 4 of python 3.12, don't use it in production!
+
+- `3.13-rc` The latest beta of python 3.12, don't use it in production!
+
+I have also added the egg I use for python in [here](/eggs/python/egg.json) if you're interested, its kinda hacky but hey, it works!
 
 # Original about me
 
@@ -117,3 +125,5 @@ is tagged correctly.
 
 * [`debian-install`](https://github.com/pterodactyl/yolks/tree/master/installers/debian)
   * `ghcr.io/pterodactyl/installers:debian`
+
+[^1]: Reasoning for this yolk is most (and example) yolks for a reason unknown to me all install `cmake`, `make`, `ca-certificates`, `curl`, `ffmpeg` (wtf?) `g++`, `gcc`, `git`, `openssl`, `sqlite`, `tar` and `tzdata` yet removing those doesn't seem to break anything, removing them (seems) to reduce memory usage a little, and definitely speeds up build times and reduces image size (a lot) so it can be pulled faster, I can't guarantee it won't cause issues though, so use at your own risk!

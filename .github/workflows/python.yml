@@ -24,6 +24,8 @@ jobs:
           - '3.12'
           - '3.12-nep'
           - '3.12-tini'
+          - '3.13-0b4'
+          - '3.13-rc'
     steps:
       - uses: actions/checkout@v3
       # Setup QEMU for ARM64 Build
