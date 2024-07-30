@@ -126,4 +126,4 @@ is tagged correctly.
 * [`debian-install`](https://github.com/pterodactyl/yolks/tree/master/installers/debian)
   * `ghcr.io/pterodactyl/installers:debian`
 
-[^1]: Reasoning for this yolk is most (and example) yolks for a reason unknown to me all install `cmake`, `make`, `ca-certificates`, `curl`, `ffmpeg` (wtf?) `g++`, `gcc`, `git`, `openssl`, `sqlite`, `tar` and `tzdata` yet removing those doesn't seem to break anything, removing them (seems) to reduce memory usage a little, and definitely speeds up build times and reduces image size (a lot) so it can be pulled faster, I can't guarantee it won't cause issues though, so use at your own risk!
+[^1]: Reasoning for this yolk is that most (and example) yolks for a reason unknown to me all install `cmake`, `make`, `ca-certificates`, `curl`, `ffmpeg` (wtf?) `g++`, `gcc`, `git`, `openssl`, `sqlite`, `tar` and `tzdata`, but removing those packages doesn't seem to break anything, removing them (seems) to reduce memory usage a little, and definitely speeds up build times and reduces image size (a lot) so it can be pulled faster, I can't guarantee it won't cause issues though, so use at your own risk!
