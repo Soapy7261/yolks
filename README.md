@@ -10,9 +10,9 @@ I (soapy) have been on a goosechase finding a yolk/egg that actually works with 
 
 - `3.12-tini` (based off the 3.12-nep yolk) which adds [TINI](https://github.com/krallin/tini) to the entrypoint so python will actually quit instead of just hanging forever until killed when you press stop
 
-- `3.13-0b4` Just beta 4 of python 3.12, don't use it in production!
+- `3.13-0b4` Just beta 4 of python 3.13, don't use it in production!
 
-- `3.13-rc` The latest beta of python 3.12, don't use it in production!
+- `3.13-rc` The latest beta of python 3.13, don't use it in production!
 
 I have also added the egg I use for python in [here](/eggs/python/egg.json) if you're interested, its kinda hacky but hey, it works!
 
