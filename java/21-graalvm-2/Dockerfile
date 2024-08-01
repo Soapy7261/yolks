@@ -36,10 +36,10 @@ RUN 		apk add --update --no-cache curl tar && curl -O https://download.oracle.co
             && chmod -R 755 /graalvm && rm graalvm-jdk-21_linux-x64_bin.tar.gz
 
 USER        container
-ENV         JAVA_HOME="/graalvm"
-ENV         PATH="$JAVA_HOME/bin:$PATH"
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
+ENV         JAVA_HOME="/graalvm"
+ENV         PATH="$JAVA_HOME/bin:$PATH"
 
 RUN echo $PATH
 RUN ls -l $JAVA_HOME/bin
