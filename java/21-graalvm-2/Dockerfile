@@ -43,6 +43,7 @@ WORKDIR     /home/container
 
 RUN echo $PATH
 RUN ls -l $JAVA_HOME/bin
+RUN $JAVA_HOME/bin/java -version
 RUN java -version
 
 CMD         [ "/bin/ash", "/entrypoint.sh" ]
