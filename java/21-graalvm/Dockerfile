@@ -32,7 +32,7 @@ RUN 		apk add --update --no-cache curl tar && curl -O https://download.oracle.co
             && mkdir /graalvm && tar -xzf graalvm-jdk-21_linux-x64_bin.tar.gz -C /graalvm && rm graalvm-jdk-21_linux-x64_bin.tar.gz \
             && export JAVA_HOME=/graalvm/graalvm-jdk-21.0.4+8.1 \ && export PATH=/graalvm/graalvm-jdk-21.0.4+8.1/bin:$PATH \
             && chown -R container /graalvm/graalvm-jdk-21.0.4+8.1 \
-            && adduser -D -h /home/container container && chmod +x /entrypoint.sh && chown container /entrypoint.sh && \
+            && adduser -D -h /home/container container && chmod +x /entrypoint.sh && chown container /entrypoint.sh
 
 USER        container
 ENV         PATH=/graalvm/graalvm-jdk-21.0.4+8.1/bin:$PATH
