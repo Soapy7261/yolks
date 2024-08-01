@@ -43,6 +43,7 @@ ENV         PATH="$JAVA_HOME/bin:$PATH"
 
 RUN echo $PATH
 RUN ls -l $JAVA_HOME/bin
+RUN file /graalvm/bin/java
 RUN $JAVA_HOME/bin/java -version
 RUN java -version
 
