@@ -29,9 +29,9 @@ LABEL       org.opencontainers.image.licenses=MIT
 
 COPY        ./../entrypoint-graal.sh /entrypoint.sh
 RUN 		apk add --update --no-cache curl tar && curl -O https://download.oracle.com/graalvm/21/latest/graalvm-jdk-21_linux-x64_bin.tar.gz \
-            && ls -lh graalvm-jdk-21_linux-x64_bin.tar.gz \
-            && mkdir /graalvm && tar -xzf graalvm-jdk-21_linux-x64_bin.tar.gz -C /graalvm && rm graalvm-jdk-21_linux-x64_bin.tar.gz \
-            && adduser -D -h /home/container container && chmod +x /entrypoint.sh && chown container /entrypoint.sh && chown -R container /graalvm/graalvm-jdk-21.0.4+8.1
+            && mkdir /graalvm && tar -xzf graalvm-jdk-21_linux-x64_bin.tar.gz -C /graalvm && \
+            && adduser -D -h /home/container container && chmod +x /entrypoint.sh && chown container /entrypoint.sh && chown -R container /graalvm/graalvm-jdk-21.0.4+8.1 \
+            && rm graalvm-jdk-21_linux-x64_bin.tar.gz
 
 USER        container
 ENV         PATH="/graalvm/graalvm-jdk-21.0.4+8.1/bin:$PATH"
