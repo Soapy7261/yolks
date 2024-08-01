@@ -20,7 +20,7 @@
 # SOFTWARE.
 #
 
-FROM        --platform=$TARGETOS/$TARGETARCH ghcr.io/graalvm/jdk-community:21
+FROM        --platform=$TARGETOS/$TARGETARCH alpine:latest
 
 LABEL       author="Matthew Penner" maintainer="matthew@pterodactyl.io"
 
@@ -28,7 +28,7 @@ LABEL       org.opencontainers.image.source="https://github.com/Soapy7261/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
 COPY        ./../entrypoint.sh /entrypoint.sh
-RUN 		apt-get update -y && rm -rf /var/lib/apt/lists/* \
+RUN 		curl -o https://download.oracle.com/graalvm/21/latest/graalvm-jdk-21_linux-x64_bin.tar.gz && \
             && useradd -d /home/container -m container && chmod +x /entrypoint.sh && chown container /entrypoint.sh
 
 USER        container
