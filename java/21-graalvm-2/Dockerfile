@@ -46,6 +46,6 @@ RUN echo $PATH
 RUN ls -l $JAVA_HOME/bin
 RUN ldd /graalvm/bin/java
 RUN $JAVA_HOME/bin/java -version
-RUN /bin/ash java -version
+RUN java -version
 
 CMD         [ "/bin/bash", "/entrypoint.sh" ]
