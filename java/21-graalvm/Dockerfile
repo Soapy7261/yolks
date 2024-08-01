@@ -42,7 +42,7 @@ ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
 
 RUN echo $PATH
-ls -l /graalvm/graalvm-jdk-21.0.4+8.1/bin
+RUN ls -l /graalvm/graalvm-jdk-21.0.4+8.1/bin
 RUN /graalvm/graalvm-jdk-21.0.4+8.1/bin/java -version
 RUN java -version
 
