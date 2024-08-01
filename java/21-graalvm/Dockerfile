@@ -20,7 +20,7 @@
 # SOFTWARE.
 #
 
-FROM        --platform=$TARGETOS/$TARGETARCH python:3.10-alpine
+FROM        --platform=$TARGETOS/$TARGETARCH ghcr.io/graalvm/jdk-community:21
 
 LABEL       author="Matthew Penner" maintainer="matthew@pterodactyl.io"
 
@@ -28,14 +28,11 @@ LABEL       org.opencontainers.image.source="https://github.com/Soapy7261/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
 COPY        ./../entrypoint.sh /entrypoint.sh
-RUN         apk add --update --no-cache cmake make ca-certificates curl ffmpeg g++ gcc git openssl sqlite tar tzdata \
-	&& adduser -D -h /home/container container && chmod +x /entrypoint.sh && chown container /entrypoint.sh \
-	&& touch /home/container/requirements.txt && touch /home/container/main.py
+RUN 		apt-get update -y && rm -rf /var/lib/apt/lists/* \
+            && useradd -d /home/container -m container && chmod +x /entrypoint.sh && chown container /entrypoint.sh
 
-ENV 		PIP_DISABLE_PIP_VERSION_CHECK=1
-ENV			PATH="/home/container/.local/bin:${PATH}"
 USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
 
-CMD         [ "/bin/ash", "/entrypoint.sh" ]
+CMD         [ "/bin/bash", "/entrypoint.sh" ]
