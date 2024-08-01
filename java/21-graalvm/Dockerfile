@@ -41,7 +41,7 @@ ENV         JAVA_HOME="/graalvm/graalvm-jdk-21.0.4+8.1"
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
 
-RUN $PATH
+RUN echo $PATH
 RUN java -version
 
 CMD         [ "/bin/ash", "/entrypoint.sh" ]
