@@ -28,7 +28,7 @@ LABEL       org.opencontainers.image.source="https://github.com/Soapy7261/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
 COPY        ./../entrypoint-graal.sh /entrypoint.sh
-RUN 		apk add --update --no-cache curl tar && curl -O https://download.oracle.com/graalvm/21/latest/graalvm-jdk-21_linux-x64_bin.tar.gz \
+RUN 		apk add --update --no-cache curl tar libc6-compat && curl -O https://download.oracle.com/graalvm/21/latest/graalvm-jdk-21_linux-x64_bin.tar.gz \
             && mkdir /graalvm && tar -xzf graalvm-jdk-21_linux-x64_bin.tar.gz -C /graalvm --strip-components=1 \
             && adduser -D -h /home/container container \
             && chmod +x /entrypoint.sh && chown container /entrypoint.sh \
@@ -44,6 +44,7 @@ ENV         PATH="$JAVA_HOME/bin:$PATH"
 RUN echo $PATH
 RUN ls -l $JAVA_HOME/bin
 RUN file /graalvm/bin/java
+RUN ldd /graalvm/bin/java
 RUN $JAVA_HOME/bin/java -version
 RUN java -version
 
