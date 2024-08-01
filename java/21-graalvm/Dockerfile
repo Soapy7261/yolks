@@ -42,5 +42,6 @@ ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
 
 RUN java -version
+RUN $PATH
 
 CMD         [ "/bin/ash", "/entrypoint.sh" ]
