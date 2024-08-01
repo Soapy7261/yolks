@@ -29,7 +29,8 @@ LABEL       org.opencontainers.image.licenses=MIT
 
 COPY        ./../entrypoint.sh /entrypoint.sh
 RUN 		apk add --update --no-cache curl tar && curl -O https://download.oracle.com/graalvm/21/latest/graalvm-jdk-21_linux-x64_bin.tar.gz \
-            && mkdir /graalvm && tar -xzf graalvm-jdk-21_linux-x64_bin.tar.gz -C /graalvm && ls /graalvm/graalvm-jdk-21.0.4+8.1 && export JAVA_HOME=/graalvm && export PATH=/graalvm/bin:$PATH \
+            && mkdir /graalvm && tar -xzf graalvm-jdk-21_linux-x64_bin.tar.gz -C /graalvm && ls /graalvm/graalvm-jdk-21.0.4+8.1 && export JAVA_HOME=/graalvm/graalvm-jdk-21.0.4+8.1 \
+            && export PATH=/graalvm/graalvm-jdk-21.0.4+8.1/bin:$PATH \
             && java -version \
             && adduser -D -h /home/container container && chmod +x /entrypoint.sh && chown container /entrypoint.sh && \
             java -version
