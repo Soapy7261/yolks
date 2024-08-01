@@ -13,7 +13,7 @@ jobs:
     name: "yolks:java_${{ matrix.tag }}"
     runs-on: ubuntu-latest
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
         tag:
           - 8

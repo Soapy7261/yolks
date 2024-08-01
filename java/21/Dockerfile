@@ -36,8 +36,5 @@ ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
 
 COPY        ./../entrypoint.sh /entrypoint.sh
-RUN java -version
-RUN echo $PATH
-RUN echo $JAVA_HOME
 
 CMD         [ "/bin/bash", "/entrypoint.sh" ]
