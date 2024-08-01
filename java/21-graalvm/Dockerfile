@@ -38,4 +38,4 @@ ENV         PATH=/graalvm/graalvm-jdk-21.0.4+8.1/bin:$PATH
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
 
-CMD         [ "/bin/bash", "/entrypoint.sh" ]
+CMD         [ "/bin/ash", "/entrypoint.sh" ]
