@@ -20,17 +20,17 @@
 # SOFTWARE.
 #
 
-FROM        --platform=$TARGETOS/$TARGETARCH alpine:latest
+FROM        --platform=$TARGETOS/$TARGETARCH debian:latest
 
 LABEL       author="Matthew Penner" maintainer="matthew@pterodactyl.io"
 
 LABEL       org.opencontainers.image.source="https://github.com/Soapy7261/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
-COPY        ./../entrypoint-graal.sh /entrypoint.sh
-RUN 		apk add --update --no-cache curl tar gcompat gcc g++ musl && curl -O https://download.oracle.com/graalvm/21/latest/graalvm-jdk-21_linux-x64_bin.tar.gz \
+COPY        ./../entrypoint.sh /entrypoint.sh
+RUN 		apt-get install y --no-cache curl tar gcompat gcc g++ musl && curl -O https://download.oracle.com/graalvm/21/latest/graalvm-jdk-21_linux-x64_bin.tar.gz \
             && mkdir /graalvm && tar -xzf graalvm-jdk-21_linux-x64_bin.tar.gz -C /graalvm --strip-components=1 \
-            && adduser -D -h /home/container container \
+            && useradd -d /home/container -m container \
             && chmod +x /entrypoint.sh && chown container /entrypoint.sh \
             && chown -R container:container /graalvm && chmod +x /graalvm/bin/java \
             && chmod -R 755 /graalvm && rm graalvm-jdk-21_linux-x64_bin.tar.gz
@@ -47,4 +47,4 @@ RUN ldd /graalvm/bin/java
 RUN $JAVA_HOME/bin/java -version
 RUN /bin/ash java -version
 
-CMD         [ "/bin/ash", "/entrypoint.sh" ]
+CMD         [ "/bin/bash", "/entrypoint.sh" ]
