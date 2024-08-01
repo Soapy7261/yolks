@@ -43,9 +43,8 @@ ENV         PATH="$JAVA_HOME/bin:$PATH"
 
 RUN echo $PATH
 RUN ls -l $JAVA_HOME/bin
-RUN file /graalvm/bin/java
 RUN ldd /graalvm/bin/java
 RUN $JAVA_HOME/bin/java -version
-RUN java -version
+RUN /bin/ash java -version
 
 CMD         [ "/bin/ash", "/entrypoint.sh" ]
