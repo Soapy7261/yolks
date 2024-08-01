@@ -20,30 +20,25 @@
 # SOFTWARE.
 #
 
-FROM        --platform=$TARGETOS/$TARGETARCH alpine:latest
+FROM        --platform=$TARGETOS/$TARGETARCH debian:latest
 
 LABEL       author="Matthew Penner" maintainer="matthew@pterodactyl.io"
 
 LABEL       org.opencontainers.image.source="https://github.com/Soapy7261/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
-COPY        ./../entrypoint-graal.sh /entrypoint.sh
-COPY        ./../java.sh /usr/bin/java.sh
-RUN 		apk add --update --no-cache curl tar && curl -O https://download.oracle.com/graalvm/21/latest/graalvm-jdk-21_linux-x64_bin.tar.gz \
-            && mkdir /graalvm && tar -xzf graalvm-jdk-21_linux-x64_bin.tar.gz -C /graalvm && adduser -D -h /home/container container \
-            && chmod +x /entrypoint.sh && chown container /entrypoint.sh && chmod +x /usr/bin/java.sh \
-            && chown -R container /graalvm \
+COPY        ./../entrypoint.sh /entrypoint.sh
+RUN 		apt-get update -y && apt-get install -y curl tar && rm -rf /var/lib/apt/lists/* \
+            && curl -O https://download.oracle.com/graalvm/21/latest/graalvm-jdk-21_linux-x64_bin.tar.gz \
+            && mkdir /graalvm && tar -xzf graalvm-jdk-21_linux-x64_bin.tar.gz -C /graalvm --strip-components=1 \
+            && useradd -d /home/container -m container && chmod +x /entrypoint.sh && chown container /entrypoint.sh \
+            && chown -R container /graalvm && chmod +x /graalvm/bin/java \
             && chmod -R 755 /graalvm && rm graalvm-jdk-21_linux-x64_bin.tar.gz
 
 USER        container
-#ENV         PATH="$PATH:/graalvm/graalvm-jdk-21.0.4+8.1/bin"
-ENV         JAVA_HOME="/graalvm/graalvm-jdk-21.0.4+8.1"
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
+ENV         JAVA_HOME="/graalvm"
+ENV         PATH="$JAVA_HOME/bin:$PATH"
 
-RUN echo $PATH
-RUN ls -l /graalvm/graalvm-jdk-21.0.4+8.1/bin
-RUN /graalvm/graalvm-jdk-21.0.4+8.1/bin/java -version
-RUN java -version
-
-CMD         [ "/bin/ash", "/entrypoint.sh" ]
+CMD         [ "/bin/bash", "/entrypoint.sh" ]
