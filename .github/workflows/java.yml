@@ -20,7 +20,7 @@ jobs:
           - 11
           - 17
           - 21
-          - 21-graalvm
+          #- 21-graalvm
           - 21-graalvm-2
     steps:
       - uses: actions/checkout@v3
