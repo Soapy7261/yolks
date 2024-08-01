@@ -28,7 +28,7 @@ LABEL       org.opencontainers.image.source="https://github.com/Soapy7261/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
 COPY        ./../entrypoint.sh /entrypoint.sh
-RUN 		curl -o https://download.oracle.com/graalvm/21/latest/graalvm-jdk-21_linux-x64_bin.tar.gz && \
+RUN 		curl -o https://download.oracle.com/graalvm/21/latest/graalvm-jdk-21_linux-x64_bin.tar.gz \
             && useradd -d /home/container -m container && chmod +x /entrypoint.sh && chown container /entrypoint.sh
 
 USER        container
