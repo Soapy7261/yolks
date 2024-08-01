@@ -28,6 +28,7 @@ jobs:
           - 19
           - 19j9
           - 21
+          - 21-graalvm
     steps:
       - uses: actions/checkout@v3
       - uses: docker/setup-qemu-action@v2
