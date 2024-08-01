@@ -31,9 +31,9 @@ COPY        ./../entrypoint.sh /entrypoint.sh
 RUN 		apk add --update --no-cache curl tar && curl -O https://download.oracle.com/graalvm/21/latest/graalvm-jdk-21_linux-x64_bin.tar.gz \
             && mkdir /graalvm && tar -xzf graalvm-jdk-21_linux-x64_bin.tar.gz -C /graalvm && ls /graalvm/graalvm-jdk-21.0.4+8.1/bin && export JAVA_HOME=/graalvm/graalvm-jdk-21.0.4+8.1 \
             && export PATH=/graalvm/graalvm-jdk-21.0.4+8.1/bin:$PATH \
-            && java -version && echo PATH: && echo $PATH \
+            && /bin/ash java -version && echo PATH: && echo $PATH \
             && adduser -D -h /home/container container && chmod +x /entrypoint.sh && chown container /entrypoint.sh && \
-            java -version
+            /bin/ash java -version
 
 USER        container
 ENV         USER=container HOME=/home/container
