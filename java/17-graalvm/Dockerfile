@@ -28,8 +28,8 @@ LABEL       org.opencontainers.image.source="https://github.com/Soapy7261/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
 COPY        ./../entrypoint.sh /entrypoint.sh
-RUN 		DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install curl \
-            && apt-get upgrade && rm -rf /var/lib/apt/lists/* \
+RUN 		apt-get update -y && apt-get install -y curl \
+            && apt-get upgrade -y && rm -rf /var/lib/apt/lists/* \
             && curl -O https://download.oracle.com/graalvm/17/latest/graalvm-jdk-17_linux-x64_bin.tar.gz \
             && mkdir /graalvm && tar -xzf graalvm-jdk-17_linux-x64_bin.tar.gz -C /graalvm --strip-components=1 \
             && useradd -d /home/container -m container && chmod +x /entrypoint.sh && chown container /entrypoint.sh \
