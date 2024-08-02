@@ -30,7 +30,7 @@ LABEL       org.opencontainers.image.source="https://github.com/Soapy7261/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
 COPY        ./../entrypoint.sh /entrypoint.sh
-RUN 		cat /sys/kernel/mm/transparent_hugepage/enabled \
+RUN 		ls /sys/kernel/mm/hugepages/ \
             && apt-get update -y && apt-get install -y curl \
             && apt-get upgrade -y && rm -rf /var/lib/apt/lists/* \
             && curl -o /graalvm.tar.gz -O https://download.oracle.com/graalvm/21/latest/graalvm-jdk-21_linux-x64_bin.tar.gz \
