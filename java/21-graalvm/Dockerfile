@@ -30,11 +30,11 @@ LABEL       org.opencontainers.image.licenses=MIT
 COPY        ./../entrypoint.sh /entrypoint.sh
 RUN 		apt-get update -y && apt-get install -y curl \
             && apt-get upgrade -y && rm -rf /var/lib/apt/lists/* \
-            && curl -O https://download.oracle.com/graalvm/21/latest/graalvm-jdk-21_linux-x64_bin.tar.gz \
-            && mkdir /graalvm && tar -xzf graalvm-jdk-21_linux-x64_bin.tar.gz -C /graalvm --strip-components=1 \
+            && curl -O https://download.oracle.com/graalvm/21/latest/graalvm-jdk-21_linux-x64_bin.tar.gz -o /graalvm.tar.gz \
+            && mkdir /graalvm && tar -xzf /graalvm.tar.gz -C /graalvm --strip-components=1 \
             && useradd -d /home/container -m container && chmod +x /entrypoint.sh && chown container /entrypoint.sh \
             && chown -R container /graalvm && chmod +x /graalvm/bin/java \
-            && chmod -R 755 /graalvm && rm graalvm-jdk-21_linux-x64_bin.tar.gz
+            && chmod -R 755 /graalvm && rm /graalvm.tar.gz
 
 USER        container
 ENV         USER=container HOME=/home/container
