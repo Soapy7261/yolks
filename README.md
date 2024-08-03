@@ -4,15 +4,25 @@ I (soapy) have been on a goosechase finding a yolk/egg that actually works with 
 
 ## What yolks does this repo add?
 
+### Python yolks added
+
 - `3.12` Just python 3.12, based off all the other yolks, nothing extra
 
 - `3.12-nep` (**N**o **E**xtra **P**ackages) for python 3.12 only, what this does is explained here [^1]
 
 - `3.12-tini` (based off the 3.12-nep yolk) which adds [TINI](https://github.com/krallin/tini) to the entrypoint so python will actually quit instead of just hanging forever until killed when you press stop
 
+- `3.12-t-ffmpeg` (based off the 3.12-tini yolk) which just adds FFMPEG if you need it
+
 - `3.13-0b4` Just beta 4 of python 3.13, don't use it in production!
 
 - `3.13-rc` The latest beta of python 3.13, don't use it in production!
+
+### Java yolks added
+
+- `17-graalvm` Self explainatory, java 17 graalvm, also removes unneeded(?) packages, based off debian
+
+- `21-graalvm` Same as 17-graalvm, just java 21 instead of 17
 
 I have also added the egg I use for python in [here](/eggs/python/egg.json) if you're interested, its kinda hacky but hey, it works!
 
