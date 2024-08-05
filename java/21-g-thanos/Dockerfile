@@ -47,8 +47,9 @@ RUN 		apt-get update -y && apt-get install -y curl \
             && echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php.list \
             && apt-get update -y && apt-get install -y php8.1 \
             && /bin/bash /composer_install.sh && rm /composer_install.sh \
-            && mkdir /thanos && cd /thanos && composer require aternos/thanos && ls -l /thanos \
-            && apt-get remove -y apt-transport-https lsb-release ca-certificates wget curl git
+            && mkdir /thanos && cd /thanos && composer require aternos/thanos && ls -l ./vendor \
+            && apt-get remove -y apt-transport-https lsb-release ca-certificates wget curl git \
+            && apt autoremove -y
 
 ENV         DEBIAN_FRONTEND=dialog
 USER        container
