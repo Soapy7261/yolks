@@ -48,5 +48,8 @@ printf "\033[1m\033[33mcontainer@pterodactyl~ \033[0m%s\n" "$PARSED"
 # shellcheck disable=SC2086
 exec env ${PARSED}
 
-echo 'Trimming un-needed chunks...'
+echo 'Trimming un-needed chunks in the overworld...'
 
+php /thanos/endor/aternos/thanos/thanos.php /home/container/world /home/container/thanos_output_world || { echo "Failed in the overworld."; exit 1; } # HOW MANY TIMES AM I GONNA TYPE IN THANOS.PHP???
+rm /home/container/world
+mv /home/container/thanos_output_world /home/container/world
