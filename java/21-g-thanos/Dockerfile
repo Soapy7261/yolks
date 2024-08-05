@@ -36,6 +36,7 @@ RUN 		apt-get update -y && apt-get install -y curl \
             && chown -R container /graalvm && chmod +x /graalvm/bin/java \
             && chmod -R 755 /graalvm && rm /graalvm.tar.gz \
             # Install PHP
+            && apt-get update -y \
             && apt-get install -y apt-transport-https lsb-release ca-certificates wget \
             && wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg \
             && echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/php.list \
