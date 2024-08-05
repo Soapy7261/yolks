@@ -41,16 +41,28 @@ java -version
 # variable format of "${VARIABLE}" before evaluating the string and automatically
 # replacing the values.
 echo "${STARTUP}"
-PARSED=$(echo "${STARTUP_CMD}" | sed -e 's/{{/${/g' -e 's/}}/}/g' | eval echo "$(cat -)")
+PARSED=$(echo "${STARTUP}" | sed -e 's/{{/${/g' -e 's/}}/}/g' | eval echo "$(cat -)")
 
 # Display the command we're running in the output, and then execute it with the env
 # from the container itself.
-printf "\033[1m\033[33mcontainer@pterodactyl~ \033[0m%s\n" "$PARSED"
+#printf "\033[1m\033[33mcontainer@pterodactyl~ \033[0m%s\n" "$PARSED"
 # shellcheck disable=SC2086
-exec env ${PARSED}
+#exec env ${PARSED}
 
 echo 'Trimming un-needed chunks in the overworld...'
 
 php /thanos/endor/aternos/thanos/thanos.php /home/container/world /home/container/thanos_output_world || { echo "Failed in the overworld."; exit 1; } # HOW MANY TIMES AM I GONNA TYPE IN THANOS???
 rm /home/container/world
 mv /home/container/thanos_output_world /home/container/world
+
+echo 'Trimming un-needed chunks in the nether...'
+
+php /thanos/endor/aternos/thanos/thanos.php /home/container/world_nether /home/container/thanos_output_world_nether || { echo "Failed in the nether."; exit 1; }
+rm /home/container/world_nether
+mv /home/container/thanos_output_world_nether /home/container/world_nether
+
+echo 'Trimming un-needed chunks in the end...'
+
+php /thanos/endor/aternos/thanos/thanos.php /home/container/world_the_end /home/container/thanos_output_world_the_end || { echo "Failed in the end."; exit 1; }
+rm /home/container/world_the_end
+mv /home/container/thanos_output_world_the_end /home/container/world_the_end
