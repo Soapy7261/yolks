@@ -51,6 +51,9 @@ PARSED=$(echo "${STARTUP}" | sed -e 's/{{/${/g' -e 's/}}/}/g' | eval echo "$(cat
 
 echo 'Trimming un-needed chunks in the overworld...'
 
+ls -l ./
+ls -l ./vendor
+
 php ./thanos.php /home/container/world /home/container/thanos_output_world || { echo "Failed in the overworld."; exit 1; } # HOW MANY TIMES AM I GONNA TYPE IN THANOS???
 rm /home/container/world
 mv /home/container/thanos_output_world /home/container/world
