@@ -49,7 +49,7 @@ RUN 		apt-get update -y && apt-get install -y curl \
             && /bin/bash /composer_install.sh && rm /composer_install.sh \
             && mkdir /thanos && chown container /thanos && cd /thanos && composer require aternos/thanos \
             && apt-get remove -y apt-transport-https lsb-release ca-certificates wget curl git \
-            && apt autoremove -y
+            && apt-get autoremove -y
 
 ENV         DEBIAN_FRONTEND=dialog
 USER        container
