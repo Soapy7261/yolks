@@ -42,13 +42,13 @@ RUN 		apt-get update -y && apt-get install -y curl \
             && chmod -R 755 /graalvm && rm /graalvm.tar.gz \
             # Install PHP
             && apt-get update -y \
-            && apt-get install -y apt-transport-https lsb-release ca-certificates wget \
+            && apt-get install -y apt-transport-https lsb-release ca-certificates wget git \
             && wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg \
             && echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php.list \
             && apt-get update -y && apt-get install -y php8.1 \
-            && apt-get remove -y apt-transport-https lsb-release ca-certificates wget curl \
             && /bin/bash /composer_install.sh && rm /composer_install.sh \
-            && mkdir /thanos && composer require aternos/thanos && cat ./thanos.php
+            && mkdir /thanos && composer require aternos/thanos && cat ./thanos.php \
+            && apt-get remove -y apt-transport-https lsb-release ca-certificates wget curl git
 
 ENV         DEBIAN_FRONTEND=dialog
 USER        container
