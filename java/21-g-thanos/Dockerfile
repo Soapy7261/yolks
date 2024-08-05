@@ -27,7 +27,7 @@ LABEL       author="Matthew Penner" maintainer="matthew@pterodactyl.io"
 LABEL       org.opencontainers.image.source="https://github.com/Soapy7261/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
-COPY        ./../entrypoint-thanos.sh /entrypoint.sh
+COPY        ./../entrypoint-thanos.sh /entrypoint-thanos.sh
 COPY        ./../install_composer.sh /composer_install.sh
 #we do a lil trolling
 ENV         DEBIAN_FRONTEND=noninteractive
