@@ -43,7 +43,8 @@ RUN 		apt-get update -y && apt-get install -y curl \
             && wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg \
             && echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php.list \
             && apt-get update -y \
-            && apt install -y php8.1
+            && apt install -y php8.1 \
+            && apt-get remove -y apt-transport-https lsb-release ca-certificates wget curl
 
 ENV         DEBIAN_FRONTEND=dialog
 USER        container
