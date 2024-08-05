@@ -31,7 +31,7 @@ INTERNAL_IP=$(ip route get 1 | awk '{print $(NF-2);exit}')
 export INTERNAL_IP
 
 # Switch to the container's working directory
-cd /thanos/vendor/aternos/thanos || exit 1
+cd /thanos || exit 1
 
 # Print Java version
 printf "\033[1m\033[33mcontainer@pterodactyl~ \033[0mjava -version\n"
@@ -51,21 +51,18 @@ PARSED=$(echo "${STARTUP}" | sed -e 's/{{/${/g' -e 's/}}/}/g' | eval echo "$(cat
 
 echo 'Trimming un-needed chunks in the overworld...'
 
-ls -l ./
-ls -l ./vendor
-
-php ./thanos.php /home/container/world /home/container/thanos_output_world || { echo "Failed in the overworld."; exit 1; } # HOW MANY TIMES AM I GONNA TYPE IN THANOS???
+php /thanos/vendor/aternos/thanos/thanos.php /home/container/world /home/container/thanos_output_world || { echo "Failed in the overworld."; exit 1; } # HOW MANY TIMES AM I GONNA TYPE IN THANOS???
 rm /home/container/world
 mv /home/container/thanos_output_world /home/container/world
 
 echo 'Trimming un-needed chunks in the nether...'
 
-php ./thanos.php /home/container/world_nether /home/container/thanos_output_world_nether || { echo "Failed in the nether."; exit 1; }
+php /thanos/vendor/aternos/thanos/thanos.php /home/container/world_nether /home/container/thanos_output_world_nether || { echo "Failed in the nether."; exit 1; }
 rm /home/container/world_nether
 mv /home/container/thanos_output_world_nether /home/container/world_nether
 
 echo 'Trimming un-needed chunks in the end...'
 
-php ./thanos.php /home/container/world_the_end /home/container/thanos_output_world_the_end || { echo "Failed in the end."; exit 1; }
+php /thanos/vendor/aternos/thanos/thanos.php /home/container/world_the_end /home/container/thanos_output_world_the_end || { echo "Failed in the end."; exit 1; }
 rm /home/container/world_the_end
 mv /home/container/thanos_output_world_the_end /home/container/world_the_end
