@@ -28,6 +28,8 @@ LABEL       org.opencontainers.image.source="https://github.com/Soapy7261/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
 COPY        ./../entrypoint-thanos.sh /entrypoint.sh
+COPY        ./../install_composer.sh /composer_install.sh
+#we do a lil trolling
 ENV         DEBIAN_FRONTEND=noninteractive
 
 RUN 		apt-get update -y && apt-get install -y curl \
@@ -42,9 +44,10 @@ RUN 		apt-get update -y && apt-get install -y curl \
             && apt-get install -y apt-transport-https lsb-release ca-certificates wget \
             && wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg \
             && echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php.list \
-            && apt-get update -y \
-            && apt install -y php8.1 \
-            && apt-get remove -y apt-transport-https lsb-release ca-certificates wget curl
+            && apt-get update -y && apt-get install -y php8.1 \
+            && apt-get remove -y apt-transport-https lsb-release ca-certificates wget curl \
+            && /bin/bash /composer_install.sh && rm /composer_install.sh \
+            && mkdir /thanos && composer require aternos/thanos && cat ./thanos.php
 
 ENV         DEBIAN_FRONTEND=dialog
 USER        container
