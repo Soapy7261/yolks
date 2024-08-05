@@ -16,12 +16,12 @@ jobs:
       fail-fast: false
       matrix:
         tag:
-          #- 8
-          #- 11
-          #- 17
-          #- 17-graalvm
-          #- 21
-          #- 21-graalvm
+          - 8
+          - 11
+          - 17
+          - 17-graalvm
+          - 21
+          - 21-graalvm
           - 21-g-thanos
           #- 21-graalvm-2
     steps:
