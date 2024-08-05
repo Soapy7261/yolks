@@ -34,14 +34,14 @@ export INTERNAL_IP
 cd /home/container || exit 1
 
 # Print Java version
-printf "\033[1m\033[33mcontainer@pterodactyl~ \033[0mjava -version\n"
+printf "\033[1m\033[33mcontainer@pterodactyl~ \033[0mjava -uersion\n"
 java -version
 
 # Convert all of the "{{VARIABLE}}" parts of the command into the expected shell
 # variable format of "${VARIABLE}" before evaluating the string and automatically
 # replacing the values.
-echo "${STARTUP}"
-PARSED=$(echo "${STARTUP}" | sed -e 's/{{/${/g' -e 's/}}/}/g' | eval echo "$(cat -)")
+echo "${STARTUP_CMD}"
+PARSED=$(echo "${STARTUP_CMD}" | sed -e 's/{{/${/g' -e 's/}}/}/g' | eval echo "$(cat -)")
 
 # Display the command we're running in the output, and then execute it with the env
 # from the container itself.
@@ -51,6 +51,6 @@ exec env ${PARSED}
 
 echo 'Trimming un-needed chunks in the overworld...'
 
-php /thanos/endor/aternos/thanos/thanos.php /home/container/world /home/container/thanos_output_world || { echo "Failed in the overworld."; exit 1; } # HOW MANY TIMES AM I GONNA TYPE IN THANOS.PHP???
+php /thanos/endor/aternos/thanos/thanos.php /home/container/world /home/container/thanos_output_world || { echo "Failed in the overworld."; exit 1; } # HOW MANY TIMES AM I GONNA TYPE IN THANOS???
 rm /home/container/world
 mv /home/container/thanos_output_world /home/container/world
