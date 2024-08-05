@@ -38,7 +38,7 @@ RUN 		apt-get update -y && apt-get install -y apt-transport-https lsb-release ca
             # Install GraalVM
             #&& wget -O /graalvm.tar.gz https://download.oracle.com/graalvm/21/latest/graalvm-jdk-21_linux-x64_bin.tar.gz \
             #&& mkdir /graalvm && tar -xzf /graalvm.tar.gz -C /graalvm --strip-components=1 \
-            #&& useradd -d /home/container -m container && chmod +x /entrypoint.sh && chown container /entrypoint.sh \
+            && useradd -d /home/container -m container && chmod +x /entrypoint.sh && chown container /entrypoint.sh \
             #&& chown -R container /graalvm && chmod +x /graalvm/bin/java \
             #&& chmod -R 755 /graalvm && rm /graalvm.tar.gz \
             # Install PHP
