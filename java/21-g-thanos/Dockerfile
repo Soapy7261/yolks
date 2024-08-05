@@ -28,21 +28,24 @@ LABEL       org.opencontainers.image.source="https://github.com/Soapy7261/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
 COPY        ./../entrypoint-thanos.sh /entrypoint.sh
-RUN 		apt-get update -y && apt-get install -y curl \
-            && apt-get upgrade -y && rm -rf /var/lib/apt/lists/* \
+ENV         DEBIAN_FRONTEND=noninteractive
+
+RUN 		apt-get update && apt-get install curl \
+            && apt-get upgrade && rm -rf /var/lib/apt/lists/* \
             && curl -o /graalvm.tar.gz -O https://download.oracle.com/graalvm/21/latest/graalvm-jdk-21_linux-x64_bin.tar.gz \
             && mkdir /graalvm && tar -xzf /graalvm.tar.gz -C /graalvm --strip-components=1 \
             && useradd -d /home/container -m container && chmod +x /entrypoint.sh && chown container /entrypoint.sh \
             && chown -R container /graalvm && chmod +x /graalvm/bin/java \
             && chmod -R 755 /graalvm && rm /graalvm.tar.gz \
             # Install PHP
-            && apt-get update -y \
-            && apt-get install -y apt-transport-https lsb-release ca-certificates wget \
+            && apt-get update \
+            && apt-get install apt-transport-https lsb-release ca-certificates wget \
             && wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg \
             && echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php.list \
-            && apt-get update -y \
-            && apt install -y php8.1
+            && apt-get update \
+            && apt install php8.1
 
+ENV         DEBIAN_FRONTEND=dialog
 USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
