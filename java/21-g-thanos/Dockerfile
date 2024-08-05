@@ -31,6 +31,7 @@ COPY        ./../entrypoint-thanos.sh /entrypoint.sh
 COPY        ./../install_composer.sh /composer_install.sh
 #we do a lil trolling
 ENV         DEBIAN_FRONTEND=noninteractive
+ENV         COMPOSER_ALLOW_SUPERUSER=1
 
 RUN 		apt-get update -y && apt-get install -y curl \
             && apt-get upgrade -y && rm -rf /var/lib/apt/lists/* \
