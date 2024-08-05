@@ -52,17 +52,17 @@ PARSED=$(echo "${STARTUP}" | sed -e 's/{{/${/g' -e 's/}}/}/g' | eval echo "$(cat
 echo 'Trimming un-needed chunks in the overworld...'
 
 php /thanos/vendor/aternos/thanos/thanos.php /home/container/world /home/container/thanos_output_world || { echo "Failed in the overworld."; exit 1; } # HOW MANY TIMES AM I GONNA TYPE IN THANOS???
-rm /home/container/world
+rm -rf /home/container/world
 mv /home/container/thanos_output_world /home/container/world
 
 echo 'Trimming un-needed chunks in the nether...'
 
 php /thanos/vendor/aternos/thanos/thanos.php /home/container/world_nether /home/container/thanos_output_world_nether || { echo "Failed in the nether."; exit 1; }
-rm /home/container/world_nether
+rm -rf /home/container/world_nether
 mv /home/container/thanos_output_world_nether /home/container/world_nether
 
 echo 'Trimming un-needed chunks in the end...'
 
 php /thanos/vendor/aternos/thanos/thanos.php /home/container/world_the_end /home/container/thanos_output_world_the_end || { echo "Failed in the end."; exit 1; }
-rm /home/container/world_the_end
+rm -rf /home/container/world_the_end
 mv /home/container/thanos_output_world_the_end /home/container/world_the_end
