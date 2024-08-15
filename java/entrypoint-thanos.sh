@@ -50,20 +50,32 @@ env ${PARSED}
 
 cd /thanos || exit 1
 
-echo 'Trimming un-needed chunks in the overworld...'
+if [ -d "/home/container/world" ]; then
+    echo 'Trimming un-needed chunks in the overworld...'
 
-php /thanos/vendor/aternos/thanos/thanos.php /home/container/world /home/container/thanos_output_world || { echo "Failed in the overworld."; exit 1; } # HOW MANY TIMES AM I GONNA TYPE IN THANOS???
-rm -rf /home/container/world
-mv /home/container/thanos_output_world /home/container/world
+    php /thanos/vendor/aternos/thanos/thanos.php /home/container/world /home/container/thanos_output_world || { echo "Failed in the overworld."; exit 1; }
+    rm -rf /home/container/world
+    mv /home/container/thanos_output_world /home/container/world
+else
+    echo "Overworld does not exist (this is probably a bug), skipping..."
+fi
 
-echo 'Trimming un-needed chunks in the nether...'
+if [ -d "/home/container/world_nether" ]; then
+    echo 'Trimming un-needed chunks in the nether...'
 
-php /thanos/vendor/aternos/thanos/thanos.php /home/container/world_nether /home/container/thanos_output_world_nether || { echo "Failed in the nether."; exit 1; }
-rm -rf /home/container/world_nether
-mv /home/container/thanos_output_world_nether /home/container/world_nether
+    php /thanos/vendor/aternos/thanos/thanos.php /home/container/world_nether /home/container/thanos_output_world_nether || { echo "Failed in the nether."; exit 1; }
+    rm -rf /home/container/world_nether
+    mv /home/container/thanos_output_world_nether /home/container/world_nether
+else
+    echo "Nether does not exist, skipping..."
+fi
 
-echo 'Trimming un-needed chunks in the end...'
+if [ -d "/home/container/world_the_end" ]; then
+    echo 'Trimming un-needed chunks in the end...'
 
-php /thanos/vendor/aternos/thanos/thanos.php /home/container/world_the_end /home/container/thanos_output_world_the_end || { echo "Failed in the end."; exit 1; }
-rm -rf /home/container/world_the_end
-mv /home/container/thanos_output_world_the_end /home/container/world_the_end
+    php /thanos/vendor/aternos/thanos/thanos.php /home/container/world_the_end /home/container/thanos_output_world_the_end || { echo "Failed in the end."; exit 1; }
+    rm -rf /home/container/world_the_end
+    mv /home/container/thanos_output_world_the_end /home/container/world_the_end
+else
+    echo "End does not exist, skipping..."
+fi
