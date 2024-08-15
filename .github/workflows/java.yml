@@ -23,6 +23,8 @@ jobs:
           - 21
           - 21-graalvm
           - 21-g-thanos
+          - 22
+          - 22-graalvm
           #- 21-graalvm-2
     steps:
       - uses: actions/checkout@v3
