@@ -22,6 +22,7 @@ jobs:
           - 17-graalvm
           - 21
           - 21-graalvm
+          - 21-graalvm-slim
           - 21-g-thanos
           - 22
           - 22-graalvm
