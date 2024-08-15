@@ -34,13 +34,13 @@ ENV         DEBIAN_FRONTEND=noninteractive
 ENV         COMPOSER_ALLOW_SUPERUSER=1
 
 RUN 		apt-get update -y && apt-get install -y apt-transport-https lsb-release ca-certificates wget git \
-            && apt-get upgrade -y && rm -rf /var/lib/apt/lists/* \
-            # Install GraalVM
-            #&& wget -O /graalvm.tar.gz https://download.oracle.com/graalvm/21/latest/graalvm-jdk-21_linux-x64_bin.tar.gz \
-            #&& mkdir /graalvm && tar -xzf /graalvm.tar.gz -C /graalvm --strip-components=1 \
+            && apt-get upgrade -y \
             && useradd -d /home/container -m container && chmod +x /entrypoint.sh && chown container /entrypoint.sh \
-            #&& chown -R container /graalvm && chmod +x /graalvm/bin/java \
-            #&& chmod -R 755 /graalvm && rm /graalvm.tar.gz \
+            # Install GraalVM
+            && wget -O /graalvm.tar.gz https://download.oracle.com/graalvm/21/latest/graalvm-jdk-21_linux-x64_bin.tar.gz \
+            && mkdir /graalvm && tar -xzf /graalvm.tar.gz -C /graalvm --strip-components=1 \
+            && chown -R container /graalvm && chmod +x /graalvm/bin/java \
+            && chmod -R 755 /graalvm && rm /graalvm.tar.gz \
             # Install PHP
             && wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg \
             && echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php.list \
@@ -48,13 +48,13 @@ RUN 		apt-get update -y && apt-get install -y apt-transport-https lsb-release ca
             && /bin/bash /composer_install.sh && rm /composer_install.sh \
             && mkdir /thanos && chown container /thanos && cd /thanos && composer require aternos/thanos \
             && apt-get remove -y apt-transport-https lsb-release ca-certificates wget git \
-            && apt-get autoremove -y
+            && apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
 
 ENV         DEBIAN_FRONTEND=dialog
 USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
-#ENV         JAVA_HOME="/graalvm"
-#ENV         PATH="$JAVA_HOME/bin:$PATH"
+ENV         JAVA_HOME="/graalvm"
+ENV         PATH="$JAVA_HOME/bin:$PATH"
 
 CMD         [ "/bin/bash", "/entrypoint.sh" ]
