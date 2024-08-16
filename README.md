@@ -20,9 +20,21 @@ I (soapy) have been on a goosechase finding a yolk/egg that actually works with 
 
 ### Java yolks added
 
-- `17-graalvm` Self explainatory, java 17 graalvm, also removes unneeded(?) packages, based off debian
+- `17-graalvm` Java 17 graalvm, also removes unneeded(?) packages, based off debian:latest
+
+- `17-g-thanos` Same as 17-graalvm, but adds PHP to run [Thanos](https://github.com/aternosorg/thanos) after the server stops, removing chunks with inhabited time of 0 to reduce storage usage
 
 - `21-graalvm` Same as 17-graalvm, just java 21 instead of 17
+
+- `21-g-thanos` Same as 17-g-thanos, just java 21 instead of 17
+
+- `21-graalvm-slim` Same as 21-graalvm, but uses debian:bookworm-slim instead of debian:latest
+
+- `22` Java 22, no graalvm, no thanos, no slim, just eclipse temurin 22
+
+- `22-graalvm` Self explainatory, Java 21 GraalVM
+
+<h8> Hey, </h8>
 
 I have also added the egg I use for python in [here](/eggs/python/egg.json) if you're interested, its kinda hacky but hey, it works!
 
