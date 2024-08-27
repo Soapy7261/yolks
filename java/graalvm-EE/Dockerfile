@@ -30,7 +30,7 @@ LABEL       org.opencontainers.image.source="https://github.com/Soapy7261/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
 COPY        ./../entrypoint.sh /entrypoint.sh
-RUN 		apt-get update -y && && apt-get upgrade -y && rm -rf /var/lib/apt/lists/* \
+RUN 		apt-get update -y && apt-get upgrade -y && rm -rf /var/lib/apt/lists/* \
             && useradd -d /home/container -m container && chmod +x /entrypoint.sh && chown container /entrypoint.sh
 
 USER        container
