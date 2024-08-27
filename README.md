@@ -38,8 +38,6 @@ I (soapy) have been on a goosechase finding a yolk/egg that actually works with 
 
 - `22-graalvm` Self explainatory.
 
-<h8> Hey, </h8>
-
 I have also added the egg I use for python in [here](/eggs/python/egg.json) if you're interested, its kinda hacky but hey, it works!
 
 # Original about me
