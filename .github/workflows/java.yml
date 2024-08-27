@@ -28,6 +28,7 @@ jobs:
           - 22
           - 22-graalvm
           - 22-g-thanos
+          - graalvm-EE
     steps:
       - uses: actions/checkout@v3
       - uses: docker/setup-qemu-action@v2

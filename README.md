@@ -24,6 +24,8 @@ I (soapy) have been on a goosechase finding a yolk/egg that actually works with 
 
 - `17-g-thanos` Same as 17-graalvm, but adds PHP to run [Thanos](https://github.com/aternosorg/thanos) after the server stops, removing chunks with inhabited time of 0 to reduce storage usage
 
+- `graalvm-EE` Does not include graalvm EE, you must make a mount at /graalvm of a copy of the whole graalvm EE folder for to work, otherwise, it wont work.
+
 - `21-graalvm` Same as 17-graalvm, just java 21 instead of 17
 
 - `21-g-thanos` Same as 17-g-thanos, just java 21 instead of 17

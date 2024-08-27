@@ -47,6 +47,7 @@ RUN 		apt-get update -y && apt-get install -y apt-transport-https lsb-release ca
             && apt-get update -y && apt-get install -y php8.1 \
             && /bin/bash /composer_install.sh && rm /composer_install.sh \
             && mkdir /thanos && chown container /thanos && cd /thanos && composer require aternos/thanos \
+            # Remove the packages we dont need anymore
             && apt-get remove -y apt-transport-https lsb-release ca-certificates wget git \
             && apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
 
