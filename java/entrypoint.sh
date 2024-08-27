@@ -35,7 +35,7 @@ cd /home/container || exit 1
 
 # Print Java version
 printf "\033[1m\033[33mcontainer@pterodactyl~ \033[0mjava -version\n"
-java -version || echo 'No java installation found.'; exit 1;
+java -version || { echo 'No java installation found.'; exit 1; }
 
 # Convert all of the "{{VARIABLE}}" parts of the command into the expected shell
 # variable format of "${VARIABLE}" before evaluating the string and automatically
