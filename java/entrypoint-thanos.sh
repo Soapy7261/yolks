@@ -50,48 +50,60 @@ env ${PARSED}
 
 cd /thanos || exit 1
 
-if [ -d "/home/container/world" ]; then
-    echo 'Trimming un-needed chunks in the overworld...'
+overworld() {
+    if [ -d "/home/container/world" ]; then
+        echo 'Trimming un-needed chunks in the overworld...'
 
-    php /thanos/vendor/aternos/thanos/thanos.php /home/container/world /home/container/thanos_output_world || { echo "Failed in the overworld."; exit 1; }
-    rm -rf /home/container/world
-    mv /home/container/thanos_output_world /home/container/world
-else
-    echo "Overworld does not exist (this is probably a bug), skipping..."
-fi
-
-if [ -d "/home/container/world_nether" ]; then
-    echo 'Trimming un-needed chunks in the nether (bukkit)...'
-
-    php /thanos/vendor/aternos/thanos/thanos.php /home/container/world_nether /home/container/thanos_output_world_nether || { echo "Failed in the nether."; exit 1; }
-    rm -rf /home/container/world_nether
-    mv /home/container/thanos_output_world_nether /home/container/world_nether
-else
-    echo "Nether (bukkit) does not exist, trying vanilla..."
-    if [ -d "/home/container/world/DIM-1" ]; then
-        echo 'Trimming un-needed chunks in the nether (vanilla)...'
-        php /thanos/vendor/aternos/thanos/thanos.php /home/container/world/DIM-1 /home/container/thanos_output_world_nether || { echo "Failed in the nether."; exit 1; }
-        rm -rf /home/container/world/DIM-1
-        mv /home/container/thanos_output_world_nether /home/container/world/DIM-1
+        php /thanos/vendor/aternos/thanos/thanos.php /home/container/world /home/container/thanos_output_world || { echo "Failed in the overworld."; exit 1; }
+        rm -rf /home/container/world
+        mv /home/container/thanos_output_world /home/container/world
     else
-        echo 'Nether does not exist at all, skipping...'
+        echo "Overworld does not exist (this is probably a bug), skipping..."
     fi
-fi
+}
 
-if [ -d "/home/container/world_the_end" ]; then
-    echo 'Trimming un-needed chunks in the end...'
+nether() {
+    if [ -d "/home/container/world_nether" ]; then
+        echo 'Trimming un-needed chunks in the nether (bukkit)...'
 
-    php /thanos/vendor/aternos/thanos/thanos.php /home/container/world_the_end /home/container/thanos_output_world_the_end || { echo "Failed in the end."; exit 1; }
-    rm -rf /home/container/world_the_end
-    mv /home/container/thanos_output_world_the_end /home/container/world_the_end
-else
-    echo "End (bukkit) does not exist, trying vanilla..."
-    if [ -d "/home/container/world/DIM1" ]; then
-        echo 'Trimming un-needed chunks in the end (vanilla)...'
-        php /thanos/vendor/aternos/thanos/thanos.php /home/container/world/DIM1 /home/container/thanos_output_world_the_end || { echo "Failed in the end."; exit 1; }
-        rm -rf /home/container/world/DIM1
-        mv /home/container/thanos_output_world_the_end /home/container/world/DIM1
+        php /thanos/vendor/aternos/thanos/thanos.php /home/container/world_nether /home/container/thanos_output_world_nether || { echo "Failed in the nether."; exit 1; }
+        rm -rf /home/container/world_nether
+        mv /home/container/thanos_output_world_nether /home/container/world_nether
     else
-        echo 'End does not exist at all, skipping...'
+        echo "Nether (bukkit) does not exist, trying vanilla..."
+        if [ -d "/home/container/world/DIM-1" ]; then
+            echo 'Trimming un-needed chunks in the nether (vanilla)...'
+            php /thanos/vendor/aternos/thanos/thanos.php /home/container/world/DIM-1 /home/container/thanos_output_world_nether || { echo "Failed in the nether."; exit 1; }
+            rm -rf /home/container/world/DIM-1
+            mv /home/container/thanos_output_world_nether /home/container/world/DIM-1
+        else
+            echo 'Nether does not exist at all, skipping...'
+        fi
     fi
-fi
+}
+
+end() {
+    if [ -d "/home/container/world_the_end" ]; then
+        echo 'Trimming un-needed chunks in the end...'
+
+        php /thanos/vendor/aternos/thanos/thanos.php /home/container/world_the_end /home/container/thanos_output_world_the_end || { echo "Failed in the end."; exit 1; }
+        rm -rf /home/container/world_the_end
+        mv /home/container/thanos_output_world_the_end /home/container/world_the_end
+    else
+        echo "End (bukkit) does not exist, trying vanilla..."
+        if [ -d "/home/container/world/DIM1" ]; then
+            echo 'Trimming un-needed chunks in the end (vanilla)...'
+            php /thanos/vendor/aternos/thanos/thanos.php /home/container/world/DIM1 /home/container/thanos_output_world_the_end || { echo "Failed in the end."; exit 1; }
+            rm -rf /home/container/world/DIM1
+            mv /home/container/thanos_output_world_the_end /home/container/world/DIM1
+        else
+            echo 'End does not exist at all, skipping...'
+        fi
+    fi
+}
+
+overworld() &
+nether() &
+end() &
+wait
+echo 'Done!'
