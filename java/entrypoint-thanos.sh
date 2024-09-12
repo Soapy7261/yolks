@@ -50,7 +50,7 @@ env ${PARSED}
 
 cd /thanos || exit 1
 
-overworld() {
+trim_overworld() {
     if [ -d "/home/container/world" ]; then
         echo 'Trimming un-needed chunks in the overworld...'
 
@@ -62,7 +62,7 @@ overworld() {
     fi
 }
 
-nether() {
+trim_nether() {
     if [ -d "/home/container/world_nether" ]; then
         echo 'Trimming un-needed chunks in the nether (bukkit)...'
 
@@ -82,7 +82,7 @@ nether() {
     fi
 }
 
-end() {
+trim_end() {
     if [ -d "/home/container/world_the_end" ]; then
         echo 'Trimming un-needed chunks in the end...'
 
@@ -102,8 +102,8 @@ end() {
     fi
 }
 
-overworld() &
-nether() &
-end() &
+trim_overworld &
+trim_nether &
+trim_end &
 wait
 echo 'Done!'
