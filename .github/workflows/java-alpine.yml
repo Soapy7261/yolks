@@ -22,6 +22,7 @@ jobs:
           - 22-graalvm-2.30
           - 22-graalvm-2.31
           - 22-graalvm-2.32
+          - 22-graalvm-gcompat
     steps:
       - uses: actions/checkout@v3
       - uses: docker/setup-qemu-action@v2
