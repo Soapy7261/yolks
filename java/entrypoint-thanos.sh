@@ -27,8 +27,8 @@ TZ=${TZ:-UTC}
 export TZ
 
 # Set environment variable that holds the Internal Docker IP
-INTERNAL_IP=$(ip route get 1 | awk '{print $(NF-2);exit}')
-export INTERNAL_IP
+INTERNAL_IP=$(awk '{print $(NF-2);exit}') #$(ip route get 1 | awk '{print $(NF-2);exit}')
+export INTERNAL_IP #I dont install those packages for thanos anyway.
 
 # Switch to the container's working directory
 cd /home/container || exit 1
@@ -46,6 +46,24 @@ PARSED=$(echo "${STARTUP}" | sed -e 's/{{/${/g' -e 's/}}/}/g' | eval echo "$(cat
 # from the container itself.
 printf "\033[1m\033[33mcontainer@pterodactyl~ \033[0m%s\n" "$PARSED"
 # shellcheck disable=SC2086
+if [ -d "/home/container/thanos_output_world" ]; then
+    echo 'Thanos output world was not removed, removing it...'
+
+    rm -rf /home/container/thanos_output_world || echo 'Cant remove thanos output world'
+fi
+
+if [ -d "/home/container/thanos_output_world_nether" ]; then
+    echo 'Thanos output world_nether was not removed, removing it...'
+
+    rm -rf /home/container/thanos_output_world_nether || echo 'Cant remove thanos output world_nether'
+fi
+
+if [ -d "/home/container/thanos_output_world_the_end" ]; then
+    echo 'Thanos output world_the_end was not removed, removing it...'
+
+    rm -rf /home/container/thanos_output_world_the_end || echo 'Cant remove thanos output world_the_end'
+fi
+
 env ${PARSED}
 
 cd /thanos || exit 1
