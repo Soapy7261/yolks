@@ -41,14 +41,12 @@ RUN 		apk update && apk --no-cache add curl \
             && apk --no-cache add ca-certificates wget gcc zlib zlib-dev libc-dev \
             && wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub \
             && wget "https://github.com/sgerrand/alpine-pkg-glibc/releases/download/$GLIBC_VERSION/glibc-$GLIBC_VERSION.apk" \
-            && apk --no-cache add "glibc-$GLIBC_VERSION.apk" \
-            && rm "glibc-$GLIBC_VERSION.apk" \
+            && apk --force-overwrite --no-cache add "glibc-$GLIBC_VERSION.apk" \
             && wget "https://github.com/sgerrand/alpine-pkg-glibc/releases/download/$GLIBC_VERSION/glibc-bin-$GLIBC_VERSION.apk" \
             && apk --no-cache add "glibc-bin-$GLIBC_VERSION.apk" \
-            && rm "glibc-bin-$GLIBC_VERSION.apk" \
             && wget "https://github.com/sgerrand/alpine-pkg-glibc/releases/download/$GLIBC_VERSION/glibc-i18n-$GLIBC_VERSION.apk" \
             && apk --no-cache add "glibc-i18n-$GLIBC_VERSION.apk" \
-            && rm "glibc-i18n-$GLIBC_VERSION.apk"
+            && rm glibc-*
 
 USER        container
 ENV         USER=container HOME=/home/container
