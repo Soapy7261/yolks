@@ -27,6 +27,8 @@ LABEL       author="Matthew Penner" maintainer="matthew@pterodactyl.io"
 LABEL       org.opencontainers.image.source="https://github.com/Soapy7261/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
+ENV GLIBC_VERSION=2.27-r0
+
 COPY        ./../entrypoint.sh /entrypoint.sh
 RUN 		apk update && apk --no-cache add curl \
             && apk upgrade --no-cache \
