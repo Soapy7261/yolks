@@ -29,13 +29,12 @@ LABEL       org.opencontainers.image.licenses=MIT
 
 COPY        ./../entrypoint.sh /entrypoint.sh
 RUN 		apk update && apk --no-cache add -y curl \
-            && apk upgrade --no-cache && \
+            && apk upgrade --no-cache \
             && curl -o /graalvm.tar.gz -O https://download.oracle.com/graalvm/22/latest/graalvm-jdk-22_linux-x64_bin.tar.gz \
             && mkdir /graalvm && tar -xzf /graalvm.tar.gz -C /graalvm --strip-components=1 \
             && adduser -D -h /home/container container && chmod +x /entrypoint.sh && chown container /entrypoint.sh \
             && chown -R container /graalvm && chmod +x /graalvm/bin/java \
-            && chmod -R 755 /graalvm && rm /graalvm.tar.gz \
-            #GLIBC addition
+            && chmod -R 755 /graalvm && rm /graalvm.tar.gz \ #GLIBC addition
             && apk --no-cache add ca-certificates wget gcc zlib zlib-dev libc-dev \
             && wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub \
             && wget "https://github.com/sgerrand/alpine-pkg-glibc/releases/download/$GLIBC_VERSION/glibc-$GLIBC_VERSION.apk" \
