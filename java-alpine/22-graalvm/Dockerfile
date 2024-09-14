@@ -48,7 +48,7 @@ RUN 		apk update && apk --no-cache add curl \
             #&& wget "https://github.com/sgerrand/alpine-pkg-glibc/releases/download/$GLIBC_VERSION/glibc-i18n-$GLIBC_VERSION.apk" \
             #&& apk --no-cache add "glibc-i18n-$GLIBC_VERSION.apk" \
             && rm glibc-* \
-            && dir \
+            && ls \
             && java -version
 
 USER        container
