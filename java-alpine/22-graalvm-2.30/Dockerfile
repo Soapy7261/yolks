@@ -28,9 +28,10 @@ LABEL       org.opencontainers.image.source="https://github.com/Soapy7261/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
 #ENV GLIBC_VERSION=2.27-r0
-ENV GLIBC_VERSION=2.33-r0
+ENV GLIBC_VERSION=2.30-r0
 
 COPY        ./../entrypoint.sh /entrypoint.sh
+COPY        ./../test.sh /test.sh
 RUN 		apk update && apk --no-cache add curl \
             && apk upgrade --no-cache \
             && curl -o /graalvm.tar.gz -O https://download.oracle.com/graalvm/22/latest/graalvm-jdk-22_linux-x64_bin.tar.gz \
@@ -54,5 +55,7 @@ ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
 ENV         JAVA_HOME="/graalvm"
 ENV         PATH="$JAVA_HOME/bin:$PATH"
+
+RUN         /bin/ash /test.sh
 
 CMD         [ "/bin/ash", "/entrypoint.sh" ]
