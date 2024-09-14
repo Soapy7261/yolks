@@ -27,7 +27,7 @@ TZ=${TZ:-UTC}
 export TZ
 
 # Set environment variable that holds the Internal Docker IP
-INTERNAL_IP=$(awk '{print $(NF-2);exit}') #$(ip route get 1 | awk '{print $(NF-2);exit}')
+INTERNAL_IP=$(ip route get 1 | awk '{print $(NF-2);exit}')
 export INTERNAL_IP #I dont install those packages for thanos anyway.
 
 # Switch to the container's working directory
