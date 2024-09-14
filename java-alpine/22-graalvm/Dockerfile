@@ -55,6 +55,6 @@ WORKDIR     /home/container
 ENV         JAVA_HOME="/graalvm"
 ENV         PATH="$JAVA_HOME/bin:$PATH"
 
-RUN         /bin/bash java -version
+RUN         /bin/ash java -version
 
 CMD         [ "/bin/ash", "/entrypoint.sh" ]
