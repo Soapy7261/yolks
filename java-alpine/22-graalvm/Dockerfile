@@ -47,15 +47,13 @@ RUN 		apk update && apk --no-cache add curl \
             && apk --force-overwrite --no-cache add "glibc-bin-$GLIBC_VERSION.apk" \
             && wget "https://github.com/sgerrand/alpine-pkg-glibc/releases/download/$GLIBC_VERSION/glibc-i18n-$GLIBC_VERSION.apk" \
             && apk --no-cache add "glibc-i18n-$GLIBC_VERSION.apk" \
-            && rm glibc-*
+            && rm glibc-* \
+            && /graalvm/bin/java -version
 
 USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
 ENV         JAVA_HOME="/graalvm"
 ENV         PATH="$JAVA_HOME/bin:$PATH"
-
-RUN         ls -l /graalvm/bin
-RUN         /graalvm/bin/java -version
 
 CMD         [ "/bin/ash", "/entrypoint.sh" ]
