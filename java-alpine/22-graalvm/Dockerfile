@@ -28,7 +28,7 @@ LABEL       org.opencontainers.image.source="https://github.com/Soapy7261/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
 #ENV GLIBC_VERSION=2.27-r0
-ENV GLIBC_VERSION=2.34
+ENV GLIBC_VERSION=2.34-r0
 
 COPY        ./../entrypoint.sh /entrypoint.sh
 RUN 		apk update && apk --no-cache add curl \
