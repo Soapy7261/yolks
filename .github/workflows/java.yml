@@ -16,7 +16,7 @@ jobs:
       fail-fast: false
       matrix:
         tag:
-        - graalvm-EE
+          - graalvm-EE
           - 8
           - 11
           - 17
