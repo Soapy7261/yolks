@@ -16,6 +16,8 @@ jobs:
       fail-fast: false
       matrix:
         tag:
+          - 22-graalvm-2.27
+          - 22-graalvm-2.28
           - 22-graalvm-2.29
           - 22-graalvm-2.30
           - 22-graalvm-2.31
