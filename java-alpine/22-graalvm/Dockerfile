@@ -58,4 +58,4 @@ ENV         JAVA_HOME="/graalvm"
 ENV         PATH="$JAVA_HOME/bin:$PATH"
 
 RUN         java -version
-CMD         [ "/bin/bash", "/entrypoint.sh" ]
+CMD         [ "/bin/ash", "/entrypoint.sh" ]
