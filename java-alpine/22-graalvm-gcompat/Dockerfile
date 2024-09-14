@@ -40,7 +40,10 @@ RUN 		apk update && apk --no-cache add curl \
             && chown -R container /graalvm && chmod +x /graalvm/bin/java \
             && chmod -R 755 /graalvm && rm /graalvm.tar.gz \
             #GLIBC addition
-            && apk --no-cache add ca-certificates wget gcc zlib zlib-dev libc-dev gcompat libstdc++
+            && apk --no-cache add ca-certificates wget gcc zlib zlib-dev libc-dev gcompat libstdc++ \
+            && wget "https://github.com/sgerrand/alpine-pkg-glibc/releases/download/$GLIBC_VERSION/glibc-i18n-$GLIBC_VERSION.apk" \
+            && apk --no-cache add "glibc-i18n-$GLIBC_VERSION.apk" \
+            && rm glibc-*
 
 USER        container
 ENV         USER=container HOME=/home/container
