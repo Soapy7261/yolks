@@ -16,7 +16,10 @@ jobs:
       fail-fast: false
       matrix:
         tag:
-          - 22-graalvm
+          - 22-graalvm-2.29
+          - 22-graalvm-2.30
+          - 22-graalvm-2.31
+          - 22-graalvm-2.32
     steps:
       - uses: actions/checkout@v3
       - uses: docker/setup-qemu-action@v2
