@@ -13,7 +13,7 @@ export INTERNAL_IP # Don't know why this would be needed but okay ig :shrug:
 echo "Upgrading pip..."
 pip install --user --upgrade pip
 echo "Installing requirements..."
-pip install --user -r requirements.txt
+pip install --user -r requirements.txt -U
 echo "Running main.py!"
 python main.py
 echo "Exiting..."
