@@ -35,7 +35,7 @@ RUN 		apt-get update -y && apt-get install -y curl \
             && useradd -d /home/container -m container && chmod +x /entrypoint.sh && chown container /entrypoint.sh \
             && chown -R container /graalvm && chmod +x /graalvm/bin/java \
             && chmod -R 755 /graalvm && rm /graalvm.tar.gz \
-            && apt-get uninstall -y curl
+            && apt-get remove --purge -y curl
 
 USER        container
 ENV         USER=container HOME=/home/container
