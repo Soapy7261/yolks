@@ -27,9 +27,11 @@ TZ=${TZ:-UTC}
 export TZ
 
 # Set environment variable that holds the Internal Docker IP
-if ip; then
+if command -v ip >/dev/null 2>&1; then
     INTERNAL_IP=$(ip route get 1 | awk '{print $(NF-2);exit}')
     export INTERNAL_IP
+else
+    echo 'IP not installed, skipping setting internal IP... (This should be ignored.)'
 fi
 
 # Switch to the container's working directory
