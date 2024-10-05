@@ -14,7 +14,7 @@ echo "Upgrading pip..."
 pip install --user --upgrade pip
 echo "Installing requirements..."
 if [[ -f "./requirements.txt" ]]; then
-    file_mod_time=$(stat ./requirements.txt | grep 'Modify' | awk '{print $2 " " $3}')
+    file_mod_time=$(stat "./requirements.txt" | grep 'Modify' | awk '{print $2 " " substr($3,1,8)}')
     last_boot=$(cat /proc/uptime | awk '{print $1}')
     boot_time=$(date -d "@$(($(date +%s) - ${last_boot%.*}))" +"%Y-%m-%d %H:%M:%S")
     if [ "$(date -d "$file_mod_time" +%s)" -gt "$(date -d "$boot_time" +%s)" ]; then
