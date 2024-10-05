@@ -14,10 +14,13 @@ echo "Upgrading pip..."
 pip install --user --upgrade pip
 echo "Installing requirements..."
 if [[ -f "./requirements.txt" ]]; then
-    file_mod_time=$(stat -c %y ./requirements.txt)
-    last_boot=$(who -b | awk '{print $3 " " $4}')
-    if [[ $(date -d "$file_mod_time" +%s) -gt $(date -d "$last_boot" +%s) ]]; then
+    file_mod_time=$(stat ./requirements.txt | grep 'Modify' | awk '{print $2 " " $3}')
+    last_boot=$(cat /proc/uptime | awk '{print $1}')
+    boot_time=$(date -d "@$(($(date +%s) - ${last_boot%.*}))" +"%Y-%m-%d %H:%M:%S")
+    if [ "$(date -d "$file_mod_time" +%s)" -gt "$(date -d "$boot_time" +%s)" ]; then
         pip install --user -r requirements.txt -U
+    else
+        echo "Requirements have not changed."
     fi
 else
     echo "No requirements.txt found, not installing any dependencies!"
