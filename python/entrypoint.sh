@@ -25,6 +25,9 @@ if [[ -f "./requirements.txt" ]]; then
 else
     echo "No requirements.txt found, not installing any dependencies!"
 fi
+unset file_mod_time
+unset last_boot
+unset boot_time
 echo "Running main.py!"
 python main.py
 echo "Exiting..."
