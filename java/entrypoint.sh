@@ -26,6 +26,8 @@
 TZ=${TZ:-UTC}
 export TZ
 
+EOL_versions=("22")
+
 # Set environment variable that holds the Internal Docker IP
 if command -v ip >/dev/null 2>&1; then
     INTERNAL_IP=$(ip route get 1 | awk '{print $(NF-2);exit}')
@@ -40,6 +42,13 @@ cd /home/container || exit 1
 # Print Java version
 printf "\033[1m\033[33mcontainer@pterodactyl~ \033[0mjava -version\n"
 java -version || { echo 'No java installation found.'; exit 1; }
+java_version=$(java -version 2>&1 | awk -F '"' '/version/ {print $2}' | cut -d'.' -f1,2)
+for version in "${EOL_versions[@]}"; do
+    if [[ "$java_version" == "$version" ]]; then
+        echo "^ This version of java is EOL, you should downgrade/update your java version to something that is still actively supported https://wikipedia.org/wiki/Java_version_history"
+        break
+    fi
+done
 
 # Convert all of the "{{VARIABLE}}" parts of the command into the expected shell
 # variable format of "${VARIABLE}" before evaluating the string and automatically
