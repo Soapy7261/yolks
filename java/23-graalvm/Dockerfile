@@ -32,7 +32,7 @@ COPY        ./../hash_check.sh /hash_check.sh
 
 RUN 		apt-get update -y && apt-get install -y curl \
             && apt-get upgrade -y && rm -rf /var/lib/apt/lists/* \
-            && curl -o /graalvm.tar.gz -O https://download.oracle.com/graalvm/23/latest/graalvm-jdk-23_linux-x64_bin.tar.gz \
+            && curl https://download.oracle.com/graalvm/23/latest/graalvm-jdk-23_linux-x64_bin.tar.gz -o /graalvm.tar.gz \
             # Check SHA256 to make sure its not corrupted
             && /bin/bash /hash_check.sh 23 && rm /hash_check.sh \
             && mkdir /graalvm && tar -xzf /graalvm.tar.gz -C /graalvm --strip-components=1 \
