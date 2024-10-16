@@ -28,9 +28,13 @@ LABEL       org.opencontainers.image.source="https://github.com/Soapy7261/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
 COPY        ./../entrypoint.sh /entrypoint.sh
+COPY        ./../hash_check.sh /hash_check.sh
+
 RUN 		apt-get update -y && apt-get install -y curl \
             && apt-get upgrade -y && rm -rf /var/lib/apt/lists/* \
             && curl -o /graalvm.tar.gz -O https://download.oracle.com/graalvm/23/latest/graalvm-jdk-23_linux-x64_bin.tar.gz \
+            # Check SHA256 to make sure its not corrupted
+            && /bin/bash /hash_check.sh 23 && rm /hash_check.sh \
             && mkdir /graalvm && tar -xzf /graalvm.tar.gz -C /graalvm --strip-components=1 \
             && useradd -d /home/container -m container && chmod +x /entrypoint.sh && chown container /entrypoint.sh \
             && chown -R container /graalvm && chmod +x /graalvm/bin/java \

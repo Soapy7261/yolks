@@ -29,6 +29,7 @@ LABEL       org.opencontainers.image.licenses=MIT
 
 COPY        ./../entrypoint-thanos.sh /entrypoint.sh
 COPY        ./../install_composer.sh /composer_install.sh
+COPY        ./../hash_check.sh /hash_check.sh
 #we do a lil trolling
 ENV         DEBIAN_FRONTEND=noninteractive
 ENV         COMPOSER_ALLOW_SUPERUSER=1
@@ -38,6 +39,9 @@ RUN 		apt-get update -y && apt-get install -y apt-transport-https lsb-release ca
             && useradd -d /home/container -m container && chmod +x /entrypoint.sh && chown container /entrypoint.sh \
             # Install GraalVM
             && wget -O /graalvm.tar.gz https://download.oracle.com/graalvm/23/latest/graalvm-jdk-23_linux-x64_bin.tar.gz \
+            ## Check SHA256 to make sure its not corrupted
+            && /bin/bash /hash_check.sh 23 && rm /hash_check.sh \
+
             && mkdir /graalvm && tar -xzf /graalvm.tar.gz -C /graalvm --strip-components=1 \
             && chown -R container /graalvm && chmod +x /graalvm/bin/java \
             && chmod -R 755 /graalvm && rm /graalvm.tar.gz \
