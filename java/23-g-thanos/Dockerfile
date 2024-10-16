@@ -41,7 +41,6 @@ RUN 		apt-get update -y && apt-get install -y apt-transport-https lsb-release ca
             && wget -O /graalvm.tar.gz https://download.oracle.com/graalvm/23/latest/graalvm-jdk-23_linux-x64_bin.tar.gz \
             ## Check SHA256 to make sure its not corrupted
             && /bin/bash /hash_check.sh 23 && rm /hash_check.sh \
-
             && mkdir /graalvm && tar -xzf /graalvm.tar.gz -C /graalvm --strip-components=1 \
             && chown -R container /graalvm && chmod +x /graalvm/bin/java \
             && chmod -R 755 /graalvm && rm /graalvm.tar.gz \
