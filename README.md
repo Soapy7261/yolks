@@ -14,17 +14,17 @@ I (soapy) have been on a goosechase finding a yolk/egg that actually works with 
 
 - `3.12-t-ffmpeg` (based off the 3.12-tini yolk) which just adds FFMPEG if you need it
 
-- `3.13-0b4` Beta 4 of python 3.13, don't use it in production!
-
 - `3.13-rc` The latest beta of python 3.13, don't use it in production!
 
 ### Java yolks added
++
+- `graalvm-EE` Does not include graalvm EE, you must make a mount at /graalvm of a copy of the whole graalvm EE folder for to work, otherwise, it wont work.
 
 - `17-graalvm` Java 17 graalvm, also removes unneeded(?) packages, based off debian:latest
 
 - `17-g-thanos` Same as 17-graalvm, but adds PHP to run [Thanos](https://github.com/aternosorg/thanos) after the server stops, removing chunks with inhabited time of 0 to reduce storage usage
 
-- `graalvm-EE` Does not include graalvm EE, you must make a mount at /graalvm of a copy of the whole graalvm EE folder for to work, otherwise, it wont work.
+- `17-graalvm-slim` Same as 17-graalvm, but uses debian:bookworm-slim instead of debian:latest
 
 - `21-graalvm` Same as 17-graalvm, just java 21 instead of 17
 
@@ -38,7 +38,29 @@ I (soapy) have been on a goosechase finding a yolk/egg that actually works with 
 
 - `22-graalvm` Self explainatory.
 
-I have also added the egg I use for python in [here](/eggs/python/egg.json) if you're interested, its kinda hacky but hey, it works!
+- `22-graalvm-slim` Self explainatory.
+
+- `23` Java 23.
+
+- `23-g-thanos` Self explainatory.
+
+- `23-graalvm` Self explainatory.
+
+- `23-graalvm-slim` Self explainatory.
+
+### NodeJS yolks added
+
+- `20-nep` NodeJS 20 with no extra packages [^1]
+
+- `22` NodeJS 22
+
+- `22-nep` NodeJS 22 with no extra packages [^1]
+
+### PM2
+
+- `pm2` PM2, based off NodeJS 22 NEP, adds PM2 and python, I wouldn't recommend using this since its very specialized to my needs, and I'll probably break it with no warning, so I'd recommend forking
+
+I have also added the eggs i made [here](/eggs) if you're interested, its kinda hacky but hey, it works!
 
 # Original about me
 
