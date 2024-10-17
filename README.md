@@ -1,6 +1,6 @@
 # What is this Repo for?
 
-I (soapy) have been on a goosechase finding a yolk/egg that actually works with python 3.12 as my app needs it, after trying like 4 different python 3.12 yolks i just gave up and decided to make my own and made 4 other additional yolks!
+I (soapy) have been on a goosechase finding a yolk/egg that actually works with python 3.12 as my app needs it, after trying like 4 different python 3.12 yolks I just gave up and decided to make my own and made some other additional yolks!
 
 ## What yolks does this repo add?
 
