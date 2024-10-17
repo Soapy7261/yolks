@@ -28,6 +28,8 @@ LABEL       org.opencontainers.image.source="https://github.com/Soapy7261/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
 RUN         apk add --update --no-cache sudo bash \
+    # Update npm because, why not?
+    && npm install -g npm@latest \
     # Add pm2
     && npm install pm2 -g \
 	&& adduser -D -h /home/container container \
