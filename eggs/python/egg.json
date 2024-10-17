@@ -22,7 +22,7 @@
     "startup": "\/entrypoint.sh",
     "config": {
         "files": "{}",
-        "startup": "{\r\n    \"done\": \"Running main.py!\",\r\n    \"userInteraction\": []\r\n}",
+        "startup": "{\r\n    \"done\": \"Running script...\",\r\n    \"userInteraction\": []\r\n}",
         "logs": "{}",
         "stop": "^C"
     },
