@@ -27,18 +27,13 @@ LABEL       author="Matthew Penner" maintainer="matthew@pterodactyl.io"
 LABEL       org.opencontainers.image.source="https://github.com/Soapy7261/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
-RUN         apk add --update --no-cache sudo bash python3 \
-    # Update npm because, why not?
+RUN         apk add --update --no-cache bash python3 \
     && npm install -g npm@latest \
-    # Add pm2
     && npm install pm2 -g \
 	&& adduser -D -h /home/container container
-    # Make them a sudoer
-    #&& echo "container ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/container \
-    #&& chmod 440 /etc/sudoers.d/container
 
 USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
 
-CMD         [ "/bin/bash" ]
+CMD ["pm2-runtime", "process.yml"]
