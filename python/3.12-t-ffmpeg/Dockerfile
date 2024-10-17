@@ -27,16 +27,16 @@ LABEL       author="Matthew Penner" maintainer="matthew@pterodactyl.io"
 LABEL       org.opencontainers.image.source="https://github.com/Soapy7261/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
-COPY        ./../entrypoint.sh /entrypoint.sh
 RUN         apk add --update --no-cache tini ffmpeg && apk upgrade --no-cache \
-	&& adduser -D -h /home/container container && chmod +x /entrypoint.sh && chown container /entrypoint.sh \
-	&& touch /home/container/requirements.txt && touch /home/container/main.py
+	&& adduser -D -h /home/container container
 
 ENV 		PIP_DISABLE_PIP_VERSION_CHECK=1
 ENV			PATH="/home/container/.local/bin:${PATH}"
 USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
+
+COPY        ./../entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/sbin/tini", "--"]
 
