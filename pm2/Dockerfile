@@ -32,7 +32,7 @@ RUN         apk add --update --no-cache sudo bash python3 \
     && npm install -g npm@latest \
     # Add pm2
     && npm install pm2 -g \
-	&& adduser -D -h /home/container container \
+	&& adduser -D -h /home/container container
     # Make them a sudoer
     #&& echo "container ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/container \
     #&& chmod 440 /etc/sudoers.d/container
