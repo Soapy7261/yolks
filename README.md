@@ -18,6 +18,8 @@ I (soapy) have been on a goosechase finding a yolk/egg that actually works with 
 
 - `3.13-nep` Python 3.13, no extra packages
 
+- `3.13-tini` Python 3.13, no extra packages, with TINI
+
 ### Java yolks added
 +
 - `graalvm-EE` Does not include graalvm EE, you must make a mount at /graalvm of a copy of the whole graalvm EE folder for to work, otherwise, it wont work.
