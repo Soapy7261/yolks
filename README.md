@@ -14,7 +14,9 @@ I (soapy) have been on a goosechase finding a yolk/egg that actually works with 
 
 - `3.12-t-ffmpeg` (based off the 3.12-tini yolk) which just adds FFMPEG if you need it
 
-- `3.13-rc` The latest beta of python 3.13, don't use it in production!
+- `3.13` Python 3.13
+
+- `3.13-nep` Python 3.13, no extra packages
 
 ### Java yolks added
 +

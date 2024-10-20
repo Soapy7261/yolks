@@ -20,10 +20,7 @@
 # SOFTWARE.
 #
 
-
-#DO NOT USE THIS IN PRODUCTION!!!
-
-FROM        --platform=$TARGETOS/$TARGETARCH python:3.13-rc-alpine
+FROM        --platform=$TARGETOS/$TARGETARCH python:3.13-alpine
 
 LABEL       author="Matthew Penner" maintainer="matthew@pterodactyl.io"
 
