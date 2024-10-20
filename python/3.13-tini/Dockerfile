@@ -30,6 +30,7 @@ LABEL       org.opencontainers.image.licenses=MIT
 RUN         apk add --update --no-cache tini && apk upgrade --no-cache \
 	&& adduser -D -h /home/container container
 
+ENV 		AIOHTTP_NO_EXTENSIONS=1
 ENV 		PIP_DISABLE_PIP_VERSION_CHECK=1
 ENV			PATH="/home/container/.local/bin:${PATH}"
 USER        container
