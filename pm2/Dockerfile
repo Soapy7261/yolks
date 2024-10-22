@@ -36,4 +36,6 @@ USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
 
-CMD ["pm2-runtime", "process.yml"]
+COPY        ./entrypoint.sh /entrypoint.sh
+
+CMD         [ "/bin/ash", "/entrypoint.sh" ]
