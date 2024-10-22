@@ -18,8 +18,8 @@ export INTERNAL_IP # Don't know why this would be needed but okay ig :shrug:
 #pm2 update
 printf "\033[1m\033[33mcontainer@pterodactyl~ \033[0mnode -v\n"
 node -v
-printf "\033[1m\033[33mcontainer@pterodactyl~ \033[0mpm2 -v\n"
-pm2 -v
+#printf "\033[1m\033[33mcontainer@pterodactyl~ \033[0mpm2 -v\n"
+#pm2 -v
 if [[ -f "./package.json" ]]; then
     echo "Installing packages from package.json..."
     npm i --no-fund
