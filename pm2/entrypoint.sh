@@ -11,9 +11,9 @@ export INTERNAL_IP # Don't know why this would be needed but okay ig :shrug:
 
 # Run the Program
 echo "Upgrading NPM..."
-npm install -g npm@latest
+npm install npm@latest
 echo "Upgrading PM2..."
-npm install pm2@latest -g
+npm install pm2@latest
 echo "Updating PM2..."
 pm2 update
 echo "Running script..."
