@@ -22,7 +22,7 @@ printf "\033[1m\033[33mcontainer@pterodactyl~ \033[0mpm2 -v\n"
 pm2 -v
 if [[ -f "./package.json" ]]; then
     echo "Installing packages from package.json..."
-    npm i
+    npm i --no-fund
 else
     echo "No package.json found, not installing any packages!"
 fi
