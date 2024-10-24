@@ -31,18 +31,18 @@ jobs:
 
           #- '3.12-t-ffmpeg' #I'm removing this, who needs FFMPEG with python anyway? But hey, if your reading this, and need it, feel free to make an issue :)
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       # Setup QEMU for ARM64 Build
-      - uses: docker/setup-qemu-action@v2
-      - uses: docker/setup-buildx-action@v2
+      - uses: docker/setup-qemu-action@v3
+      - uses: docker/setup-buildx-action@v3
         with:
           buildkitd-flags: --debug
-      - uses: docker/login-action@v2
+      - uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: "soapy7261"
           password: ${{ secrets.GITHUB_TOKEN }}
-      - uses: docker/build-push-action@v4
+      - uses: docker/build-push-action@v6
         with:
           context: ./python
           file: ./python/${{ matrix.tag }}/Dockerfile
