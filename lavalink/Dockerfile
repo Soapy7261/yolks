@@ -26,20 +26,20 @@ LABEL       author="Matthew Penner" maintainer="matthew@pterodactyl.io"
 
 LABEL       org.opencontainers.image.source="https://github.com/Soapy7261/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
-COPY        ./lavalinkinstall.sh /lavalinkinstall.sh
+#COPY        ./lavalinkinstall.sh /lavalinkinstall.sh
 RUN         apk add --update --no-cache curl \
 	&& adduser -D -h /home/container container \
-    && /bin/ash /lavalinkinstall.sh \
+    #&& /bin/ash /lavalinkinstall.sh \
     && chown container /home/container/lavalink.jar \
-    && rm -f /lavalinkinstall.sh \
+    #&& rm -f /lavalinkinstall.sh \
     && apk del curl \
     && apk fix --no-cache
 
-COPY        ./application.yml /home/container/application.yml
 USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
 
+COPY        ./application.yml /home/container/application.yml
 COPY        ./entrypoint.sh /entrypoint.sh
 
 CMD         [ "/bin/ash", "/entrypoint.sh" ]
