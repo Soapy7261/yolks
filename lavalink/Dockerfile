@@ -30,7 +30,9 @@ COPY        ./lavalinkinstall.sh /lavalinkinstall.sh
 RUN         apk add --update --no-cache curl \
 	&& adduser -D -h /home/container container \
     && /bin/ash /lavalinkinstall.sh \
-    && rm -f /lavalinkinstall.sh
+    && rm -f /lavalinkinstall.sh \
+    && apk del curl \
+    && apk fix --no-cache
 
 COPY        ./application.yml /home/container/application.yml
 USER        container
