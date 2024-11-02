@@ -20,7 +20,7 @@
 # SOFTWARE.
 #
 
-FROM        --platform=$TARGETOS/$TARGETARCH eclipse-temurin:17-jdk-apine
+FROM        --platform=$TARGETOS/$TARGETARCH eclipse-temurin:17-jdk-alpine
 
 LABEL       author="Matthew Penner" maintainer="matthew@pterodactyl.io"
 
