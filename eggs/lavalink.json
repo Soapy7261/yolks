@@ -1,0 +1,29 @@
+{
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2024-07-27T03:16:14+00:00",
+    "name": "Lavalink",
+    "author": "Soapy7261",
+    "description": "Runs Lavalink",
+    "features": null,
+    "docker_images": {
+        "Lavalink": "ghcr.io\/soapy7261\/yolks:lavalink"
+    },
+    "file_denylist": [],
+    "startup": "java -jar lavalink.jar",
+    "config": {
+        "files": "{}",
+        "startup": "{\r\n    \"done\": \"Running Lavalink...\",\r\n    \"userInteraction\": []\r\n}",
+        "logs": "{}",
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": null,
+            "container": "alpine:3",
+            "entrypoint": "ash"
+        }
+    }
+}
