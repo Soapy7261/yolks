@@ -68,7 +68,9 @@ I have also added the eggs i made [here](/eggs) if you're interested, its kinda 
 
 ### Lavalink
 
-- `lavalink` Lavalink, based off eclipse-temurin 17 (alpine), downloads the latest lavalink jar and runs it (i should probably change how it downloads but it works for me), also downloads an application.yml from [here](https://github.com/lavalink-devs/Lavalink/blob/master/LavalinkServer/application.yml.example) if you do not have one.
+- `latest` Latest release of lavalink, based off eclipse-temurin 17 (alpine), downloads the latest lavalink jar and runs it (i should probably change how it downloads but it works for me), also downloads an application.yml from [here](https://github.com/lavalink-devs/Lavalink/blob/master/LavalinkServer/application.yml.example) if you do not have one.
+
+- `v3` Same as latest, but uses the last version of V3 which is 3.7.13
 
 # Original about me
 
