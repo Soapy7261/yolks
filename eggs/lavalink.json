@@ -15,7 +15,7 @@
     "startup": "java -jar lavalink.jar",
     "config": {
         "files": "{}",
-        "startup": "{\r\n    \"done\": \"Running Lavalink...\",\r\n    \"userInteraction\": []\r\n}",
+        "startup": "{\r\n    \"done\": \"Lavalink is ready to accept connections.\",\r\n    \"userInteraction\": []\r\n}",
         "logs": "{}",
         "stop": "^C"
     },

@@ -18,9 +18,7 @@ if [ -z "$DOWNLOAD_URL" ]; then
     exit 1
 fi
 
-curl -L -o ./lavalink.jar "$DOWNLOAD_URL"
-
-echo "Running Lavalink..."
+curl -L -o -s ./lavalink.jar "$DOWNLOAD_URL"
 PARSED=$(echo "${STARTUP}" | sed -e 's/{{/${/g' -e 's/}}/}/g' | eval echo "$(cat -)")
 
 printf "\033[1m\033[33mcontainer@pterodactyl~ \033[0m%s\n" "$PARSED"

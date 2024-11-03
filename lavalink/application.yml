@@ -5,12 +5,12 @@ lavalink:
   server:
     password: "you-should-seriously-change-this-like-really-dont-just-leave-this-as-the-default-there-are-password-generators-on-google-that-can-help"
     sources:
-      youtube: true
-      bandcamp: true
-      soundcloud: true
-      twitch: true
-      vimeo: true
-      http: true
+      youtube: false
+      bandcamp: false
+      soundcloud: false
+      twitch: false
+      vimeo: false
+      http: false
       local: false
     bufferDurationMs: 400 # The duration of the NAS buffer. Higher values fare better against longer GC pauses. Minimum of 40ms, lower values may introduce pauses.
     frameBufferDurationMs: 5000 # How many milliseconds of audio to keep buffered
