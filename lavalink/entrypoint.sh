@@ -18,11 +18,11 @@ if [ -z "$DOWNLOAD_URL" ]; then
     exit 1
 fi
 
-curl -L -o -s ./lavalink.jar "$DOWNLOAD_URL"
+curl -sL -o  ./lavalink.jar "$DOWNLOAD_URL"
 
 if [ -f "/home/container/application.yml"]; then
     echo "No application.yml found, downloading default from Soapy7261..."
-    curl -L -o -s ./application.yml https://raw.githubusercontent.com/Soapy7261/yolks/refs/heads/master/lavalink/defaultapplication.yml
+    curl -sL -o ./application.yml https://raw.githubusercontent.com/Soapy7261/yolks/refs/heads/master/lavalink/defaultapplication.yml
 fi
 
 PARSED=$(echo "${STARTUP}" | sed -e 's/{{/${/g' -e 's/}}/}/g' | eval echo "$(cat -)")
