@@ -32,7 +32,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - uses: docker/build-push-action@v6
         with:
-          context: ./lavalink
+          context: ./lavalink/${{ matrix.tag }}
           file: ./lavalink/${{ matrix.tag }}/Dockerfile
           platforms: linux/amd64 #,linux/arm64
           push: true
