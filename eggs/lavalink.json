@@ -12,7 +12,7 @@
         "Lavalink": "ghcr.io\/soapy7261\/yolks:lavalink"
     },
     "file_denylist": [],
-    "startup": "java -jar lavalink.jar",
+    "startup": "java -XX:MaxRAMPercentage=95.0 -jar lavalink.jar",
     "config": {
         "files": "{}",
         "startup": "{\r\n    \"done\": \"Lavalink is ready to accept connections.\",\r\n    \"userInteraction\": []\r\n}",
