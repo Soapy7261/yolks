@@ -30,9 +30,9 @@ LABEL       org.opencontainers.image.licenses=MIT
 RUN         apk add --update --no-cache curl \
 	&& adduser -D -h /home/container container \
     #&& /bin/ash /lavalinkinstall.sh \
-    && chown container /home/container/lavalink.jar \
+    #&& chown container /home/container/lavalink.jar \
     #&& rm -f /lavalinkinstall.sh \
-    && apk del curl \
+    #&& apk del curl \
     && apk fix --no-cache
 
 USER        container
