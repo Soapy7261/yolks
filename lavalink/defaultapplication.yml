@@ -1,6 +1,6 @@
 server: # REST and WS server
   port: 8080 # You WILL (probably) NEED to change this depending on your setup
-  address: 172.18.0.1 # This shouldn't need to be changed unless you changed default ptero settings
+  address: 127.0.0.1
 lavalink:
   server:
     password: "you-should-seriously-change-this-like-really-dont-just-leave-this-as-the-default-there-are-password-generators-on-google-that-can-help"
