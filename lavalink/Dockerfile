@@ -39,7 +39,7 @@ USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
 
-COPY        ./application.yml /home/container/application.yml
+#COPY        ./application.yml /home/container/application.yml
 COPY        ./entrypoint.sh /entrypoint.sh
 
 CMD         [ "/bin/ash", "/entrypoint.sh" ]
