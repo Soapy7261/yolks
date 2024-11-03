@@ -33,7 +33,7 @@ jobs:
       - uses: docker/build-push-action@v6
         with:
           context: ./lavalink
-          file: ./lavalink/_${{ matrix.tag }}/Dockerfile
+          file: ./lavalink/${{ matrix.tag }}/Dockerfile
           platforms: linux/amd64 #,linux/arm64
           push: true
           tags: |
