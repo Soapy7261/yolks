@@ -66,6 +66,10 @@ I (soapy) have been on a goosechase finding a yolk/egg that actually works with 
 
 I have also added the eggs i made [here](/eggs) if you're interested, its kinda hacky but hey, it works!
 
+### Lavalink
+
+- `lavalink` Lavalink, based off eclipse-temurin 17 (alpine), downloads the latest lavalink jar and runs it (i should probably change how it downloads but it works for me), also downloads an application.yml from [here](https://github.com/lavalink-devs/Lavalink/blob/master/LavalinkServer/application.yml.example) if you do not have one.
+
 # Original about me
 
 # Yolks
