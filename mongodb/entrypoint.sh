@@ -19,5 +19,4 @@ if [ ! -d "./mongodb-data" ]; then
 fi
 
 PARSED=$(echo "${STARTUP}" | sed -e 's/{{/${/g' -e 's/}}/}/g' | eval echo "$(cat -)")
-env ${PARSED}
-echo "Exiting..."
+exec env ${PARSED}
