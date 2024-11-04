@@ -34,3 +34,4 @@ USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
 
+ENTRYPOINT  ["--dbpath", "/home/container/mongodb-data"]
