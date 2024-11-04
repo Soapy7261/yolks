@@ -72,6 +72,18 @@ I have also added the eggs i made [here](/eggs) if you're interested, its kinda 
 
 - `v3` Same as latest, but uses the last version of V3 which is 3.7.13
 
+### MongoDB
+
+- `latest` Latest version of MongoDB.
+
+- `8` MongoDB 8, whatever the latest subversion is.
+
+- `7` Same as 8, but 7!
+
+- `6` Same as 7, but 6!
+
+- `5` Okay you get the point.
+
 # Original about me
 
 # Yolks
