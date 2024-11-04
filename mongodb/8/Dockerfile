@@ -28,12 +28,12 @@ LABEL       org.opencontainers.image.source="https://github.com/Soapy7261/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
 RUN         apt-get update -y && apt-get upgrade -y && rm -rf /var/lib/apt/lists/* \
-    && useradd -d /home/container -m container \
-    && mkdir -p /home/container/mongodb-data \
-    && chown -R container:container /home/container/mongodb-data
+    && useradd -d /home/container -m container
 
 USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
 
-CMD         [ "mongod", "--dbpath", "/home/container/mongodb-data"]
+COPY        ./../entrypoint.sh /entrypoint.sh
+
+CMD         [ "/bin/bash", "/entrypoint.sh" ]
