@@ -28,7 +28,7 @@ LABEL       org.opencontainers.image.source="https://github.com/Soapy7261/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
 RUN         apt-get update -y && apt-get upgrade -y && rm -rf /var/lib/apt/lists/* \
-    && mkdir -p /data/db && \
+    && mkdir -p /data/db \
     && useradd -d /home/container -m container \
     && chown -R container:container /data/db
 
