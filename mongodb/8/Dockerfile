@@ -35,3 +35,5 @@ RUN         apt-get update -y && apt-get upgrade -y && rm -rf /var/lib/apt/lists
 USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
+
+CMD         [ "mongod", "--dbpath", "/home/container/mongodb-data"]
