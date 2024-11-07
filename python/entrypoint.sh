@@ -20,5 +20,5 @@ else
 fi
 echo "Running script..."
 PARSED=$(echo "${STARTUP}" | sed -e 's/{{/${/g' -e 's/}}/}/g' | eval echo "$(cat -)")
-env ${PARSED}
-echo "Exiting..."
+exec env ${PARSED}
+#echo "Exiting..."
