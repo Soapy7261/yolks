@@ -31,6 +31,7 @@ RUN         apt-get update -y && apt-get upgrade -y && rm -rf /var/lib/apt/lists
 			&& useradd -d /home/container -m container
 
 ENV			PATH="/home/container/.local/bin:${PATH}"
+ENV 		PHPRC=/home/container
 USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
