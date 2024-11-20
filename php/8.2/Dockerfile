@@ -39,6 +39,6 @@ WORKDIR     /home/container
 
 COPY        ./../entrypoint.sh /entrypoint.sh
 
-ENTRYPOINT  ["/sbin/tini", "--"]
+ENTRYPOINT  ["/usr/bin/tini", "--"]
 
 CMD         [ "/bin/bash", "/entrypoint.sh" ]
