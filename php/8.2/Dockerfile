@@ -27,7 +27,7 @@ LABEL       author="Matthew Penner" maintainer="matthew@pterodactyl.io"
 LABEL       org.opencontainers.image.source="https://github.com/Soapy7261/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
-RUN         apt-get update -y && apt-get install tini \ 
+RUN         apt-get update -y && apt-get install -y tini \ 
 			&& apt-get upgrade -y && rm -rf /var/lib/apt/lists/* \
 			&& useradd -d /home/container -m container
 
@@ -39,6 +39,6 @@ WORKDIR     /home/container
 
 COPY        ./../entrypoint.sh /entrypoint.sh
 
-ENTRYPOINT ["/sbin/tini", "--"]
+ENTRYPOINT  ["/sbin/tini", "--"]
 
 CMD         [ "/bin/bash", "/entrypoint.sh" ]
