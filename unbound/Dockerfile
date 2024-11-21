@@ -22,4 +22,4 @@ WORKDIR     /home/container
 
 # Set the entrypoint script as the default command
 COPY        ./entrypoint.sh /entrypoint.sh
-ENTRYPOINT  [" /bin/bash", "/entrypoint.sh"]
+ENTRYPOINT  [ "/bin/bash", "/entrypoint.sh"]
