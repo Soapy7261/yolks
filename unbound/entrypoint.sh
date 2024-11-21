@@ -26,8 +26,14 @@ if [ ! -f "./unbound.conf" ]; then
     curl -sL -o ./unbound.conf https://raw.githubusercontent.com/Soapy7261/yolks/refs/heads/master/unbound/defaultconfig.txt
 fi
 
+if [ ! -f "./root.key" ]; then
+    echo "No root.key found, creating one..."
+    unbound-anchor -a /home/container/root.key
+fi
+
+echo "Testing config..."
+unbound-checkconf /home/container/unbound.conf
 echo "Running script..."
 PARSED=$(echo "${STARTUP}" | sed -e 's/{{/${/g' -e 's/}}/}/g' | eval echo "$(cat -)")
-unbound-checkconf /home/container/unbound.conf
 exec unbound -d -c /home/container/unbound.conf
 #echo "Exiting..."
