@@ -1,0 +1,26 @@
+server:
+    # Enable DoT
+    do-tls: yes
+    tls-service-key: "$KEY_FILE"
+    tls-service-pem: "$CERT_FILE"
+
+    # Enable DoH
+    http2-server:
+        do-https: false # I disable this by defauly because i dont use DoH
+        https-port: 8443 # Use port 8443 for DoH
+        https-service-key: "$KEY_FILE"
+        https-service-pem: "$CERT_FILE"
+
+    # General security settings
+    hide-identity: yes
+    hide-version: yes
+    qname-minimisation: yes
+    harden-below-nxdomain: yes
+    harden-referral-path: yes
+
+    # Listen on necessary ports
+    interface: 0.0.0.0@853 # For DoT
+    interface: 0.0.0.0@8443 # For DoH
+
+    # DNSSEC validation
+    auto-trust-anchor-file: "/var/lib/unbound/root.key"
