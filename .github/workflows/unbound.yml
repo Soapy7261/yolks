@@ -1,4 +1,4 @@
-name: build pm2
+name: build unbound
 on:
   workflow_dispatch:
   schedule:
