@@ -1,4 +1,7 @@
 #!/bin/bash
+#Hey you! Yeah you, the one looking at this script, I wonder who you are, but reguardless, I hope you have a great day! :D
+#If your using the pterodactyl panel, add the variables "ADDRESS" and "SSL_BITS" to the variables tab in the egg configuration, I probably could've made the script just use the public IP instead of the ADDRESS variable, but oh well, maybe some day I'll fix it.
+#Also the default config does not work, at all. You need to make your own config.
 
 TZ=${TZ:-UTC}
 export TZ
@@ -15,11 +18,17 @@ mkdir -p /home/container/ssl
 KEY_FILE="/home/container/ssl/private.key"
 CERT_FILE="/home/container/ssl/certificate.pem"
 
+#Check if SSL bits are not specified
+if [ -z "$SSL_BITS" ]; then
+    echo "SSL_BITS not specified, defaulting to 2048 bits..."
+    SSL_BITS=2048 # Default to 2048 bits
+fi
+
 # Run the Program
-echo "Generating 4096-bit RSA TLS key and certificate..."
-openssl req -x509 -newkey rsa:4096 -nodes -keyout $KEY_FILE -out $CERT_FILE -days 365 \
+echo "Generating $SSL_BITS-bit RSA TLS key and certificate..."
+openssl req -x509 -newkey rsa:$SSL_BITS -nodes -keyout $KEY_FILE -out $CERT_FILE -days 365 \
     -subj "/CN=${ADDRESS}"
-echo "TLS key and certificate generated with 4096-bit RSA."
+echo "TLS key and certificate generated with $SSL_BITS-bit RSA."
 
 if [ ! -f "./unbound.conf" ]; then
     echo "No unbound.conf found, downloading default..."
