@@ -32,8 +32,12 @@ if [ ! -f "./root.key" ]; then
 fi
 
 echo "Testing config..."
-unbound-checkconf /home/container/unbound.conf
+if ! unbound-checkconf /home/container/unbound.conf; then
+    echo "Config test failed, exiting..."
+    exit 1
+fi
+
 echo "Running script..."
 PARSED=$(echo "${STARTUP}" | sed -e 's/{{/${/g' -e 's/}}/}/g' | eval echo "$(cat -)")
-exec unbound -d -c /home/container/unbound.conf
+exec unbound -dd -c /home/container/unbound.conf
 #echo "Exiting..."
