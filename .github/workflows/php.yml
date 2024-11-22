@@ -19,10 +19,12 @@ jobs:
           - '8.1'
           - '8.2'
           - '8.3'
+          - '8.4'
 
           - '8.1-alpine'
           - '8.2-alpine'
           - '8.3-alpine'
+          - '8.4-alpine'
     steps:
       - uses: actions/checkout@v4
       # Setup QEMU for ARM64 Build
