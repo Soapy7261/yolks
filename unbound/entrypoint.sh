@@ -31,8 +31,8 @@ openssl req -x509 -newkey rsa:$SSL_BITS -nodes -keyout $KEY_FILE -out $CERT_FILE
 echo "TLS key and certificate generated with $SSL_BITS-bit RSA."
 
 if [ ! -f "./unbound.conf" ]; then
-    echo "No unbound.conf found, downloading default..."
-    curl -sL -o ./unbound.conf https://raw.githubusercontent.com/Soapy7261/yolks/refs/heads/master/unbound/defaultconfig.txt
+    echo "No unbound.conf found, downloading default from unbound..."
+    curl -sL -o ./unbound.conf https://raw.githubusercontent.com/MatthewVance/unbound-docker/refs/heads/master/unbound.conf
 fi
 
 if [ ! -f "./root.key" ]; then

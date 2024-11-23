@@ -84,6 +84,30 @@ I have also added the eggs i made [here](/eggs) if you're interested, its kinda 
 
 - `5` Okay you get the point.
 
+### PHP
+
+All PHP versions are based off php:VERSION-cli except for alpine versions which are based off php:VERSION-cli-alpine
+
+- `8.1` PHP 8.1
+
+- `8.2` PHP 8.2
+
+- `8.3` PHP 8.3
+
+- `8.4` PHP 8.4
+
+- `8.1-alpine` PHP 8.1, but alpine
+
+- `8.2-alpine` PHP 8.2, also running alpine
+
+- `8.3-alpine` PHP 8.3, still alpine
+
+- `8.4-alpine` What a surprise! PHP 8.4 on alpine!
+
+### Unbound
+
+I would not recommend using this, but if you want to, go ahead, it's just unbound, with some extra packages and compatible with pterodactyl
+
 # Original about me
 
 # Yolks
