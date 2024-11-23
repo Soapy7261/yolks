@@ -23,7 +23,7 @@ else
 fi
 
 if [ ! -d "/home/container/.git" ]; then
-    echo "Cloning repository..."
+    echo "Cloning $GIT_REPO..."
     git clone $GIT_BRANCH_COMMAND $GIT_REPO . || exit 1
 else
     echo "Pulling repository..."
