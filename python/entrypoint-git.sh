@@ -14,7 +14,7 @@ if [ -z "$GIT_REPO" ]; then
     echo "GIT_REPO not specified, exiting..."
     exit 1
 fi
-$GIT_BRANCH_COMMAND=""
+GIT_BRANCH_COMMAND=""
 if [ -z "$GIT_BRANCH" ]; then
     echo "GIT_BRANCH not specified, defaulting to none..."
 else
