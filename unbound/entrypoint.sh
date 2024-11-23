@@ -33,6 +33,7 @@ echo "TLS key and certificate generated with $SSL_BITS-bit RSA."
 if [ ! -f "./unbound.conf" ]; then
     echo "No unbound.conf found, downloading default from unbound..."
     curl -sL -o ./unbound.conf https://raw.githubusercontent.com/MatthewVance/unbound-docker/refs/heads/master/unbound.conf
+    echo "NOTICE: YOU WILL NEED TO MODIFY THE CONFIGURATION FILE TO WORK!"
 fi
 
 if [ ! -f "./root.key" ]; then

@@ -12,7 +12,7 @@ I (soapy) have been on a goosechase finding a yolk/egg that actually works with 
 
 - `3.12-tini` (based off the 3.12-nep yolk) which adds [TINI](https://github.com/krallin/tini) to the entrypoint so python will actually quit instead of just hanging forever until killed when you press stop
 
-- `3.12-t-ffmpeg` (based off the 3.12-tini yolk) which just adds FFMPEG if you need it
+- `3.12-git` (based off the 3.12-tini yolk) which adds git to the image, so you can clone repos and stuff
 
 - `3.13` Python 3.13
 
