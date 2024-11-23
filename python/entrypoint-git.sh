@@ -34,7 +34,7 @@ echo "Upgrading pip..."
 pip install --user --upgrade pip
 echo "Installing requirements..."
 if [[ -f "./requirements.txt" ]]; then
-    pip install --user -r requirements.txt -U
+    pip install --user -r requirements.txt --cache-dir /home/container/pip-cache -U
 else
     echo "No requirements.txt found, not installing any dependencies!"
 fi
