@@ -30,11 +30,13 @@ else
     git pull $GIT_REPO || exit 1
 fi
 # Run the Program
-echo "Upgrading pip..."
-pip install --user --upgrade pip
+if [ "${DONT_UPGRADE_PIP}" != "1" ]; then
+    echo "Upgrading pip..."
+    pip install --user --upgrade pip
+fi
 echo "Installing requirements..."
 if [[ -f "./requirements.txt" ]]; then
-    pip install --user -r requirements.txt --cache-dir /home/container/pip-cache -U
+    pip install --user -r requirements.txt -U
 else
     echo "No requirements.txt found, not installing any dependencies!"
 fi

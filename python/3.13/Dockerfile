@@ -35,6 +35,8 @@ ENV			PATH="/home/container/.local/bin:${PATH}"
 USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
+#I'm tired of pip adding like 8 seconds to boot time, im just gonna put it here instead.
+RUN         pip install --user --upgrade --no-cache-dir pip
 
 COPY        ./../entrypoint.sh /entrypoint.sh
 
