@@ -36,7 +36,7 @@ USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
 
-COPY        ./../entrypoint.sh /entrypoint.sh
+COPY        ./../entrypoint-git.sh /entrypoint.sh
 
 ENTRYPOINT  ["/sbin/tini", "--"]
 
