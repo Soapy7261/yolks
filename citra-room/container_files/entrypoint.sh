@@ -3,10 +3,6 @@
 #
 # Server Files: /home/citra
 
-ls -la /citra
-
-whoami
-
 export LD_LIBRARY_PATH=/citra/lib:$LD_LIBRARY_PATH
 
 s_command="
@@ -81,10 +77,6 @@ print_header() {
   printf "$pf" "Web API URL:" "${room_api}"
   printf "\n"
 }
-
-ls -la /home/container
-
-ls -la /home
 
 print_header
 eval "$s_command"
