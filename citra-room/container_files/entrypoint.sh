@@ -5,9 +5,6 @@
 
 export LD_LIBRARY_PATH=$HOME/lib:$LD_LIBRARY_PATH
 
-clear
-ls $HOME
-
 s_command="
 $HOME/citra \
 --port ${CITRA_PORT} \
@@ -80,6 +77,8 @@ print_header() {
   printf "$pf" "Web API URL:" "${room_api}"
   printf "\n"
 }
+
+ls -la $HOME
 
 print_header
 eval "$s_command"
