@@ -6,9 +6,10 @@
 export LD_LIBRARY_PATH=$HOME/lib:$LD_LIBRARY_PATH
 
 clear
+dir $HOME
 
 s_command="
-$HOME/citra-room \
+$HOME/citra \
 --port ${CITRA_PORT} \
 --room-name \"${CITRA_ROOMNAME}\" \
 --preferred-game \"${CITRA_PREFGAME}\" \
