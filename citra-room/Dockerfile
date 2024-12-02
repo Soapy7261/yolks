@@ -85,7 +85,7 @@ COPY --chown=$USERNAME ./container_files/ $USERHOME/
 USER $USERNAME
 WORKDIR $USERHOME
 
-RUN chmod +x docker-entrypoint.sh
+RUN chmod +x entrypoint.sh
 
 USER        container
 ENV         USER=container HOME=/home/container
