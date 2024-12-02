@@ -67,13 +67,6 @@ ENV CITRA_PREFGAME="Any"
 ENV CITRA_MAXMEMBERS=4
 ENV CITRA_BANLISTFILE="bannedlist.cbl"
 ENV CITRA_LOGFILE="citra-room.log"
-# Optional
-ENV CITRA_ROOMDESC=""
-ENV CITRA_PREFGAMEID="0"
-ENV CITRA_PASSWORD=""
-ENV CITRA_ISPUBLIC=0
-ENV CITRA_TOKEN=""
-ENV CITRA_WEBAPIURL=""
 
 RUN apk update \
     && adduser -D -h /home/container container \

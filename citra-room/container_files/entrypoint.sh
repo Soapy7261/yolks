@@ -80,5 +80,11 @@ print_header() {
 
 ls -la $HOME
 
+ls -la $USERHOME
+
+echo "$USERHOME"
+
+echo "$HOME"
+
 print_header
 eval "$s_command"
