@@ -80,15 +80,14 @@ RUN apk update \
     && rm -rf /tmp/* /var/tmp/*
 
 COPY --from=builder --chown=$USERNAME /server/ $USERHOME/
-COPY --chown=$USERNAME ./container_files/ $USERHOME/
 
 USER $USERNAME
 WORKDIR $USERHOME
-
-RUN chmod +x entrypoint.sh
 
 USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
 
-ENTRYPOINT  [ "/bin/ash", "./entrypoint.sh"]
+COPY       ./container_files/entrypoint.sh /entrypoint.sh
+
+ENTRYPOINT  [ "/bin/ash", "/entrypoint.sh"]
