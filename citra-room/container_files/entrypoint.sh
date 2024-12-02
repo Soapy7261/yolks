@@ -6,7 +6,7 @@
 export LD_LIBRARY_PATH=$HOME/lib:$LD_LIBRARY_PATH
 
 clear
-dir $HOME
+ls $HOME
 
 s_command="
 $HOME/citra \
