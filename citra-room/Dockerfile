@@ -58,7 +58,7 @@ RUN apk update \
 FROM alpine:latest
 
 ENV USERNAME=container
-ENV USERHOME=/home/$USERNAME
+ENV USERHOME=/home/container
 
 # Required
 ENV CITRA_PORT=24872
@@ -70,12 +70,14 @@ ENV CITRA_LOGFILE="citra-room.log"
 
 RUN apk update \
     && adduser -D -h /home/container container \
-    && rm -rf /tmp/* /var/tmp/*
+    && rm -rf /tmp/* /var/tmp/* \
+    && ls -la /home/container \
+    && ls -la /server
 
-COPY --from=builder --chown=$USERNAME /server/ $USERHOME/
+COPY --from=builder --chown=container /server/ /home/container/
 
-USER $USERNAME
-WORKDIR $USERHOME
+USER container
+WORKDIR /home/container
 
 USER        container
 ENV         USER=container HOME=/home/container
