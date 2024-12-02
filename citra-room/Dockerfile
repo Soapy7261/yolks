@@ -77,11 +77,18 @@ COPY --from=builder --chown=container /server/ /home/container/
 RUN ls -la /home/container
 
 USER container
+
+RUN ls -la /home/container
+
 WORKDIR /home/container
+
+RUN ls -la /home/container
 
 USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
+
+RUN ls -la /home/container
 
 COPY       ./container_files/entrypoint.sh /entrypoint.sh
 
