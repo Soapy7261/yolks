@@ -3,12 +3,14 @@
 #
 # Server Files: /home/citra
 
-ls -la /home/container
+ls -la /citra
+
+whoami
 
 export LD_LIBRARY_PATH=$HOME/lib:$LD_LIBRARY_PATH
 
 s_command="
-$HOME/citra \
+/citra/citra-room \
 --port ${CITRA_PORT} \
 --room-name \"${CITRA_ROOMNAME}\" \
 --preferred-game \"${CITRA_PREFGAME}\" \

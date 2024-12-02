@@ -70,9 +70,12 @@ ENV CITRA_LOGFILE="citra-room.log"
 
 RUN apk update \
     && adduser -D -h /home/container container \
+    && mkdir /citra \
+    && chown -R container /citra \
+    && chmod -R 755 /citra \
     && rm -rf /tmp/* /var/tmp/*
 
-COPY --from=builder --chown=container /server/ /home/container/
+COPY --from=builder --chown=container /server/ /citra/
 
 RUN ls -la /home/container
 
@@ -88,7 +91,7 @@ USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
 
-RUN ls -la /home/container
+RUN ls -la /citra
 
 COPY       ./container_files/entrypoint.sh /entrypoint.sh
 
