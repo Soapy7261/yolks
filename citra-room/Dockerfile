@@ -70,11 +70,11 @@ ENV CITRA_LOGFILE="citra-room.log"
 
 RUN apk update \
     && adduser -D -h /home/container container \
-    && rm -rf /tmp/* /var/tmp/* \
-    && ls -la /home/container \
-    && ls -la /server
+    && rm -rf /tmp/* /var/tmp/*
 
 COPY --from=builder --chown=container /server/ /home/container/
+
+RUN ls -la /home/container
 
 USER container
 WORKDIR /home/container
