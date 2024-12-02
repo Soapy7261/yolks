@@ -1,4 +1,4 @@
-FROM        --platform=$TARGETOS/$TARGETARCH soapy7261/docker-citra-room:latest
+FROM        --platform=$TARGETOS/$TARGETARCH ghcr.io/soapy7261/docker-citra-room:latest
 
 LABEL       author="Matthew Penner" maintainer="matthew@pterodactyl.io"
 
