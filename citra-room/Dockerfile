@@ -1,9 +1,4 @@
-FROM alpine:latest AS builder
-
-LABEL       author="Matthew Penner" maintainer="matthew@pterodactyl.io"
-
-LABEL       org.opencontainers.image.source="https://github.com/soapy7261/yolks"
-LABEL       org.opencontainers.image.licenses=MIT
+FROM alpine:3.20 AS builder
 
 WORKDIR /tmp/citra
 
@@ -55,7 +50,7 @@ RUN apk update \
     && touch /server/citra-room.log \
     && rm -R /tmp/citra
 
-FROM alpine:latest
+FROM alpine:3.20
 
 ENV USERNAME=container
 ENV USERHOME=/home/container
@@ -77,21 +72,12 @@ RUN apk update \
 
 COPY --from=builder --chown=container /server/ /citra/
 
-RUN ls -la /home/container
-
 USER container
-
-RUN ls -la /home/container
-
 WORKDIR /home/container
-
-RUN ls -la /home/container
 
 USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
-
-RUN ls -la /citra
 
 COPY       ./container_files/entrypoint.sh /entrypoint.sh
 
