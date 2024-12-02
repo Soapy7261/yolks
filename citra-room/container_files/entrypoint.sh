@@ -78,13 +78,9 @@ print_header() {
   printf "\n"
 }
 
-ls -la $HOME
+ls -la /home/container
 
-ls -la $USERHOME
-
-echo "$USERHOME"
-
-echo "$HOME"
+ls -la /home
 
 print_header
 eval "$s_command"
