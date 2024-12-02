@@ -3,6 +3,8 @@
 #
 # Server Files: /home/citra
 
+ls -la /home/container
+
 export LD_LIBRARY_PATH=$HOME/lib:$LD_LIBRARY_PATH
 
 s_command="
