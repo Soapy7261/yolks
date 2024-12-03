@@ -1,4 +1,4 @@
-FROM alpine:3.20 AS builder
+FROM --platform=$TARGETOS/$TARGETARCH alpine:latest AS builder
 
 WORKDIR /tmp/citra
 
@@ -50,7 +50,7 @@ RUN apk update \
     && touch /server/citra-room.log \
     && rm -R /tmp/citra
 
-FROM alpine:3.20
+FROM --platform=$TARGETOS/$TARGETARCH alpine:latest
 
 ENV USERNAME=container
 ENV USERHOME=/home/container
@@ -62,6 +62,13 @@ ENV CITRA_PREFGAME="Any"
 ENV CITRA_MAXMEMBERS=4
 ENV CITRA_BANLISTFILE="bannedlist.cbl"
 ENV CITRA_LOGFILE="citra-room.log"
+# Optional
+ENV CITRA_ROOMDESC=""
+ENV CITRA_PREFGAMEID="0"
+ENV CITRA_PASSWORD=""
+ENV CITRA_ISPUBLIC=0
+ENV CITRA_TOKEN=""
+ENV CITRA_WEBAPIURL=""
 
 RUN apk update \
     && adduser -D -h /home/container container \
@@ -79,6 +86,6 @@ USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
 
-COPY       ./container_files/entrypoint.sh /entrypoint.sh
+COPY       ./entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT  [ "/bin/ash", "/entrypoint.sh"]
