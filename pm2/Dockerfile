@@ -27,7 +27,7 @@ LABEL       author="Matthew Penner" maintainer="matthew@pterodactyl.io"
 LABEL       org.opencontainers.image.source="https://github.com/Soapy7261/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
-RUN         apk add --update --no-cache python3 \
+RUN         apk add --update --no-cache py3-pip python3 \
     && npm install -g npm@latest --no-fund \
     && npm install -g pm2 --no-fund \
 	&& adduser -D -h /home/container container
