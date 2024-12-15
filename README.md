@@ -14,6 +14,8 @@ I (soapy) have been on a goosechase finding a yolk/egg that actually works with 
 
 - `3.12-git` (based off the 3.12-tini yolk) which adds git to the image, so you can clone repos and stuff
 
+- `3.12-mr` (based off the 3.12-git yolk) which is just a different entrypoint.sh file to run multiple main.py files in a scripts folder, I use this to run the too many discord bots I have, since I can't justify having an individual container for each one
+
 - `3.13` Python 3.13
 
 - `3.13-nep` Python 3.13, no extra packages
