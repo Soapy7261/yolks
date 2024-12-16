@@ -29,7 +29,7 @@ if [ ! -d "/home/container/scripts/.git" ]; then
     git clone $GIT_BRANCH_COMMAND $GIT_REPO ./scripts || exit 1
 else
     echo "Pulling repository..."
-    git pull $GIT_REPO || exit 1
+    git -C /home/container/scripts pull $GIT_REPO || exit 1
 fi
 # Run the Program
 if [ "${DONT_UPGRADE_PIP}" != "1" ]; then
