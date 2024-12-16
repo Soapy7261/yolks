@@ -42,7 +42,8 @@ if [[ -f "./scripts/requirements.txt" ]]; then
 else
     echo "No requirements.txt found, not installing any dependencies!"
 fi
-echo "Finding scripts to run..."
+echo "Running script..."
+#    ^ This is only so pterodactyl can detect when the script is running without needing 2 seperate eggs.
 for dir in /home/container/scripts/*/; do
     if [ -f "$dir/main.py" ]; then
         echo "Running $dir/main.py..."
