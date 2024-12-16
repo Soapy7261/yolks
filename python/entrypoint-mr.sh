@@ -1,5 +1,7 @@
 #!/bin/ash
 
+set -e
+
 TZ=${TZ:-UTC}
 export TZ
 
@@ -44,7 +46,7 @@ echo "Finding scripts to run..."
 for dir in /home/container/scripts/*/; do
     if [ -f "$dir/main.py" ]; then
         echo "Running $dir/main.py..."
-        python "$dir/main.py" & || exit 1
+        python "$dir/main.py" &
     else
         echo "No main.py found in $dir"
     fi
