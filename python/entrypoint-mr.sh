@@ -24,7 +24,7 @@ fi
 
 if [ ! -d "/home/container/.git" ]; then
     echo "Cloning repo..."
-    git clone $GIT_BRANCH_COMMAND $GIT_REPO . || exit 1
+    git clone $GIT_BRANCH_COMMAND $GIT_REPO ./scripts || exit 1
 else
     echo "Pulling repository..."
     git pull $GIT_REPO || exit 1
