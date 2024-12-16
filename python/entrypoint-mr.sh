@@ -24,7 +24,7 @@ else
     echo "GIT_BRANCH set to $GIT_BRANCH"
 fi
 
-if [ ! -d "/home/container/.git" ]; then
+if [ ! -d "/home/container/scripts/.git" ]; then
     echo "Cloning repo..."
     git clone $GIT_BRANCH_COMMAND $GIT_REPO ./scripts || exit 1
 else
