@@ -36,7 +36,7 @@ if [ "${DONT_UPGRADE_PIP}" != "1" ]; then
 fi
 echo "Installing requirements..."
 if [[ -f "./requirements.txt" ]]; then
-    pip install --user -r requirements.txt -U
+    pip install --user -r ./scripts/requirements.txt -U
 else
     echo "No requirements.txt found, not installing any dependencies!"
 fi
