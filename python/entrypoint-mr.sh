@@ -42,6 +42,12 @@ if [[ -f "./scripts/requirements.txt" ]]; then
 else
     echo "No requirements.txt found, not installing any dependencies!"
 fi
+echo "Installing requirements without dependencies..."
+if [[ -f "./scripts/requirementsnodeps.txt" ]]; then
+    pip install --user -r ./scripts/requirementsnodeps.txt -U --no-deps
+else
+    echo "No requirementsnodeps.txt found, not installing any dependencies without dependencies!"
+fi
 echo "Running script..."
 #    ^ This is only so pterodactyl can detect when the script is running without needing 2 seperate eggs.
 for dir in /home/container/scripts/*/; do
