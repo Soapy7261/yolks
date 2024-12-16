@@ -54,3 +54,6 @@ done
 #PARSED=$(echo "${STARTUP}" | sed -e 's/{{/${/g' -e 's/}}/}/g' | eval echo "$(cat -)")
 #exec env ${PARSED}
 #echo "Exiting..."
+
+wait
+echo "This shouldn't happen, ideally."
