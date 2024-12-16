@@ -47,11 +47,13 @@ echo "Running script..."
 for dir in /home/container/scripts/*/; do
     if [ -f "$dir/main.py" ]; then
         echo "Running $dir/main.py..."
-        python "$dir/main.py" &
+        #python "$dir/main.py" &
+        (cd $dir && python main.py) &
     else
         echo "No main.py found in $dir"
     fi
 done
+
 #PARSED=$(echo "${STARTUP}" | sed -e 's/{{/${/g' -e 's/}}/}/g' | eval echo "$(cat -)")
 #exec env ${PARSED}
 #echo "Exiting..."
