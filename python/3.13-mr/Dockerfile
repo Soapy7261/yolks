@@ -20,7 +20,7 @@
 # SOFTWARE.
 #
 
-FROM        --platform=$TARGETOS/$TARGETARCH python:3.12-alpine
+FROM        --platform=$TARGETOS/$TARGETARCH python:3.13-alpine
 
 LABEL       author="Matthew Penner" maintainer="matthew@pterodactyl.io"
 
@@ -38,7 +38,7 @@ WORKDIR     /home/container
 #I'm tired of pip adding like 8 seconds to boot time, im just gonna put it here instead.
 RUN         pip install --user --upgrade --no-cache-dir pip
 
-COPY        ./../entrypoint-git.sh /entrypoint.sh
+COPY        ./../entrypoint-mr.sh /entrypoint.sh
 
 ENTRYPOINT  ["/sbin/tini", "--"]
 
