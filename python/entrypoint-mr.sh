@@ -64,5 +64,19 @@ done
 #exec env ${PARSED}
 #echo "Exiting..."
 
-wait
-echo "This shouldn't happen, ideally."
+if [ -z "$PARFC" ]; then # Pull And Restart For Changes, basically if you want to pull and restart the script if there are changes.
+    wait
+    echo "This shouldn't happen, ideally."
+fi
+if [ "$PARFC" == "1" ]; then
+    #Check for new changes every 1 minute, and if there are any, restart the script by just entirely restarting the container.
+    while true; do
+        sleep 60
+        if git -C /home/container/scripts pull "$GIT_REPO" | grep -q "Already up to date."; then
+            echo "No changes detected, continuing..."
+        else
+            echo "Changes detected, restarting..."
+            reboot
+        fi
+    done
+fi
