@@ -73,7 +73,8 @@ if [ "$PARFC" == "1" ]; then
     while true; do
         sleep 60
         if git -C /home/container/scripts pull "$GIT_REPO" | grep -q "Already up to date."; then
-            echo "No changes detected, continuing..."
+            #echo "No changes detected, continuing..."
+            :
         else
             echo "Changes detected, restarting..."
             reboot
