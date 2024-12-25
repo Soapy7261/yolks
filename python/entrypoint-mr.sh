@@ -75,8 +75,6 @@ if [ "$PARFC" == "1" ]; then
         # OUTPUT=$(git -C /home/container/scripts pull "$GIT_REPO" 2>/dev/null)
         if [ -z "$(git -C /home/container/scripts status -s)" ]; then
             #echo "No changes detected, continuing..."
-            :
-        else
             echo "Changes detected, restarting..."
             reboot
         fi
