@@ -72,7 +72,7 @@ if [ "$PARFC" == "1" ]; then
     #Check for new changes every 1 minute, and if there are any, restart the script by just entirely restarting the container.
     while true; do
         sleep 60
-        if git -C /home/container/scripts pull "$GIT_REPO" | grep -q "Already up to date."; then
+        if git -C /home/container/scripts pull "$GIT_REPO" > /dev/null 2>&1 | grep -q "Already up to date."; then
             #echo "No changes detected, continuing..."
             :
         else
