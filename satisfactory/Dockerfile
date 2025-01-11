@@ -35,6 +35,8 @@ RUN mkdir -p /home/container/config \
 COPY ./init.sh ./healthcheck.sh /
 COPY --chown=container:container ./run.sh /run.sh
 
+RUN chmod +x /run.sh
+
 HEALTHCHECK --timeout=10s --start-period=180s \
   CMD bash /healthcheck.sh
 
