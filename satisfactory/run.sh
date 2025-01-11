@@ -97,7 +97,8 @@ printf "Launching game server\\n\\n"
 cp -r "/home/container/config/saved/server/." "/home/container/config/backups/"
 cp -r "${GAMESAVESDIR}/server/." "/home/container/config/backups" # useful after the first run
 rm -rf "$GAMESAVESDIR"
-ln -sf "/home/container/config/saved" "$GAMESAVESDIR"
+#ln -sf "/home/container/config/saved" "$GAMESAVESDIR"
+mkdir -p /home/container/config/saved
 
 if [ ! -f "/home/container/config/gamefiles/FactoryServer.sh" ]; then
     printf "FactoryServer launch script is missing.\\n"
