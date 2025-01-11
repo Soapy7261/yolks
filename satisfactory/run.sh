@@ -6,6 +6,8 @@ mkdir -p /home/container/config/saved
 mkdir -p /home/container/config/backups
 mkdir -p /home/container/config/gamefiles
 mkdir -p /home/container/config/logs/steam
+mkdir -p /home/container/config/.steam/root
+mkdir -p /home/container/config/.steam/steam
 
 
 # Engine.ini settings
