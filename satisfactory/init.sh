@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-mkdir -p /home/container/config
+mkdir /home/container/config
 
 printf "===== Satisfactory Server %s =====\\nhttps://github.com/wolveix/satisfactory-server\\n\\n" "$VERSION"
 
@@ -108,11 +108,11 @@ mkdir -p \
     /home/container/.steam/steam \
     || exit 1
 
-echo "Satisfactory logs can be found in /config/gamefiles/FactoryGame/Saved/Logs" > /home/container/config/logs/satisfactory-path.txt
+echo "Satisfactory logs can be found in home/container/config/gamefiles/FactoryGame/Saved/Logs" > /home/container/config/logs/satisfactory-path.txt
 
 if [[ "${ROOTLESS,,}" != "true" ]]; then
   chown -R "$PUID":"$PGID" /home/container/config /home/container /tmp/dumps
-  exec gosu "$USER" "/home/container/run.sh" "$@"
+  exec gosu "$USER" "/run.sh" "$@"
 else
   exec "/run.sh" "$@"
 fi
