@@ -38,7 +38,6 @@ COPY --chown=container:container ./run.sh /home/container/run.sh
 HEALTHCHECK --timeout=10s --start-period=180s \
   CMD bash /healthcheck.sh
 
-COPY ./entrypoint.sh /entrypoint.sh
 USER    container
 ENV     USER=container HOME=/home/container
 WORKDIR /home/container
