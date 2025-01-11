@@ -47,4 +47,4 @@ ARG VERSION="DEV"
 ENV VERSION=$VERSION
 LABEL version=$VERSION
 
-ENTRYPOINT [ "/bin/bash", "/entrypoint.sh" ]
+ENTRYPOINT [ "/bin/bash", "/init.sh" ]
