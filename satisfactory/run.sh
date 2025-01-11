@@ -2,6 +2,12 @@
 
 set -e
 
+mkdir -p /home/container/config/saved
+mkdir -p /home/container/config/backups
+mkdir -p /home/container/config/gamefiles
+mkdir -p /home/container/config/logs/steam
+
+
 # Engine.ini settings
 if ! [[ "$AUTOSAVENUM" =~ $NUMCHECK ]]; then
     printf "Invalid autosave number given: %s\\n" "$AUTOSAVENUM"
@@ -98,7 +104,6 @@ cp -r "/home/container/config/saved/server/." "/home/container/config/backups/"
 cp -r "${GAMESAVESDIR}/server/." "/home/container/config/backups" # useful after the first run
 rm -rf "$GAMESAVESDIR"
 #ln -sf "/home/container/config/saved" "$GAMESAVESDIR"
-mkdir -p /home/container/config/saved
 
 if [ ! -f "/home/container/config/gamefiles/FactoryServer.sh" ]; then
     printf "FactoryServer launch script is missing.\\n"
