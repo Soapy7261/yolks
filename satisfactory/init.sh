@@ -1,8 +1,6 @@
 #!/bin/bash
 set -e
 
-mkdir /home/container/config
-
 printf "===== Satisfactory Server %s =====\\nhttps://github.com/wolveix/satisfactory-server\\n\\n" "$VERSION"
 
 CURRENTUID=$(id -u)
