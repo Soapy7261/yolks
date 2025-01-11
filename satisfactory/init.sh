@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "This is the init.sh file"
+
 set -e
 
 printf "===== Satisfactory Server %s =====\\nhttps://github.com/wolveix/satisfactory-server\\n\\n" "$VERSION"
