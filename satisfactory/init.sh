@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+mkdir -p /home/container/config
+
 printf "===== Satisfactory Server %s =====\\nhttps://github.com/wolveix/satisfactory-server\\n\\n" "$VERSION"
 
 CURRENTUID=$(id -u)
@@ -112,5 +114,5 @@ if [[ "${ROOTLESS,,}" != "true" ]]; then
   chown -R "$PUID":"$PGID" /home/container/config /home/container /tmp/dumps
   exec gosu "$USER" "/home/container/run.sh" "$@"
 else
-  exec "/home/container/run.sh" "$@"
+  exec "/run.sh" "$@"
 fi

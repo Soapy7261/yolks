@@ -1,7 +1,5 @@
 #!/bin/bash
 
-echo "This is the run.sh file"
-
 set -e
 
 # Engine.ini settings
