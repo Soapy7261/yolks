@@ -33,7 +33,7 @@ RUN mkdir -p /home/container/config \
  && chown container:container /home/container/config
 
 COPY ./init.sh healthcheck.sh /
-COPY --chown=container:container run.sh /home/container/
+COPY --chown=container:container run.sh /home/container/run.sh
 
 HEALTHCHECK --timeout=10s --start-period=180s \
   CMD bash /healthcheck.sh
@@ -46,4 +46,4 @@ ARG VERSION="DEV"
 ENV VERSION=$VERSION
 LABEL version=$VERSION
 
-CMD [ "/bin/bash", "/init.sh" ]
+CMD [ "/bin/bash", "/home/container/run.sh" ]
