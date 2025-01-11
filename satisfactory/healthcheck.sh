@@ -1,7 +1,8 @@
 #!/bin/bash
-set -o pipefail
 
 echo "This is the healthcheck.sh file"
+
+set -o pipefail
 
 curl -k -f -s -S -X POST "https://127.0.0.1:${SERVERGAMEPORT}/api/v1" \
 -H "Content-Type: application/json" \
