@@ -32,7 +32,7 @@ RUN set -x \
 RUN mkdir -p /home/container/config \
  && chown container:container /home/container/config
 
-COPY init.sh healthcheck.sh /
+COPY ./init.sh healthcheck.sh /
 COPY --chown=container:container run.sh /home/container/
 
 HEALTHCHECK --timeout=10s --start-period=180s \
