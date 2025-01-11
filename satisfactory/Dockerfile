@@ -38,14 +38,12 @@ COPY --chown=container:container run.sh /home/container/
 HEALTHCHECK --timeout=10s --start-period=180s \
   CMD bash /healthcheck.sh
 
-WORKDIR /config
+USER    container
+ENV     USER=container HOME=/home/container
+WORKDIR /home/container
 
 ARG VERSION="DEV"
 ENV VERSION=$VERSION
 LABEL version=$VERSION
-
-STOPSIGNAL SIGINT
-
-EXPOSE 7777/udp 7777/tcp
 
 CMD [ "/bin/bash", "/init.sh" ]
