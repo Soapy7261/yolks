@@ -4,6 +4,13 @@ echo "This is the init.sh file"
 
 set -e
 
+mkdir -p /home/container/config/saved
+mkdir -p /home/container/config/backups
+mkdir -p /home/container/config/gamefiles
+mkdir -p /home/container/config/logs/steam
+mkdir -p /home/container/config/.steam/root
+mkdir -p /home/container/config/.steam/steam
+
 printf "===== Satisfactory Server %s =====\\nhttps://github.com/wolveix/satisfactory-server\\n\\n" "$VERSION"
 
 CURRENTUID=$(id -u)
