@@ -22,7 +22,7 @@ ENV AUTOSAVENUM="5" \
 
 # hadolint ignore=DL3008
 RUN set -x \
-  && apk add --update --no-cache su-exec xdg-user-dirs curl jq tzdata \
+  && apk add --update --no-cache su-exec xdg-user-dirs curl jq tzdata lscpu \
   && apk upgrade --no-cache \
   && adduser -D -h /home/container container \
   && su-exec nobody true
