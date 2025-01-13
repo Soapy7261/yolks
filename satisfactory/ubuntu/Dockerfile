@@ -32,7 +32,8 @@ RUN set -x \
 RUN mkdir -p /home/container/config \
  && chown container:container /home/container/config
 
-COPY ./init.sh ./healthcheck.sh /
+COPY ./init.sh /init.sh
+COPY ./healthcheck.sh /healthcheck.sh
 COPY --chown=container:container ./run.sh /run.sh
 
 RUN chmod +x /run.sh
