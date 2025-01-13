@@ -22,14 +22,13 @@ ENV AUTOSAVENUM="5" \
 
 # hadolint ignore=DL3008
 RUN set -x \
- && apt-get update \
- && apt-get install -y gosu xdg-user-dirs curl jq tzdata --no-install-recommends \
- && rm -rf /var/lib/apt/lists/* \
- && useradd -ms /bin/bash container \
- && gosu nobody true
+  && apk add --update --no-cache su-exec xdg-user-dirs curl jq tzdata \
+  && apk upgrade --no-cache \
+  && adduser -D -h /home/container container \
+  && su-exec nobody true
 
 RUN mkdir -p /home/container/config \
- && chown container:container /home/container/config
+  && chown container:container /home/container/config
 
 COPY ./init.sh /init.sh
 COPY ./healthcheck.sh /healthcheck.sh
@@ -38,7 +37,7 @@ COPY --chown=container:container ./run.sh /run.sh
 RUN chmod +x /run.sh
 
 HEALTHCHECK --timeout=10s --start-period=180s \
-  CMD bash /healthcheck.sh
+  CMD ash /healthcheck.sh
 
 USER    container
 ENV     USER=container HOME=/home/container
