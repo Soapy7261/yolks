@@ -16,7 +16,11 @@ jobs:
       fail-fast: false
       matrix:
         tag:
+          # Ubuntu
           - ubuntu
+          - ubuntu-24
+
+          # Debian
           - debian
 
     steps:
