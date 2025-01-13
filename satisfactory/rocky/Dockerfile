@@ -23,14 +23,14 @@ ENV AUTOSAVENUM="5" \
 # hadolint ignore=DL3008
 RUN set -x \
   && dnf -y update \
-  && dnf -y install
+  && dnf -y install \
     epel-release \
-     su-exec \
-     xdg-user-dirs \
-     curl \
-     jq \
-     tzdata \
-     shadow-utils \
+    su-exec \
+    xdg-user-dirs \
+    curl \
+    jq \
+    tzdata \
+    shadow-utils \
   && dnf clean all \
   && rm -rf /var/cache/dnf \
   && useradd -ms /bin/bash container \
