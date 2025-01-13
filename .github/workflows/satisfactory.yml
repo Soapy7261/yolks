@@ -18,6 +18,8 @@ jobs:
         tag:
           - ubuntu
           - alpine
+          - debian
+
     steps:
       - uses: actions/checkout@v4
       # Setup QEMU for ARM64 Build
