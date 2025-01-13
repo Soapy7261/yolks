@@ -23,14 +23,14 @@ ENV AUTOSAVENUM="5" \
 
 # hadolint ignore=DL3008
 RUN set -x \
- && apt-get update \
- && apt-get install -y gosu xdg-user-dirs curl jq tzdata --no-install-recommends \
- && rm -rf /var/lib/apt/lists/* \
- && useradd -ms /bin/bash container \
- && gosu nobody true
+  && apt-get update \
+  && apt-get install -y gosu xdg-user-dirs curl jq tzdata --no-install-recommends \
+  && rm -rf /var/lib/apt/lists/* \
+  && useradd -ms /bin/bash container \
+  && gosu nobody true
 
 RUN mkdir -p /home/container/config \
- && chown container:container /home/container/config
+  && chown container:container /home/container/config
 
 COPY ./init.sh /init.sh
 COPY ./healthcheck.sh /healthcheck.sh

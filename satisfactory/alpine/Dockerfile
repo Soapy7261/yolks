@@ -1,7 +1,6 @@
 FROM steamcmd/steamcmd:alpine-3
 
 ENV AUTOSAVENUM="5" \
-    DEBIAN_FRONTEND="noninteractive" \
     DEBUG="false" \
     DISABLESEASONALEVENTS="false" \
     GAMECONFIGDIR="/home/container/config/gamefiles/FactoryGame/Saved" \

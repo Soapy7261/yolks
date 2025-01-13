@@ -32,7 +32,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - uses: docker/build-push-action@v6
         with:
-          context: ./satisfactory
+          context: ./satisfactory/${{ matrix.tag }}
           file: ./satisfactory/${{ matrix.tag }}/Dockerfile
           platforms: linux/amd64 #,linux/arm64
           push: true
