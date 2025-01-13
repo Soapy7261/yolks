@@ -72,20 +72,21 @@ fi
 ###############################################################################
 # Build .ini arguments
 ###############################################################################
-ini_args=(
-  "-ini:Engine:[/Script/FactoryGame.FGSaveSession]:mNumRotatingAutosaves=$AUTOSAVENUM"
-  "-ini:Engine:[/Script/Engine.GarbageCollectionSettings]:gc.MaxObjectsInEditor=$MAXOBJECTS"
-  "-ini:Engine:[/Script/OnlineSubsystemUtils.IpNetDriver]:LanServerMaxTickRate=$MAXTICKRATE"
-  "-ini:Engine:[/Script/OnlineSubsystemUtils.IpNetDriver]:NetServerMaxTickRate=$MAXTICKRATE"
-  "-ini:Engine:[/Script/OnlineSubsystemUtils.IpNetDriver]:ConnectionTimeout=$TIMEOUT"
-  "-ini:Engine:[/Script/OnlineSubsystemUtils.IpNetDriver]:InitialConnectTimeout=$TIMEOUT"
-  "-ini:Engine:[ConsoleVariables]:wp.Runtime.EnableServerStreaming=$SERVERSTREAMING"
-  "-ini:Game:[/Script/Engine.GameSession]:ConnectionTimeout=$TIMEOUT"
-  "-ini:Game:[/Script/Engine.GameSession]:InitialConnectTimeout=$TIMEOUT"
-  "-ini:Game:[/Script/Engine.GameSession]:MaxPlayers=$MAXPLAYERS"
-  "-ini:GameUserSettings:[/Script/Engine.GameSession]:MaxPlayers=$MAXPLAYERS"
-  "$DISABLESEASONALEVENTS"
-)
+INI_ARGS="
+-ini:Engine:[/Script/FactoryGame.FGSaveSession]:mNumRotatingAutosaves=$AUTOSAVENUM
+-ini:Engine:[/Script/Engine.GarbageCollectionSettings]:gc.MaxObjectsInEditor=$MAXOBJECTS
+-ini:Engine:[/Script/OnlineSubsystemUtils.IpNetDriver]:LanServerMaxTickRate=$MAXTICKRATE
+-ini:Engine:[/Script/OnlineSubsystemUtils.IpNetDriver]:NetServerMaxTickRate=$MAXTICKRATE
+-ini:Engine:[/Script/OnlineSubsystemUtils.IpNetDriver]:ConnectionTimeout=$TIMEOUT
+-ini:Engine:[/Script/OnlineSubsystemUtils.IpNetDriver]:InitialConnectTimeout=$TIMEOUT
+-ini:Engine:[ConsoleVariables]:wp.Runtime.EnableServerStreaming=$SERVERSTREAMING
+-ini:Game:[/Script/Engine.GameSession]:ConnectionTimeout=$TIMEOUT
+-ini:Game:[/Script/Engine.GameSession]:InitialConnectTimeout=$TIMEOUT
+-ini:Game:[/Script/Engine.GameSession]:MaxPlayers=$MAXPLAYERS
+-ini:GameUserSettings:[/Script/Engine.GameSession]:MaxPlayers=$MAXPLAYERS
+$DISABLESEASONALEVENTS_ARG
+"
+
 
 ###############################################################################
 # Update game if needed
@@ -148,14 +149,14 @@ fi
 cd /home/container/config/gamefiles || exit 1
 
 chmod +x FactoryServer.sh 2>/dev/null || true
-./FactoryServer.sh -Port="$SERVERGAMEPORT" "${ini_args[@]}" "$@" &
+./FactoryServer.sh -Port="$SERVERGAMEPORT" $ini_args "$@" &
 
+SERVER_PID=$!
 sleep 2
-satisfactory_pid="$(ps --ppid "$!" -o pid= 2>/dev/null)"
 
 shutdown() {
   printf "\\nReceived SIGINT or SIGTERM. Shutting down.\\n"
-  kill -INT "$satisfactory_pid" 2>/dev/null || true
+  kill -INT "$SERVER_PID" 2>/dev/null || true
 }
 trap shutdown SIGINT SIGTERM
 
