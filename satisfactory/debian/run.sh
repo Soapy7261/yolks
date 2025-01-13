@@ -110,7 +110,7 @@ chmod +x FactoryServer.sh || true
 ./FactoryServer.sh -Port="$SERVERGAMEPORT" "${ini_args[@]}" "$@" &
 
 sleep 2
-satisfactory_pid=$(ps --ppid ${!} o pid=)
+satisfactory_pid=$!
 
 shutdown() {
     printf "\\nReceived SIGINT. Shutting down.\\n"
