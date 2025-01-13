@@ -26,10 +26,7 @@ RUN set -x \
   && dnf -y install \
     epel-release \
     xdg-user-dirs \
-    curl \
     jq \
-    tzdata \
-    shadow-utils \
   && dnf clean all \
   && rm -rf /var/cache/dnf \
   && useradd -ms /bin/bash container \
