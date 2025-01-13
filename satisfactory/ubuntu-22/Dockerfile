@@ -1,4 +1,4 @@
-FROM steamcmd/steamcmd:ubuntu
+FROM steamcmd/steamcmd:ubuntu-22
 
 ENV AUTOSAVENUM="5" \
     DEBIAN_FRONTEND="noninteractive" \

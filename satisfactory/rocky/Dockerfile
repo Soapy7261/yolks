@@ -1,7 +1,6 @@
-FROM steamcmd/steamcmd:ubuntu
+FROM steamcmd/steamcmd:rocky
 
 ENV AUTOSAVENUM="5" \
-    DEBIAN_FRONTEND="noninteractive" \
     DEBUG="false" \
     DISABLESEASONALEVENTS="false" \
     GAMECONFIGDIR="/home/container/config/gamefiles/FactoryGame/Saved" \
@@ -23,11 +22,19 @@ ENV AUTOSAVENUM="5" \
 
 # hadolint ignore=DL3008
 RUN set -x \
-  && apt-get update \
-  && apt-get install -y gosu xdg-user-dirs curl jq tzdata --no-install-recommends \
-  && rm -rf /var/lib/apt/lists/* \
+  && dnf -y update \
+  && dnf -y install
+    epel-release \
+     su-exec \
+     xdg-user-dirs \
+     curl \
+     jq \
+     tzdata \
+     shadow-utils \
+  && dnf clean all \
+  && rm -rf /var/cache/dnf \
   && useradd -ms /bin/bash container \
-  && gosu nobody true
+  && su-exec nobody true
 
 RUN mkdir -p /home/container/config \
   && chown container:container /home/container/config

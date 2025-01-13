@@ -18,10 +18,14 @@ jobs:
         tag:
           # Ubuntu
           - ubuntu
+          - ubuntu-22
           - ubuntu-24
 
           # Debian
           - debian
+
+          # RHEL derivatives
+          - rocky
 
     steps:
       - uses: actions/checkout@v4
