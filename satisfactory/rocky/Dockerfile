@@ -29,8 +29,7 @@ RUN set -x \
     jq \
   && dnf clean all \
   && rm -rf /var/cache/dnf \
-  && useradd -ms /bin/bash container \
-  && su-exec nobody true
+  && useradd -ms /bin/bash container
 
 RUN mkdir -p /home/container/config \
   && chown container:container /home/container/config
