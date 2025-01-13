@@ -7,16 +7,17 @@ on:
     branches:
       - master
     paths:
-      - satisfactory/*
+      - satisfactory/**
 jobs:
   push:
-    name: "yolks:satisfactory"
+    name: "yolks:satisfactory_${{ matrix.tag }}"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         tag:
-          - satisfactory
+          - ubuntu
+          - alpine
     steps:
       - uses: actions/checkout@v4
       # Setup QEMU for ARM64 Build
@@ -32,8 +33,8 @@ jobs:
       - uses: docker/build-push-action@v6
         with:
           context: ./satisfactory
-          file: ./satisfactory/Dockerfile
+          file: ./satisfactory/${{ matrix.tag }}/Dockerfile
           platforms: linux/amd64 #,linux/arm64
           push: true
           tags: |
-            ghcr.io/soapy7261/yolks:satisfactory
+            ghcr.io/soapy7261/yolks:satisfactory_${{ matrix.tag }}
