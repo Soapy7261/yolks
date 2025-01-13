@@ -17,7 +17,6 @@ jobs:
       matrix:
         tag:
           - ubuntu
-          - alpine
           - debian
 
     steps:
