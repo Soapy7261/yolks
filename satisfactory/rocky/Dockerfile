@@ -25,7 +25,6 @@ RUN set -x \
   && dnf -y update \
   && dnf -y install \
     epel-release \
-    su-exec \
     xdg-user-dirs \
     curl \
     jq \
