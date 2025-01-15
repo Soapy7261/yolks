@@ -120,6 +120,7 @@ I would not recommend using this, but if you want to, go ahead, it's just unboun
 </details>
 <details>
 <summary>Satisfactory Server yolks added</summary>
+
 Thanks to [this](https://github.com/wolveix/satisfactory-server/blob/main/Dockerfile) docker file for the base of this yolk!
 
 - `debian` This is the recommended yolk for satisfactory, it's based off steamcmd:debian-12 and installs the satisfactory server.
