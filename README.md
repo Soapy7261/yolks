@@ -95,7 +95,7 @@ I have also added eggs for using these yolks, they are [here](/eggs) if you're i
 </details>
 <details>
 <summary>PHP yolks added</summary>
-All PHP versions are based off php:VERSION-cli except for alpine versions which are based off php:VERSION-cli-alpine
+All PHP versions are based off php:VERSION-cli except for alpine versions which are based off php:VERSION-cli-alpine, all of these also install TINI so they actually quit when you press stop.
 
 - `8.1` PHP 8.1
 
@@ -115,8 +115,9 @@ All PHP versions are based off php:VERSION-cli except for alpine versions which 
 </details>
 <details>
 <summary>Unbound?</summary>
-
 I would not recommend using this, but if you want to, go ahead, it's just unbound, with some extra packages and compatible with pterodactyl
+
+- `unbound`
 </details>
 <details>
 <summary>Satisfactory Server yolks added</summary>
@@ -132,6 +133,12 @@ Thanks to [this](https://github.com/wolveix/satisfactory-server/blob/main/Docker
 - `ubuntu-22` ubuntu 22, this is what the original docker image used.
 
 - `ubuntu-24` You get the point.
+</details>
+<details>
+<summary>NGINX</summary>
+A simple NGINX server with `git` and `ca-certificates` installed, based off `nginx:alpine`, designed to work with a git repo, remember to block `.git`!
+
+- `nginx-simple`
 </details>
 
 # Original about me
