@@ -23,7 +23,7 @@ I (soapy) have been on a goosechase finding a yolk/egg that actually works with 
 - `3.13-tini` Python 3.13, no extra packages, with TINI
 
 ### Java yolks added
-+
+
 - `graalvm-EE` Does not include graalvm EE, you must make a mount at /graalvm of a copy of the whole graalvm EE folder for to work, otherwise, it wont work.
 
 - `17-graalvm` Java 17 graalvm, also removes unneeded(?) packages, based off debian:latest
@@ -109,6 +109,19 @@ All PHP versions are based off php:VERSION-cli except for alpine versions which 
 ### Unbound
 
 I would not recommend using this, but if you want to, go ahead, it's just unbound, with some extra packages and compatible with pterodactyl
+
+### Satisfactory
+Thanks to [this](https://github.com/wolveix/satisfactory-server/blob/main/Dockerfile) docker file for the base of this yolk!
+
+- `debian` This is the recommended yolk for satisfactory, it's based off steamcmd:debian-12 and installs the satisfactory server.
+
+- `rocky` Same as debian, but based off steamcmd:rocky, not sure why you'd want to use this, but hey, it's here.
+
+- `ubuntu` Just based off steamcmd/steamcmd:ubuntu
+
+- `ubuntu-22` ubuntu 22, this is what the original docker image used.
+
+- `ubuntu-24` You get the point.
 
 # Original about me
 
