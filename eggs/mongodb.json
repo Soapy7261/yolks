@@ -1,0 +1,34 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2025-01-15T01:45:58+00:00",
+    "name": "MongoDB",
+    "author": "Soapy7261",
+    "description": null,
+    "features": null,
+    "docker_images": {
+        "8": "ghcr.io\/soapy7261\/yolks:mongodb_8",
+        "7": "ghcr.io\/soapy7261\/yolks:mongodb_7",
+        "6": "ghcr.io\/soapy7261\/yolks:mongodb_6",
+        "5": "ghcr.io\/soapy7261\/yolks:mongodb_5"
+    },
+    "file_denylist": [],
+    "startup": "mongod --dbpath \/home\/container\/mongodb-data --port {{SERVER_PORT}}",
+    "config": {
+        "files": "{}",
+        "startup": "{\r\n    \"done\": \"mongod startup complete\"\r\n}",
+        "logs": "{}",
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": null,
+            "container": "alpine:3.4",
+            "entrypoint": "ash"
+        }
+    },
+    "variables": []
+}
