@@ -2,9 +2,13 @@
 
 I (soapy) have been on a goosechase finding a yolk/egg that actually works with python 3.12 as my app needs it, after trying like 4 different python 3.12 yolks I just gave up and decided to make my own and made some other additional yolks!
 
+## Eggs?
+I have also added eggs for using these yolks, they are [here](/eggs) if you're interested.
+
 ## What yolks does this repo add?
 
-### Python yolks added
+<details>
+<summary>Python yolks added</summary>
 
 - `3.12` Just python 3.12, based off all the other yolks, nothing extra
 
@@ -21,8 +25,9 @@ I (soapy) have been on a goosechase finding a yolk/egg that actually works with 
 - `3.13-nep` Python 3.13, no extra packages
 
 - `3.13-tini` Python 3.13, no extra packages, with TINI
-
-### Java yolks added
+</details>
+<details>
+<summary>Java yolks added</summary>
 
 - `graalvm-EE` Does not include graalvm EE, you must make a mount at /graalvm of a copy of the whole graalvm EE folder for to work, otherwise, it wont work.
 
@@ -53,28 +58,30 @@ I (soapy) have been on a goosechase finding a yolk/egg that actually works with 
 - `23-graalvm` Self explainatory.
 
 - `23-graalvm-slim` Self explainatory.
-
-### NodeJS yolks added
+</details>
+<details>
+<summary>NodeJS yolks added</summary>
 
 - `20-nep` NodeJS 20 with no extra packages [^1]
 
 - `22` NodeJS 22
 
 - `22-nep` NodeJS 22 with no extra packages [^1]
-
-### PM2
+</details>
+<details>
+<summary>PM2 yolks added</summary>
 
 - `pm2` PM2, based off NodeJS 22 NEP, adds PM2 and python, I wouldn't recommend using this since its very specialized to my needs, and I'll probably break it with no warning, so I'd recommend forking
-
-I have also added the eggs i made [here](/eggs) if you're interested, its kinda hacky but hey, it works!
-
-### Lavalink
+</details>
+<details>
+<summary>Lavalink yolks added</summary>
 
 - `latest` Latest release of lavalink, based off eclipse-temurin 17 (alpine), downloads the latest lavalink jar and runs it (i should probably change how it downloads but it works for me), also downloads an application.yml from [here](https://github.com/lavalink-devs/Lavalink/blob/master/LavalinkServer/application.yml.example) if you do not have one.
 
 - `v3` Same as latest, but uses the last version of V3 which is 3.7.13
-
-### MongoDB
+</details>
+<details>
+<summary>MongoDB yolks added</summary>
 
 - `latest` Latest version of MongoDB.
 
@@ -85,9 +92,9 @@ I have also added the eggs i made [here](/eggs) if you're interested, its kinda 
 - `6` Same as 7, but 6!
 
 - `5` Okay you get the point.
-
-### PHP
-
+</details>
+<details>
+<summary>PHP yolks added</summary>
 All PHP versions are based off php:VERSION-cli except for alpine versions which are based off php:VERSION-cli-alpine
 
 - `8.1` PHP 8.1
@@ -105,12 +112,14 @@ All PHP versions are based off php:VERSION-cli except for alpine versions which 
 - `8.3-alpine` PHP 8.3, still alpine
 
 - `8.4-alpine` What a surprise! PHP 8.4 on alpine!
-
-### Unbound
+</details>
+<details>
+<summary>Unbound?</summary>
 
 I would not recommend using this, but if you want to, go ahead, it's just unbound, with some extra packages and compatible with pterodactyl
-
-### Satisfactory
+</details>
+<details>
+<summary>Satisfactory Server yolks added</summary>
 Thanks to [this](https://github.com/wolveix/satisfactory-server/blob/main/Dockerfile) docker file for the base of this yolk!
 
 - `debian` This is the recommended yolk for satisfactory, it's based off steamcmd:debian-12 and installs the satisfactory server.
@@ -122,6 +131,7 @@ Thanks to [this](https://github.com/wolveix/satisfactory-server/blob/main/Docker
 - `ubuntu-22` ubuntu 22, this is what the original docker image used.
 
 - `ubuntu-24` You get the point.
+</details>
 
 # Original about me
 
