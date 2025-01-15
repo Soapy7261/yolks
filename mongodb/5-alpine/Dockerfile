@@ -27,7 +27,7 @@ LABEL       author="Matthew Penner" maintainer="matthew@pterodactyl.io"
 LABEL       org.opencontainers.image.source="https://github.com/Soapy7261/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
-RUN         apk add --update --no-cache mongodb=8.* \
+RUN         apk add --update --no-cache mongodb=5.* \
 	&& adduser -D -h /home/container container
 
 USER        container

@@ -17,11 +17,15 @@ jobs:
       matrix:
         tag:
           - latest
+          - latest-alpine
           - 8
           - 8-alpine
           - 7
+          - 7-alpine
           - 6
+          - 6-alpine
           - 5
+          - 5-alpine
           #- 4
     steps:
       - uses: actions/checkout@v4
