@@ -28,6 +28,7 @@ I have also added eggs for using these yolks, they are [here](/eggs) if you're i
 </details>
 <details>
 <summary>Java yolks added</summary>
+All graalvm 17 yolks are based off 17.0.12 which is now outdated, this is due to oracle deciding to lock graalvm 17 behind a license that prevents re-distibution, so I can't update it, but it still works fine, just be aware of that.
 
 - `graalvm-EE` Does not include graalvm EE, you must make a mount at /graalvm of a copy of the whole graalvm EE folder for to work, otherwise, it wont work.
 
