@@ -27,9 +27,8 @@ LABEL       author="Matthew Penner" maintainer="matthew@pterodactyl.io"
 LABEL       org.opencontainers.image.source="https://github.com/Soapy7261/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
-RUN         curl -fsSL https://pgp.mongodb.com/server-4.4.asc | gpg --dearmor -o /usr/share/keyrings/mongodb-archive-keyring.gpg \
-    && echo "deb [ signed-by=/usr/share/keyrings/mongodb-archive-keyring.gpg ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" > /etc/apt/sources.list.d/mongodb-org-4.4.list \
-    && apt-get update -y && apt-get upgrade -y && rm -rf /var/lib/apt/lists/* \
+RUN         apt-get update -y && apt-get upgrade -y \
+    && rm -rf /var/lib/apt/lists/* \
     && useradd -d /home/container -m container
 
 USER        container
