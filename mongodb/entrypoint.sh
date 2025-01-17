@@ -19,7 +19,7 @@ if [ ! -d "./mongodb-data" ]; then
 fi
 
 PARSED=$(echo "${STARTUP}" | sed -e 's/{{/${/g' -e 's/}}/}/g' | eval echo "$(cat -)")
-exec env ${PARSED} & sleep 5
+env ${PARSED} & sleep 5
 
 mongodb_pid=$(ps --ppid ${!} o pid=)
 
