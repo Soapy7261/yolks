@@ -18,11 +18,13 @@ if [ ! -d "./mongodb-data" ]; then
     mkdir /home/container/mongodb-data
 fi
 
+PARSED=$(echo "${STARTUP}" | sed -e 's/{{/${/g' -e 's/}}/}/g' | eval echo "$(cat -)")
+exec env ${PARSED} & sleep 5
+
 if [ -d "./mongodb-data-to-restore" ]; then
     echo "Restoring MongoDB data..."
     mongorestore /home/container/mongodb-data-to-restore
     rm -rf /home/container/mongodb-data-to-restore
 fi
 
-PARSED=$(echo "${STARTUP}" | sed -e 's/{{/${/g' -e 's/}}/}/g' | eval echo "$(cat -)")
-exec env ${PARSED}
+wait
