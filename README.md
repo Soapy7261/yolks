@@ -85,6 +85,8 @@ All graalvm 17 yolks are based off 17.0.12 which is now outdated, this is due to
 <summary>MongoDB yolks added</summary>
 If a folder named 'mongodb-data-to-restore' exists in the /home/container directory mongoDB will try to restore all the data from that folder, this is useful for restoring a backup or migrating data, but this will drop existing data in the database, so be careful! This also will not restore indexes.
 
+You can specify the enviorment variable `PRUNE_DIAGNOSTIC_DATA` to `1` to remove all the diagnostic data that mongoDB collects on start, this is useful for reducing disk usage, but will make it harder to diagnose issues.
+
 - `latest` Latest version of MongoDB.
 
 - `8` MongoDB 8, whatever the latest subversion is.

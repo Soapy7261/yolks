@@ -18,6 +18,10 @@ if [ ! -d "./mongodb-data" ]; then
     mkdir /home/container/mongodb-data
 fi
 
+if [ "${PRUNE_DIAGNOSTIC_DATA}" == "1" ]; then
+    echo "Pruning diagnostic data..."
+    rm -rf /home/container/mongodb-data/diagnostic.data/* || true
+fi
 PARSED=$(echo "${STARTUP}" | sed -e 's/{{/${/g' -e 's/}}/}/g' | eval echo "$(cat -)")
 env ${PARSED} & sleep 5
 
