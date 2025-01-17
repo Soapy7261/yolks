@@ -21,6 +21,14 @@ fi
 PARSED=$(echo "${STARTUP}" | sed -e 's/{{/${/g' -e 's/}}/}/g' | eval echo "$(cat -)")
 exec env ${PARSED} & sleep 5
 
+mongodb_pid=$(ps --ppid ${!} o pid=)
+
+shutdown() {
+    printf "\\nReceived SIGINT. Shutting down.\\n"
+    kill -INT $mongodb_pid 2>/dev/null
+}
+trap shutdown SIGINT SIGTERM
+
 if [ -d "./mongodb-data-to-restore" ]; then
     echo "Restoring MongoDB data..."
     mongorestore /home/container/mongodb-data-to-restore
