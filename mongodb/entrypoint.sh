@@ -31,7 +31,7 @@ trap shutdown SIGINT SIGTERM
 
 if [ -d "./mongodb-data-to-restore" ]; then
     echo "Restoring MongoDB data..."
-    mongorestore /home/container/mongodb-data-to-restore
+    mongorestore -h 127.0.0.1 --port $SERVER_PORT /home/container/mongodb-data-to-restore
     rm -rf /home/container/mongodb-data-to-restore
 fi
 
