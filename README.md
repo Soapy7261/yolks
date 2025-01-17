@@ -83,6 +83,7 @@ All graalvm 17 yolks are based off 17.0.12 which is now outdated, this is due to
 </details>
 <details>
 <summary>MongoDB yolks added</summary>
+If a folder named 'mongodb-data-to-restore' exists in the /home/container directory mongoDB will try to restore all the data from that folder, this is useful for restoring a backup or migrating data.
 
 - `latest` Latest version of MongoDB.
 
