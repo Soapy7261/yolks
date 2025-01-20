@@ -28,6 +28,7 @@ if [ ! -d "/home/container/.git" ]; then
 else
     echo "Pulling repository..."
     git fetch origin || exit 1
+    git pull || exit 1
 fi
 # Run the Program
 if [ "${DONT_UPGRADE_PIP}" != "1" ]; then
