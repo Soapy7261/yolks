@@ -27,7 +27,7 @@ if [ ! -d "/home/container/.git" ]; then
     git clone $GIT_BRANCH_COMMAND $GIT_REPO . || exit 1
 else
     echo "Pulling repository..."
-    git pull origin $GIT_REPO || exit 1
+    git pull $GIT_REPO || exit 1
 fi
 # Run the Program
 if [ "${DONT_UPGRADE_PIP}" != "1" ]; then
