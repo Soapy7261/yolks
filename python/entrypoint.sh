@@ -20,6 +20,12 @@ if [[ -f "./requirements.txt" ]]; then
 else
     echo "No requirements.txt found, not installing any dependencies!"
 fi
+echo "Installing requirements without dependencies..."
+if [[ -f "./scripts/requirementsnodeps.txt" ]]; then
+    pip install --user -r ./scripts/requirementsnodeps.txt -U --no-deps
+else
+    echo "No requirementsnodeps.txt found, not installing any dependencies without dependencies!"
+fi
 echo "Running script..."
 PARSED=$(echo "${STARTUP}" | sed -e 's/{{/${/g' -e 's/}}/}/g' | eval echo "$(cat -)")
 exec env ${PARSED}

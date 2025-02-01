@@ -9,6 +9,7 @@ I have also added eggs for using these yolks, they are [here](/eggs) if you're i
 
 <details>
 <summary>Python yolks added</summary>
+All python yolks will install dependencies from a `requirements.txt` file if one exists like others, but what this yolk also has support for is a `requirementsnodeps.txt` which will install the dependencies from that file with the flag `--no-deps` passed to `pip`, there aren't a lot of use cases for this, but I needed it for a certain use case, so I added it.
 
 - `3.12` Just python 3.12, based off all the other yolks, nothing extra
 
