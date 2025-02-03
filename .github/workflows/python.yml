@@ -26,6 +26,9 @@ jobs:
           - '3.12-mr'
           - '3.13-mr'
 
+          - '3.12-mr-ffmpeg'
+          - '3.13-mr-ffmpeg'
+
           - '3.12-nep'
           - '3.13-nep'
 
