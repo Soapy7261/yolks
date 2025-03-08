@@ -11,6 +11,12 @@ I have also added eggs for using these yolks, they are [here](/eggs) if you're i
 <summary>Python yolks added</summary>
 All python yolks will install dependencies from a `requirements.txt` file if one exists like others, but what this yolk also has support for is a `requirementsnodeps.txt` which will install the dependencies from that file with the flag `--no-deps` passed to `pip`, there aren't a lot of use cases for this, but I needed it for a certain use case, so I added it.
 
+Additional flags:
+- PURGE_PYCACHE_ON_STARTUP
+  - If set to `1` will remove all `__pycache__` folders on startup, this is useful for reducing disk usage or when using the git yolks, but will increase startup time, although you should probably just set `PYTHONDONTWRITEBYTECODE` to `1` instead of using this flag.
+- DONT_UPGRADE_PIP
+  - If set to `1` will not upgrade pip on startup, this is useful for reducing startup time since pip is slow to upgrade and it is already upgraded in the yolks themselves.
+
 - `3.12` Just python 3.12, based off all the other yolks, nothing extra
 
 - `3.12-nep` (**N**o **E**xtra **P**ackages) for python 3.12 only, what this does is explained here [^1]

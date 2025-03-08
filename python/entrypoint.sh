@@ -10,6 +10,10 @@ INTERNAL_IP=$(ip route get 1 | awk '{print $(NF-2);exit}')
 export INTERNAL_IP # Don't know why this would be needed but okay ig :shrug:
 
 # Run the Program
+if [ "${PURGE_PYCACHE_ON_STARTUP}" == "1" ]; then
+    echo "Purging __pycache__ directories..."
+    find . -type d -name "__pycache__" -exec rm -rf {} +
+fi
 if [ "${DONT_UPGRADE_PIP}" != "1" ]; then
     echo "Upgrading pip..."
     pip install --user --upgrade pip

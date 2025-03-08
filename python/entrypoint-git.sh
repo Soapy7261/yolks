@@ -31,6 +31,10 @@ else
     git pull || exit 1
 fi
 # Run the Program
+if [ "${PURGE_PYCACHE_ON_STARTUP}" == "1" ]; then
+    echo "Purging __pycache__ directories..."
+    find . -type d -name "__pycache__" -exec rm -rf {} +
+fi
 if [ "${DONT_UPGRADE_PIP}" != "1" ]; then
     echo "Upgrading pip..."
     pip install --user --upgrade pip
