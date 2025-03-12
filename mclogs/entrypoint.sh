@@ -38,6 +38,10 @@ if [ ! -d "/home/container/nginx/conf.d" ]; then
     cp -r /etc/nginx/conf.d /home/container/nginx/conf.d
 fi
 
+if [ ! -d "/home/container/nginx/nginx-error.log" ]; then
+    touch /home/container/nginx-error.log
+fi
+
 # start NGINX in the background
 echo 'Starting PHP FPM...'
 php-fpm -D
@@ -48,4 +52,4 @@ fi
 
 sed -i "s/listen 80/listen ${SERVER_PORT}/g" /home/container/nginx/conf.d/default.conf
 
-nginx -g 'daemon off;'
+nginx -g 'error_log /home/container/nginx-error.log error; daemon off;'
