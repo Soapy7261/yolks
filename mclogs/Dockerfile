@@ -44,10 +44,11 @@ RUN         apk add --update --no-cache git nginx curl bash tini \
             && chown -R container:container /var/lib/nginx \
             && chown -R container:container /var/log/nginx \
             && chown -R container:container /run/nginx \
+            && chmod -R 777 /etc/nginx \
+            #&& chown -R container:container /etc/nginx \
             # Change mclogs.conf to replace "php-fpm" with "127.0.0.1"
             && mv /web/mclogs/docker/mclogs.conf /etc/nginx/conf.d/default.conf \
             && sed -i 's/php-fpm/127.0.0.1/g' /etc/nginx/conf.d/default.conf \
-            && sed -i 's/listen 80/listen ${SERVER_PORT}/g' /etc/nginx/conf.d/default.conf \
             && /bin/ash /install.sh \
             && rm /install.sh \
             && apk del curl bash git
