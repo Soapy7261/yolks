@@ -27,11 +27,26 @@ LABEL       author="Matthew Penner" maintainer="matthew@pterodactyl.io"
 LABEL       org.opencontainers.image.source="https://github.com/Soapy7261/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
-RUN         apk add --update --no-cache git && apk upgrade --no-cache \
+COPY        ./composer_install.sh /composer_install.sh
+COPY        ./install.sh /install.sh
+COPY        ./entrypoint.sh /entrypoint.sh
+COPY        ./nginx.conf /etc/nginx/nginx.conf
+
+RUN         apk add --update --no-cache git nginx curl bash && apk upgrade --no-cache \
 			&& adduser -D -h /home/container container \
-            && git clone https://github.com/aternosorg/mclogs.git /home/container \
-            && chown -R container:container /home/container
-            # && 
+            && /bin/bash /composer_install.sh && rm /composer_install.sh \
+            && mkdir -p /web/mclogs \
+            && mkdir -p /etc/nginx/conf.d \
+            && git clone https://github.com/aternosorg/mclogs.git /web/mclogs \
+            && rm -rf /web/mclogs/.git \
+            && chown -R container:container /web/mclogs \
+            && chown -R container:container /var/lib/nginx \
+            && chown -R container:container /var/log/nginx \
+            && chown -R container:container /run/nginx \
+            # Change mclogs.conf to replace "php-fpm" with "127.0.0.1"
+            && mv /web/mclogs/docker/mclogs.conf /etc/nginx/conf.d/default.conf \
+            && sed -i 's/php-fpm/127.0.0.1/g' /etc/nginx/conf.d/default.conf \
+            && apk del curl bash git
 
 ENV			PATH="/home/container/.local/bin:${PATH}"
 ENV 		PHPRC=/home/container
@@ -39,6 +54,6 @@ USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
 
-COPY        ./entrypoint.sh /entrypoint.sh
+EXPOSE 80
 
 CMD         [ "/bin/ash", "/entrypoint.sh" ]
