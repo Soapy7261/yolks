@@ -45,7 +45,9 @@ RUN         apk add --update --no-cache git nginx curl bash tini \
             && chown -R container:container /var/log/nginx \
             && chown -R container:container /run/nginx \
             && rm -rf /var/log/nginx \
-            && ln -s /home/container/nginx/logs /var/log/nginx \
+            && ln -s /home/container/nginx/log /var/log/nginx \
+            && rm -rf /var/lib/nginx/logs/ \
+            && ln -s /home/container/nginx/logs /var/lib/nginx/logs \
             #&& chmod -R 755 /etc/nginx \
             #&& chown -R container:container /etc/nginx \
             # Change mclogs.conf to replace "php-fpm" with "127.0.0.1"

@@ -42,6 +42,10 @@ if [ ! -d "/home/container/nginx/logs" ]; then
     mkdir -p /home/container/nginx/logs
 fi
 
+if [ ! -d "/home/container/nginx/log" ]; then
+    mkdir -p /home/container/nginx/log
+fi
+
 # start NGINX in the background
 echo 'Starting PHP FPM...'
 php-fpm -D
