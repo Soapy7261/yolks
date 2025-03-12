@@ -44,6 +44,7 @@ RUN         apk add --update --no-cache git nginx curl bash tini \
             && chown -R container:container /var/lib/nginx \
             && chown -R container:container /var/log/nginx \
             && chown -R container:container /run/nginx \
+            && rm -rf /var/log/nginx \
             && ln -s /home/container/nginx/logs /var/log/nginx \
             #&& chmod -R 755 /etc/nginx \
             #&& chown -R container:container /etc/nginx \
