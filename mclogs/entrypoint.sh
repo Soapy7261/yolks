@@ -5,7 +5,7 @@ if [ ! -d "/home/container/logs" ]; then
 fi
 # start NGINX in the background
 echo 'Starting PHP FPM...'
-php-fpm -D && sleep 1 # sleep 1 to give PHP FPM time to start
+php-fpm -D
 echo 'Starting NGINX...'
 nginx -g 'daemon off;' &
 
