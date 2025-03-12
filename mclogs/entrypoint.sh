@@ -52,4 +52,4 @@ fi
 
 sed -i "s/listen 80/listen ${SERVER_PORT}/g" /home/container/nginx/conf.d/default.conf
 
-nginx -g 'error_log /home/container/nginx-error.log error; daemon off;'
+nginx -g 'error_log /dev/null; daemon off;'
