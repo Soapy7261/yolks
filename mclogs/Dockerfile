@@ -32,7 +32,7 @@ COPY        ./install.sh /install.sh
 COPY        ./entrypoint.sh /entrypoint.sh
 COPY        ./nginx.conf /etc/nginx/nginx.conf
 
-RUN         apk add --update --no-cache git nginx curl bash && apk upgrade --no-cache \
+RUN         apk add --update --no-cache git nginx curl bash tini && apk upgrade --no-cache \
 			&& adduser -D -h /home/container container \
             && /bin/bash /composer_install.sh && rm /composer_install.sh \
             && mkdir -p /web/mclogs \
@@ -55,5 +55,7 @@ ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
 
 EXPOSE 80
+
+ENTRYPOINT  ["/sbin/tini", "--"]
 
 CMD         [ "/bin/ash", "/entrypoint.sh" ]
