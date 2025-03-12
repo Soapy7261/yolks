@@ -51,6 +51,5 @@ if [ -z "$SERVER_PORT" ]; then
 fi
 
 sed -i "s/listen 80/listen ${SERVER_PORT}/g" /home/container/nginx/conf.d/default.conf
-ln -s /home/container/nginx/logs /var/log/nginx
 
 nginx -g 'daemon off;'
