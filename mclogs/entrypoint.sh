@@ -7,7 +7,4 @@ fi
 echo 'Starting PHP FPM...'
 php-fpm -D
 echo 'Starting NGINX...'
-nginx -g 'daemon off;' &
-
-# wait for NGINX to exit
-wait $!
+nginx -g 'daemon off;'
