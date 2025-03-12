@@ -38,8 +38,8 @@ if [ ! -d "/home/container/nginx/conf.d" ]; then
     cp -r /etc/nginx/conf.d /home/container/nginx/conf.d
 fi
 
-if [ ! -d "/home/container/nginx/nginx-error.log" ]; then
-    touch /home/container/nginx-error.log
+if [ ! -d "/home/container/nginx/logs" ]; then
+    mkdir -p /home/container/nginx/logs
 fi
 
 # start NGINX in the background
@@ -51,5 +51,6 @@ if [ -z "$SERVER_PORT" ]; then
 fi
 
 sed -i "s/listen 80/listen ${SERVER_PORT}/g" /home/container/nginx/conf.d/default.conf
+ln -s /home/container/nginx/logs /var/log/nginx
 
-nginx -g 'error_log /dev/null; daemon off;'
+nginx -g 'daemon off;'
