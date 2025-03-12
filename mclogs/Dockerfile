@@ -38,7 +38,7 @@ RUN         apk add --update --no-cache git nginx curl bash tini \
             && /bin/bash /composer_install.sh && rm /composer_install.sh \
             && mkdir -p /web/mclogs \
             && mkdir -p /etc/nginx/conf.d \
-            && git clone https://github.com/aternosorg/mclogs.git /web/mclogs \
+            && git clone https://github.com/Soapy7261/mclogs.git -b custom-changes /web/mclogs \
             && rm -rf /web/mclogs/.git \
             && chown -R container:container /web/mclogs \
             && chown -R container:container /run/nginx \
