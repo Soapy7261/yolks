@@ -1,8 +1,7 @@
 #!/bin/ash
 
-#check if /web/mclogs/vendor is a folder or exists
-if [ ! -d "/web/mclogs/vendor" ]; then
-    /install.sh
+if [ ! -d "/home/container/logs" ]; then
+   mkdir -p /home/container/logs
 fi
 # start NGINX in the background
 echo 'Starting PHP FPM...'

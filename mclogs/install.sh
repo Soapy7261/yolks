@@ -21,10 +21,8 @@ fi
 
 if grep -q "\"path\" => \"/../storage/logs/\"" /web/mclogs/core/config/filesystem.php; then
     echo 'Changing filesystem path in filesystem.php...'
-    mkdir -p /home/container/logs
     sed -i 's|"path" => "/../storage/logs/"|"path" => "/../../../../home/container/logs/"|g' /web/mclogs/core/config/filesystem.php
 fi
-cat /web/mclogs/core/config/storage.php
 # Install dependencies
 
 echo 'Installing dependencies...'
