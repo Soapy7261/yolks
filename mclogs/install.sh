@@ -28,5 +28,5 @@ cat /web/mclogs/core/config/storage.php
 # Install dependencies
 
 echo 'Installing dependencies...'
-composer update --working-dir=/web/mclogs || exit 1
-composer install --no-dev --no-interaction --no-progress --working-dir=/web/mclogs || exit 1
+composer update --no-cache --working-dir=/web/mclogs || exit 1
+composer install --no-cache --no-dev --no-interaction --no-progress --working-dir=/web/mclogs || exit 1
