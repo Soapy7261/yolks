@@ -50,11 +50,10 @@ RUN         apk add --update --no-cache git nginx curl bash tini && apk upgrade 
 
 ENV			PATH="/home/container/.local/bin:${PATH}"
 ENV 		PHPRC=/home/container
+ENV         COMPOSER_HOME=/web/mclogs/composer
 USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
-
-EXPOSE 80
 
 ENTRYPOINT  ["/sbin/tini", "--"]
 
