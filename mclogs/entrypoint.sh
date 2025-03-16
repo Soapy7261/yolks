@@ -1,37 +1,37 @@
 #!/bin/ash
 
 if [ ! -d "/home/container/logs" ]; then
-   mkdir -p /home/container/logs
+    mkdir -p /home/container/logs
 fi
 
 if [ ! -d "/home/container/nginx" ]; then
-   mkdir -p /home/container/nginx
+    mkdir -p /home/container/nginx
 fi
 
 # Ugly I know, but I need to create them.
 
 if [ ! -d "/home/container/nginx/temp/client_body" ]; then
-   mkdir -p /home/container/nginx/temp/client_body
+    mkdir -p /home/container/nginx/temp/client_body
 fi
 
 if [ ! -d "/home/container/nginx/temp/proxy" ]; then
-   mkdir -p /home/container/nginx/temp/proxy
+    mkdir -p /home/container/nginx/temp/proxy
 fi
 
 if [ ! -d "/home/container/nginx/temp/fastcgi" ]; then
-   mkdir -p /home/container/nginx/temp/fastcgi
+    mkdir -p /home/container/nginx/temp/fastcgi
 fi
 
 if [ ! -d "/home/container/nginx/temp/uwsgi" ]; then
-   mkdir -p /home/container/nginx/temp/uwsgi
+    mkdir -p /home/container/nginx/temp/uwsgi
 fi
 
 if [ ! -d "/home/container/nginx/temp/scgi" ]; then
-   mkdir -p /home/container/nginx/temp/scgi
+    mkdir -p /home/container/nginx/temp/scgi
 fi
 
 if [ ! -d "/home/container/nginx/fastcgi_params" ]; then
-   cp /etc/nginx/fastcgi_params /home/container/nginx/fastcgi_params
+    cp /etc/nginx/fastcgi_params /home/container/nginx/fastcgi_params
 fi
 
 if [ ! -d "/home/container/nginx/conf.d" ]; then

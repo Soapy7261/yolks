@@ -28,7 +28,7 @@ LABEL       org.opencontainers.image.source="https://github.com/Soapy7261/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
 COPY        ./composer_install.sh /composer_install.sh
-COPY        ./install.sh /install.sh
+#COPY        ./install.sh /install.sh
 COPY        ./entrypoint.sh /entrypoint.sh
 COPY        ./nginx.conf /etc/nginx/nginx.conf
 
@@ -38,7 +38,7 @@ RUN         apk add --update --no-cache git nginx curl bash tini \
             && /bin/bash /composer_install.sh && rm /composer_install.sh \
             && mkdir -p /web/mclogs \
             && mkdir -p /etc/nginx/conf.d \
-            && git clone https://github.com/Soapy7261/mclogs.git -b custom-changes /web/mclogs \
+            && git clone https://github.com/Soapy7261/mclogs.git -b yolk /web/mclogs \
             && rm -rf /web/mclogs/.git \
             && chown -R container:container /web/mclogs \
             && chown -R container:container /run/nginx \
@@ -50,13 +50,11 @@ RUN         apk add --update --no-cache git nginx curl bash tini \
             && chown -R container:container /var/log/nginx \
             && chown -R container:container /home/container \
             && chmod -R 777 /home/container \
-            #&& chmod -R 755 /etc/nginx \
-            #&& chown -R container:container /etc/nginx \
-            # Change mclogs.conf to replace "php-fpm" with "127.0.0.1"
             && mv /web/mclogs/docker/mclogs.conf /etc/nginx/conf.d/default.conf \
+            && rm -rf /web/mclogs/docker \
             && sed -i 's/php-fpm/127.0.0.1/g' /etc/nginx/conf.d/default.conf \
-            && /bin/ash /install.sh \
-            && rm /install.sh \
+            && composer update --no-cache --working-dir=/web/mclogs || exit 1 \
+            && composer install --no-cache --no-dev --no-interaction --no-progress --working-dir=/web/mclogs || exit 1 \
             && apk del curl bash git
 
 ENV			PATH="/home/container/.local/bin:${PATH}"
