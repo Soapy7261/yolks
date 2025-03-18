@@ -31,6 +31,7 @@ COPY        ./composer_install.sh /composer_install.sh
 #COPY        ./install.sh /install.sh
 COPY        ./entrypoint.sh /entrypoint.sh
 COPY        ./nginx.conf /etc/nginx/nginx.conf
+COPY         --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
 
 RUN         apk add --update --no-cache git nginx curl bash tini \
             && apk upgrade --no-cache \
@@ -55,7 +56,8 @@ RUN         apk add --update --no-cache git nginx curl bash tini \
             && sed -i 's/php-fpm/127.0.0.1/g' /etc/nginx/conf.d/default.conf \
             && composer update --no-cache --working-dir=/web/mclogs || exit 1 \
             && composer install --no-cache --no-dev --no-interaction --no-progress --working-dir=/web/mclogs || exit 1 \
-            && apk del curl bash git
+            && apk del curl bash git \
+            && install-php-extensions zstd
 
 ENV			PATH="/home/container/.local/bin:${PATH}"
 ENV 		PHPRC=/home/container
