@@ -29,14 +29,15 @@ LABEL       author="Matthew Penner" maintainer="matthew@pterodactyl.io"
 LABEL       org.opencontainers.image.source="https://github.com/Soapy7261/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
-COPY        ./../entrypoint.sh /entrypoint.sh
 RUN 		apt-get update -y && apt-get upgrade -y && rm -rf /var/lib/apt/lists/* \
-            && useradd -d /home/container -m container && chmod +x /entrypoint.sh && chown container /entrypoint.sh
+            && useradd -d /home/container -m container
 
 USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
 ENV         JAVA_HOME="/graalvm"
 ENV         PATH="$JAVA_HOME/bin:$PATH"
+
+COPY        ./../entrypoint.sh /entrypoint.sh
 
 CMD         [ "/bin/bash", "/entrypoint.sh" ]
