@@ -28,7 +28,7 @@
 #
 # @see https://github.com/McModLauncher/modlauncher/issues/91
 
-FROM        --platform=$TARGETOS/$TARGETARCH eclipse-temurin:11.0.13_8-jdk-focal
+FROM        --platform=$TARGETOS/$TARGETARCH eclipse-temurin:11-jdk-focal
 
 LABEL       author="Matthew Penner" maintainer="matthew@pterodactyl.io"
 
