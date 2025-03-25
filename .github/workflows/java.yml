@@ -23,21 +23,25 @@ jobs:
           - 21
           - 22
           - 23
+          - 24
 
           - 17-graalvm
           - 21-graalvm
           - 22-graalvm
           - 23-graalvm
+          - 24-graalvm
 
           - 17-graalvm-slim
           - 21-graalvm-slim
           - 22-graalvm-slim
           - 23-graalvm-slim
+          - 24-graalvm-slim
 
           - 17-g-thanos
           - 21-g-thanos
           - 22-g-thanos
           - 23-g-thanos
+          - 24-g-thanos
     steps:
       - uses: actions/checkout@v4
       - uses: docker/setup-qemu-action@v3
