@@ -19,6 +19,7 @@ jobs:
           - graalvm-EE
           - 8
           - 11
+          - 16
           - 17
           - 21
           - 22
@@ -27,6 +28,7 @@ jobs:
 
           - 8-jre
           - 11-jre
+          - 16-jre
           - 17-jre
           - 21-jre
           - 22-jre
