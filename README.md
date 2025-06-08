@@ -39,17 +39,27 @@ All graalvm 17 yolks are based off 17.0.12 which is now outdated, this is due to
 
 - `graalvm-EE` Does not include graalvm EE, you must make a mount at /graalvm of a copy of the whole graalvm EE folder for to work, otherwise, it wont work.
 
+- `8-jre` eclipse temurin 8 JRE
+
+- `11-jre` eclipse temurin 11 JRE
+
+- `16-jre` eclipse temurin 16 JRE
+
 - `17-graalvm` Java 17 graalvm, also removes unneeded(?) packages, based off debian:latest
 
 - `17-g-thanos` Same as 17-graalvm, but adds PHP to run [Thanos](https://github.com/aternosorg/thanos) after the server stops, removing chunks with inhabited time of 0 to reduce storage usage
 
 - `17-graalvm-slim` Same as 17-graalvm, but uses debian:bookworm-slim instead of debian:latest
 
+- `17-jre` eclipse temurin 17 JRE
+
 - `21-graalvm` Same as 17-graalvm, just java 21 instead of 17
 
 - `21-g-thanos` Same as 17-g-thanos, just java 21 instead of 17
 
 - `21-graalvm-slim` Same as 21-graalvm, but uses debian:bookworm-slim instead of debian:latest
+
+- `21-jre` eclipse temurin 21 JRE
 
 - `22` Java 22, no graalvm, no thanos, no slim, just eclipse temurin 22
 
@@ -59,13 +69,28 @@ All graalvm 17 yolks are based off 17.0.12 which is now outdated, this is due to
 
 - `22-graalvm-slim` Self explainatory.
 
-- `23` Java 23.
+- `22-jre` eclipse temurin 22 JRE
+
+- `23` eclipse temurin 23.
 
 - `23-g-thanos` Self explainatory.
 
 - `23-graalvm` Self explainatory.
 
 - `23-graalvm-slim` Self explainatory.
+
+- `23-jre` eclipse temurin 23 JRE
+
+- `24` eclipse temurin 24.
+
+- `24-g-thanos` Self explainatory.
+
+- `24-graalvm` Self explainatory.
+
+- `24-graalvm-slim` Self explainatory.
+
+- `24-jre` eclipse temurin 24 JRE
+
 </details>
 <details>
 <summary>NodeJS yolks added</summary>
