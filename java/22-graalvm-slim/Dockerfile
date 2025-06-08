@@ -23,6 +23,7 @@
 #
 
 FROM        --platform=$TARGETOS/$TARGETARCH debian:bookworm-slim
+ARG TARGETARCH
 
 LABEL       author="Matthew Penner" maintainer="matthew@pterodactyl.io"
 
