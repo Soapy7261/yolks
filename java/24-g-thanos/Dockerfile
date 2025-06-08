@@ -38,7 +38,15 @@ RUN 		apt-get update -y && apt-get install -y apt-transport-https lsb-release ca
             && apt-get upgrade -y \
             && useradd -d /home/container -m container && chmod +x /entrypoint.sh && chown container /entrypoint.sh \
             # Install GraalVM
-            && curl https://download.oracle.com/graalvm/24/latest/graalvm-jdk-24_linux-x64_bin.tar.gz -o /graalvm.tar.gz \
+            && if [ "${TARGETARCH}" = "amd64" ]; then \
+                echo "Installing GraalVM for x86_64 architecture"; \
+                curl -o /graalvm.tar.gz https://download.oracle.com/graalvm/24/latest/graalvm-jdk-24_linux-x64_bin.tar.gz; \
+            elif [ "${TARGETARCH}" = "arm64" ]; then \
+                echo "Installing GraalVM for aarch64 architecture"; \
+                curl -o /graalvm.tar.gz https://download.oracle.com/graalvm/24/latest/graalvm-jdk-24_linux-aarch64_bin.tar.gz; \
+            else \
+                echo "Unsupported architecture: ${TARGETARCH}"; exit 1; \
+            fi \
             ## Check SHA256 to make sure its not corrupted
             && /bin/bash /hash_check.sh 24 && rm /hash_check.sh \
             && mkdir /graalvm && tar -xzf /graalvm.tar.gz -C /graalvm --strip-components=1 \

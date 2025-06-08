@@ -1,5 +1,3 @@
-# Hey, just wanted to remind you this version is no longer supported by oracle!
-
 #
 # Copyright (c) 2021 Matthew Penner
 #
@@ -22,34 +20,24 @@
 # SOFTWARE.
 #
 
-FROM        --platform=$TARGETOS/$TARGETARCH debian:latest
+FROM        --platform=$TARGETOS/$TARGETARCH eclipse-temurin:17-jre-alpine
 
 LABEL       author="Matthew Penner" maintainer="matthew@pterodactyl.io"
 
 LABEL       org.opencontainers.image.source="https://github.com/Soapy7261/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
-COPY        ./../entrypoint.sh /entrypoint.sh
-RUN 		apt-get update -y && apt-get install -y curl \
-            && apt-get upgrade -y && rm -rf /var/lib/apt/lists/* \
-            && if [ "${TARGETARCH}" = "amd64" ]; then \
-                echo "Installing GraalVM for x86_64 architecture"; \
-                curl -o /graalvm.tar.gz https://download.oracle.com/graalvm/22/latest/graalvm-jdk-22_linux-x64_bin.tar.gz; \
-            elif [ "${TARGETARCH}" = "arm64" ]; then \
-                echo "Installing GraalVM for aarch64 architecture"; \
-                curl -o /graalvm.tar.gz https://download.oracle.com/graalvm/22/latest/graalvm-jdk-22_linux-aarch64_bin.tar.gz; \
-            else \
-                echo "Unsupported architecture: ${TARGETARCH}"; exit 1; \
-            fi \
-            && mkdir /graalvm && tar -xzf /graalvm.tar.gz -C /graalvm --strip-components=1 \
-            && useradd -d /home/container -m container && chmod +x /entrypoint.sh && chown container /entrypoint.sh \
-            && chown -R container /graalvm && chmod +x /graalvm/bin/java \
-            && chmod -R 755 /graalvm && rm /graalvm.tar.gz
+COPY        ./install.sh /install.sh
+
+RUN         apk add --update --no-cache curl \
+	&& adduser -D -h /home/container container \
+    && /bin/ash /install.sh || exit 1 && rm /install.sh \
+    && apk del curl
 
 USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
-ENV         JAVA_HOME="/graalvm"
-ENV         PATH="$JAVA_HOME/bin:$PATH"
 
-CMD         [ "/bin/bash", "/entrypoint.sh" ]
+COPY        ./entrypoint.sh /entrypoint.sh
+
+CMD         [ "/bin/ash", "/entrypoint.sh" ]
