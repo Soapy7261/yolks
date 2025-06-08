@@ -40,10 +40,10 @@ RUN 		apt-get update -y && apt-get install -y apt-transport-https lsb-release ca
             # Install GraalVM
             && if [ "${TARGETARCH}" = "amd64" ]; then \
                 echo "Installing GraalVM for x86_64 architecture"; \
-                curl -o /graalvm.tar.gz https://download.oracle.com/graalvm/21/latest/graalvm-jdk-21_linux-x64_bin.tar.gz; \
+                wget -O /graalvm.tar.gz https://download.oracle.com/graalvm/21/latest/graalvm-jdk-21_linux-x64_bin.tar.gz; \
             elif [ "${TARGETARCH}" = "arm64" ]; then \
                 echo "Installing GraalVM for aarch64 architecture"; \
-                curl -o /graalvm.tar.gz https://download.oracle.com/graalvm/21/latest/graalvm-jdk-21_linux-aarch64_bin.tar.gz; \
+                wget -O /graalvm.tar.gz https://download.oracle.com/graalvm/21/latest/graalvm-jdk-21_linux-aarch64_bin.tar.gz; \
             else \
                 echo "Unsupported architecture: ${TARGETARCH}"; exit 1; \
             fi \
