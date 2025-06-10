@@ -1,4 +1,4 @@
-name: build java
+name: build java (X64)
 on:
   workflow_dispatch:
   schedule:
