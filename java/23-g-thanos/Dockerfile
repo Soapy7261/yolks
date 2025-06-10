@@ -1,3 +1,5 @@
+# Hey, just wanted to remind you this version is no longer supported by oracle!
+
 #
 # Copyright (c) 2021 Matthew Penner
 #
