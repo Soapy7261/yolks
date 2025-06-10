@@ -26,7 +26,7 @@
 TZ=${TZ:-UTC}
 export TZ
 
-EOL_versions=("22")
+EOL_versions=("22","23")
 
 # Set environment variable that holds the Internal Docker IP
 #INTERNAL_IP=$(ip route get 1 | awk '{print $(NF-2);exit}')
