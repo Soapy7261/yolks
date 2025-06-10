@@ -30,26 +30,36 @@ LABEL       org.opencontainers.image.licenses=MIT
 
 COPY        ./../entrypoint-thanos.sh /entrypoint.sh
 COPY        ./../install_composer.sh /composer_install.sh
-#we do a lil trolling
+COPY        ./../hash_check.sh /hash_check.sh
+
 ENV         DEBIAN_FRONTEND=noninteractive
 ENV         COMPOSER_ALLOW_SUPERUSER=1
 
-RUN 		apt-get update -y && apt-get install -y apt-transport-https lsb-release ca-certificates wget git \
+RUN 		apt-get update -y && apt-get install -y apt-transport-https lsb-release ca-certificates curl git \
             && apt-get upgrade -y \
             && useradd -d /home/container -m container && chmod +x /entrypoint.sh && chown container /entrypoint.sh \
-            # Install GraalVM
-            && wget -O /graalvm.tar.gz https://download.oracle.com/graalvm/17/archive/graalvm-jdk-17.0.12_linux-x64_bin.tar.gz \
+            && if [ "${TARGETARCH}" = "amd64" ]; then \
+                echo "Installing GraalVM for x86_64 architecture"; \
+                curl -o /graalvm.tar.gz https://download.oracle.com/graalvm/17/archive/graalvm-jdk-17.0.12_linux-x64_bin.tar.gz; \
+            elif [ "${TARGETARCH}" = "arm64" ]; then \
+                echo "Installing GraalVM for aarch64 architecture"; \
+                curl -o /graalvm.tar.gz https://download.oracle.com/graalvm/17/archive/graalvm-jdk-17.0.12_linux-aarch64_bin.tar.gz; \
+            else \
+                echo "Unsupported architecture: ${TARGETARCH}"; exit 1; \
+            fi \
+            # Check SHA256 to make sure its not corrupted
+            && /bin/bash /hash_check.sh 17 && rm /hash_check.sh \
             && mkdir /graalvm && tar -xzf /graalvm.tar.gz -C /graalvm --strip-components=1 \
             && chown -R container /graalvm && chmod +x /graalvm/bin/java \
             && chmod -R 755 /graalvm && rm /graalvm.tar.gz \
             # Install PHP
-            && wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg \
+            && curl -o /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg \
             && echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php.list \
             && apt-get update -y && apt-get install -y php8.1 \
             && /bin/bash /composer_install.sh && rm /composer_install.sh \
             && mkdir /thanos && chown container /thanos && cd /thanos && composer require aternos/thanos \
             # Remove the packages we dont need anymore
-            && apt-get remove -y apt-transport-https lsb-release ca-certificates wget git \
+            && apt-get remove -y apt-transport-https lsb-release ca-certificates curl git \
             && apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
 
 ENV         DEBIAN_FRONTEND=dialog

@@ -29,6 +29,8 @@ LABEL       org.opencontainers.image.source="https://github.com/Soapy7261/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
 COPY        ./../entrypoint.sh /entrypoint.sh
+COPY        ./../hash_check.sh /hash_check.sh
+
 RUN 		apt-get update -y && apt-get install -y curl \
             && apt-get upgrade -y && rm -rf /var/lib/apt/lists/* \
             && if [ "${TARGETARCH}" = "amd64" ]; then \
@@ -40,6 +42,8 @@ RUN 		apt-get update -y && apt-get install -y curl \
             else \
                 echo "Unsupported architecture: ${TARGETARCH}"; exit 1; \
             fi \
+            # Check SHA256 to make sure its not corrupted
+            && /bin/bash /hash_check.sh 17 && rm /hash_check.sh \
             && mkdir /graalvm && tar -xzf /graalvm.tar.gz -C /graalvm --strip-components=1 \
             && useradd -d /home/container -m container && chmod +x /entrypoint.sh && chown container /entrypoint.sh \
             && chown -R container /graalvm && chmod +x /graalvm/bin/java \
