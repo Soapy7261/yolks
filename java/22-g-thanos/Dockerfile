@@ -32,7 +32,7 @@ LABEL       org.opencontainers.image.licenses=MIT
 
 COPY        ./../entrypoint-thanos.sh /entrypoint.sh
 COPY        ./../install_composer.sh /composer_install.sh
-#we do a lil trolling
+
 ENV         DEBIAN_FRONTEND=noninteractive
 ENV         COMPOSER_ALLOW_SUPERUSER=1
 
