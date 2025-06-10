@@ -14,17 +14,15 @@ if [ "${TARGETARCH}" = "amd64" ]; then
     if [ "$2" = "17" ]; then
         url_to_download="https://download.oracle.com/graalvm/17/archive/graalvm-jdk-17.0.12_linux-x64_bin.tar.gz.sha256"
     fi
-    expected_hash=$(curl -s "https://download.oracle.com/graalvm/${version}/latest/graalvm-jdk-${version}_linux-x64_bin.tar.gz.sha256")
 elif [ "${TARGETARCH}" = "arm64" ]; then
     url_to_download="https://download.oracle.com/graalvm/${version}/latest/graalvm-jdk-${version}_linux-aarch64_bin.tar.gz.sha256"
     if [ "$2" = "17" ]; then
         url_to_download="https://download.oracle.com/graalvm/17/archive/graalvm-jdk-17.0.12_linux-aarch64_bin.tar.gz.sha256"
     fi
-    expected_hash=$(curl -s "https://download.oracle.com/graalvm/${version}/latest/graalvm-jdk-${version}_linux-aarch64_bin.tar.gz.sha256")
 else
     echo "Unsupported architecture: ${TARGETARCH}"; exit 1;
 fi
-
+expected_hash=$(curl -s $url_to_download)
 #expected_hash=$(curl -s "https://download.oracle.com/graalvm/${version}/latest/graalvm-jdk-${version}_linux-x64_bin.tar.gz.sha256")
 
 computed_hash=$(sha256sum /graalvm.tar.gz | awk '{ print $1 }')
