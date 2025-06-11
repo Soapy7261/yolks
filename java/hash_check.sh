@@ -22,6 +22,7 @@ elif [ "${TARGETARCH}" = "arm64" ]; then
 else
     echo "Unsupported architecture: ${TARGETARCH}"; exit 1;
 fi
+echo "$url_to_download for version $version"
 expected_hash=$(curl -s $url_to_download)
 #expected_hash=$(curl -s "https://download.oracle.com/graalvm/${version}/latest/graalvm-jdk-${version}_linux-x64_bin.tar.gz.sha256")
 
