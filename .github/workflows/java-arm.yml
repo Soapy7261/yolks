@@ -70,4 +70,4 @@ jobs:
           platforms: linux/arm64
           push: true
           tags: |
-            ghcr.io/soapy7261/yolks:java_${{ matrix.tag }}
+            ghcr.io/soapy7261/yolks:java_${{ matrix.tag }}-arm
