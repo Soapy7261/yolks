@@ -27,7 +27,7 @@ LABEL       author="Matthew Penner" maintainer="matthew@pterodactyl.io"
 LABEL       org.opencontainers.image.source="https://github.com/Soapy7261/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
-RUN         apk add --update --no-cache tini git ca-certificates ffmpeg gcc && apk upgrade --no-cache \
+RUN         apk add --update --no-cache tini git ca-certificates ffmpeg gcc p3-dev musl-dev linux-headers && apk upgrade --no-cache \
 	&& adduser -D -h /home/container container
 
 ENV 		PIP_DISABLE_PIP_VERSION_CHECK=1
