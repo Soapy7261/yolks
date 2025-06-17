@@ -29,7 +29,7 @@ LABEL       author="Matthew Penner" maintainer="matthew@pterodactyl.io"
 LABEL       org.opencontainers.image.source="https://github.com/Soapy7261/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
-RUN 		apt-get update -y && apt-get upgrade -y && rm -rf /var/lib/apt/lists/* \
+RUN 		apt-get update -y && apt-get install -y curl && rm -rf /var/lib/apt/lists/* \
             && useradd -d /home/container -m container
 
 USER        container
