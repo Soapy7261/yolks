@@ -1,0 +1,39 @@
+name: build reposilite
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * 1"
+  push:
+    branches:
+      - master
+    paths:
+      - reposilite/*
+jobs:
+  push:
+    name: "yolks:reposilite"
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        tag:
+          - reposilite
+    steps:
+      - uses: actions/checkout@v4
+      # Setup QEMU for ARM64 Build
+      - uses: docker/setup-qemu-action@v3
+      - uses: docker/setup-buildx-action@v3
+        with:
+          buildkitd-flags: --debug
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: "soapy7261"
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/build-push-action@v6
+        with:
+          context: ./reposilite
+          file: ./reposilite/Dockerfile
+          platforms: linux/amd64 #,linux/arm64
+          push: true
+          tags: |
+            ghcr.io/soapy7261/yolks:reposilite
