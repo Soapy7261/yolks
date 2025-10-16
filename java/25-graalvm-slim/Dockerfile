@@ -35,10 +35,10 @@ RUN 		apt-get update -y && apt-get install -y curl \
             && apt-get upgrade -y && rm -rf /var/lib/apt/lists/* \
             && if [ "${TARGETARCH}" = "amd64" ]; then \
                 echo "Installing GraalVM for x86_64 architecture"; \
-                curl -o /graalvm.tar.gz https://download.oracle.com/graalvm/25/latest/graalvm-jdk-24_linux-x64_bin.tar.gz; \
+                curl -o /graalvm.tar.gz https://download.oracle.com/graalvm/25/latest/graalvm-jdk-25_linux-x64_bin.tar.gz; \
             elif [ "${TARGETARCH}" = "arm64" ]; then \
                 echo "Installing GraalVM for aarch64 architecture"; \
-                curl -o /graalvm.tar.gz https://download.oracle.com/graalvm/25/latest/graalvm-jdk-24_linux-aarch64_bin.tar.gz; \
+                curl -o /graalvm.tar.gz https://download.oracle.com/graalvm/25/latest/graalvm-jdk-25_linux-aarch64_bin.tar.gz; \
             else \
                 echo "Unsupported architecture: ${TARGETARCH}"; exit 1; \
             fi \
