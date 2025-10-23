@@ -68,6 +68,19 @@ done
 #exec env ${PARSED}
 #echo "Exiting..."
 
+if [ -n "${START_DELAY:-}" ]; then
+    # check if START_DELAY is all digits (a valid positive int)
+    case "$START_DELAY" in
+        ''|*[!0-9]*)
+            echo "Invalid START_DELAY value: '$START_DELAY' — must be an integer" >&2
+            ;;
+        *)
+            echo "Delaying start for ${START_DELAY}s..."
+            sleep "$START_DELAY"
+            ;;
+    esac
+fi
+
 if [ -z "$PARFC" ]; then # Pull And Restart For Changes, basically if you want to pull and restart the script if there are changes.
     wait
     echo "This shouldn't happen, ideally."

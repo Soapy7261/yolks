@@ -16,6 +16,8 @@ Additional flags:
   - If set to `1` will remove all `__pycache__` folders on startup, this is useful for reducing disk usage or when using the git yolks, but will increase startup time, although you should probably just set `PYTHONDONTWRITEBYTECODE` to `1` instead of using this flag.
 - DONT_UPGRADE_PIP
   - If set to `1` will not upgrade pip on startup, this is useful for reducing startup time since pip is slow to upgrade and it is already upgraded in the yolks themselves.
+- START_DELAY
+  - If set to a valid number (in seconds) will delay the start of the python app by that many seconds, this is useful for waiting for other services to start before starting the script(s).
 
 - `3.12` Just python 3.12, based off all the other yolks, nothing extra
 
