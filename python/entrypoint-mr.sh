@@ -89,7 +89,7 @@ if [ "$PARFC" == "1" ]; then
     #Check for new changes every 1 minute, and if there are any, restart the script by just entirely restarting the container.
     while true; do
         sleep 60
-        output="$(git status -uno 2>&1)"
+        output="$(git -C /home/container/scripts status -uno 2>&1)"
         if ! echo "$output" | grep -q "Your branch is up to date with '"; then
             echo "Changes detected, restarting..."
             reboot
