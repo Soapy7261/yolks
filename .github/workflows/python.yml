@@ -22,21 +22,27 @@ jobs:
           - '3.11'
           - '3.12'
           - '3.13'
+          - '3.14'
 
           - '3.12-mr'
           - '3.13-mr'
+          - '3.14-mr'
 
           - '3.12-mr-ffmpeg'
           - '3.13-mr-ffmpeg'
+          - '3.14-mr-ffmpeg'
 
           - '3.12-nep'
           - '3.13-nep'
+          - '3.14-nep'
 
           - '3.12-git'
           - '3.13-git'
+          - '3.14-git'
 
           - '3.12-tini'
           - '3.13-tini'
+          - '3.14-tini'
 
           #- '3.12-t-ffmpeg' #I'm removing this, who needs FFMPEG with python anyway? But hey, if your reading this, and need it, feel free to make an issue :)
     steps:
