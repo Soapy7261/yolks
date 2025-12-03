@@ -20,7 +20,7 @@
 # SOFTWARE.
 #
 
-FROM        --platform=$TARGETOS/$TARGETARCH php:8.4-fpm-alpine
+FROM        --platform=$TARGETOS/$TARGETARCH php:8.5-fpm-alpine
 
 LABEL       author="Matthew Penner" maintainer="matthew@pterodactyl.io"
 
