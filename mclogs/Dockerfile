@@ -54,10 +54,11 @@ RUN         apk add --update --no-cache git nginx curl bash tini \
             && mv /web/mclogs/docker/mclogs.conf /etc/nginx/conf.d/default.conf \
             && rm -rf /web/mclogs/docker \
             && sed -i 's/php-fpm/127.0.0.1/g' /etc/nginx/conf.d/default.conf \
+            && install-php-extensions zstd
+            && install-php-extensions mongodb
             && composer update --no-cache --working-dir=/web/mclogs || exit 1 \
             && composer install --no-cache --no-dev --no-interaction --no-progress --working-dir=/web/mclogs || exit 1 \
             && apk del curl bash git \
-            && install-php-extensions zstd
 
 ENV			PATH="/home/container/.local/bin:${PATH}"
 ENV 		PHPRC=/home/container
