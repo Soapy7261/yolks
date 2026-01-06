@@ -58,7 +58,7 @@ RUN         apk add --update --no-cache git nginx curl bash tini \
             && install-php-extensions mongodb \
             && composer update --no-cache --working-dir=/web/mclogs || exit 1 \
             && composer install --no-cache --no-dev --no-interaction --no-progress --working-dir=/web/mclogs || exit 1 \
-            && apk del curl bash git \
+            && apk del curl bash git
 
 ENV			PATH="/home/container/.local/bin:${PATH}"
 ENV 		PHPRC=/home/container
