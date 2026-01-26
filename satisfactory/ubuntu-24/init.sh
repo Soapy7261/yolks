@@ -89,7 +89,7 @@ if [[ "${ROOTLESS,,}" != "true" ]]; then
 fi
 
 if [[ ! -w "/home/container/config" ]]; then
-    echo "The current user does not have write permissions for /home/container/config"
+    echo "The current user does not have write permissions for /home/container/config\nPS: Try just making the config folder first"
     exit 1
 fi
 
