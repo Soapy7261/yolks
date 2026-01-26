@@ -1,5 +1,5 @@
 #!/bin/bash
-
+echo "running"
 set -e
 
 # Engine.ini settings
