@@ -5,9 +5,6 @@ export TZ
 
 cd /home/container || exit 1
 
-if [ -n "${SUB_DIRECTORY}" ]; then
-    cd "$SUB_DIRECTORY" || exit 1
-fi
 # Make internal Docker IP address available to processes.
 INTERNAL_IP=$(ip route get 1 | awk '{print $(NF-2);exit}')
 export INTERNAL_IP # Don't know why this would be needed but okay ig :shrug:
@@ -41,6 +38,9 @@ fi
 if [ "${DONT_UPGRADE_PIP}" != "1" ]; then
     echo "Upgrading pip..."
     pip install --user --upgrade pip
+fi
+if [ -n "${SUB_DIRECTORY}" ]; then
+    cd "$SUB_DIRECTORY" || exit 1
 fi
 echo "Installing requirements..."
 if [[ -f "./requirements.txt" ]]; then
