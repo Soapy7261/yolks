@@ -29,7 +29,7 @@ if [ ! -d "/home/container/scripts/.git" ]; then
     git clone $GIT_BRANCH_COMMAND $GIT_REPO ./scripts || exit 1
 else
     echo "Pulling repository..."
-    git -C /home/container/scripts pull $GIT_REPO || exit 1
+    git -C /home/container/scripts pull origin $GIT_BRANCH || exit 1
 fi
 # Run the Program
 if [ "${PURGE_PYCACHE_ON_STARTUP}" == "1" ]; then

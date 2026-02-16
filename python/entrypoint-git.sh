@@ -28,7 +28,7 @@ if [ ! -d "/home/container/.git" ]; then
 else
     echo "Pulling repository..."
     git fetch origin || exit 1
-    git pull || exit 1
+    git pull origin "$GIT_BRANCH" || exit 1
 fi
 # Run the Program
 if [ "${PURGE_PYCACHE_ON_STARTUP}" == "1" ]; then
