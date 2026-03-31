@@ -46,6 +46,21 @@ for version in "${EOL_versions[@]}"; do
     fi
 done
 
+if [ "${MALWARE_SCAN:-}" = "true" ]; then
+    if (( java_version < 17 )); then
+        echo "Malware scan has been enabled, but this version of java ({$java_version}) is too old to run it! You must use 17 or newer."
+    else
+        if [ ! -f "MCAntiMalware.jar" ]; then
+            echo "Downloading MCAntiMalware.jar.."
+            DOWNLOAD_URL=$(curl --proto =https --proto-redir =https -fsS "https://api.github.com/repos/OpticFusion1/MCAntiMalware/releases/latest" | grep "browser_download_url" | grep "jar" | cut -d '"' -f 4)
+            curl --proto =https --proto-redir =https -fLsS -o /home/container/MCAntiMalware.jar "$DOWNLOAD_URL"
+        fi
+        echo "Running malware scan.."
+        java -jar /home/container/MCAntiMalware --disableAutoUpdate true --scanDirectory /home/container --singleScan true
+        echo "Done!"
+    fi
+fi
+
 # Convert all of the "{{VARIABLE}}" parts of the command into the expected shell
 # variable format of "${VARIABLE}" before evaluating the string and automatically
 # replacing the values.
