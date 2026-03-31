@@ -26,7 +26,7 @@
 TZ=${TZ:-UTC}
 export TZ
 
-EOL_versions=("22")
+EOL_versions=("16","22","23","24")
 
 # Set environment variable that holds the Internal Docker IP
 if command -v ip >/dev/null 2>&1; then
