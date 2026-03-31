@@ -42,7 +42,7 @@ cd /home/container || exit 1
 # Print Java version
 printf "\033[1m\033[33mcontainer@pterodactyl~ \033[0mjava -version\n"
 java -version || { echo 'No java installation found.'; exit 1; }
-java_version=$(java -version 2>&1 | awk -F '"' '/version/ {print $2}' | cut -d'.' -f1)
+java_version=$(java -version 2>&1 | awk -F '"' '/version/ {print $2}' | awk -F. '{print ($1=="1" ? $2 : $1)}')
 for version in "${EOL_versions[@]}"; do
     if [[ "$java_version" == "$version" ]]; then
         echo "^ This version of java is EOL, you should downgrade/update your java version to something that is still actively supported https://wikipedia.org/wiki/Java_version_history"
