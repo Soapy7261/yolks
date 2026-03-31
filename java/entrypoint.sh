@@ -50,7 +50,7 @@ for version in "${EOL_versions[@]}"; do
     fi
 done
 
-if [ "${MALWARE_SCAN:-}" = "1" ]; then
+if [ "${MALWARE_SCAN:-}" == "1" ]; then
     if (( java_version < 17 )); then
         echo "Malware scan has been enabled, but this version of java ({$java_version}) is too old to run it! You must use 17 or newer."
     else
