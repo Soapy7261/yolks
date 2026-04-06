@@ -1,4 +1,4 @@
-FROM --platform=$TARGETOS/$TARGETARCH alpine:latest AS builder
+FROM --platform=$TARGETOS/$TARGETARCH alpine:3.19 AS builder
 
 WORKDIR /tmp/citra
 
