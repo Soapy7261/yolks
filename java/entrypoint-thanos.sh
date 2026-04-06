@@ -56,7 +56,7 @@ if [ "${MALWARE_SCAN:-}" == "1" ]; then
             curl --proto =https --proto-redir =https -fLsS -o /home/container/MCAntiMalware.jar "$DOWNLOAD_URL"
         fi
         echo "Running malware scan.."
-        java -XX:MaxRAMPercentage=75.0 -XX:+PerfDisableSharedMem -jar /home/container/MCAntiMalware.jar --disableAutoUpdate true --scanDirectory /home/container --singleScan true
+        java -Xms870M -Xmx870M -XX:+AlwaysPreTouch -XX:+PerfDisableSharedMem -jar /home/container/MCAntiMalware.jar --disableAutoUpdate true --scanDirectory /home/container --singleScan true
         echo "Done!"
     fi
 fi
