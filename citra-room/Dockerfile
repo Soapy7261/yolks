@@ -7,7 +7,7 @@ RUN apk update \
         build-base \
         binutils-gold \
         ca-certificates \
-        cmake \
+        'cmake<4' \
         glslang \
         libstdc++ \
         linux-headers \
