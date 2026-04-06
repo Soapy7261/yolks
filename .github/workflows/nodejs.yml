@@ -19,9 +19,11 @@ jobs:
           - 18
           - 20
           - 22
+          - 22
           
           - 20-nep
           - 22-nep
+          - 24-nep
     steps:
       - uses: actions/checkout@v4
       # Setup QEMU for ARM64 Build
