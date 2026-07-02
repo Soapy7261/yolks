@@ -11,6 +11,8 @@ cd /home/container || exit 1
 INTERNAL_IP=$(ip route get 1 | awk '{print $(NF-2);exit}')
 export INTERNAL_IP # Don't know why this would be needed but okay ig :shrug:
 
+export TMPDIR="/home/container/tmp"
+
 # GIT
 if [ -z "$GIT_REPO" ]; then
     echo "GIT_REPO not specified, exiting..."
