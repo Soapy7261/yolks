@@ -41,6 +41,6 @@ RUN         pip install --user --upgrade --no-cache-dir pip
 
 COPY        ./../entrypoint-mr.sh /entrypoint.sh
 
-ENTRYPOINT  ["/sbin/tini", "--"]
+ENTRYPOINT  ["/usr/bin/tini", "--"]
 
 CMD         [ "/bin/bash", "/entrypoint.sh" ]
