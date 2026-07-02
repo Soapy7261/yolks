@@ -32,6 +32,8 @@ jobs:
           - '3.13-mr-ffmpeg'
           - '3.14-mr-ffmpeg'
 
+          - '3.12-mr-ffmpeg-deb'
+
           - '3.12-nep'
           - '3.13-nep'
           - '3.14-nep'
